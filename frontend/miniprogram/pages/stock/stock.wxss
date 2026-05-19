@@ -1,0 +1,105 @@
+/* 股票页面样式 */
+.container {
+  padding: 20rpx;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* 搜索框 */
+.search-bar {
+  display: flex;
+  padding: 20rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.search-input {
+  flex: 1;
+  height: 72rpx;
+  padding: 0 20rpx;
+  background: #f5f5f5;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+
+.search-btn {
+  margin-left: 20rpx;
+  padding: 0 30rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  background: #1890ff;
+  color: #fff;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+
+/* 股票列表 */
+.stock-list {
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.stock-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.stock-item:last-child {
+  border-bottom: none;
+}
+
+.stock-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stock-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.stock-code {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.stock-price {
+  text-align: right;
+}
+
+.stock-price .price {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.stock-price .change {
+  font-size: 24rpx;
+  margin-top: 4rpx;
+}
+
+/* 空状态 */
+.empty {
+  text-align: center;
+  padding: 120rpx 40rpx;
+  color: #999;
+}
+
+.empty-hint {
+  font-size: 24rpx;
+  margin-top: 20rpx;
+}
+
+/* 加载中 */
+.loading {
+  text-align: center;
+  padding: 60rpx;
+  color: #999;
+}

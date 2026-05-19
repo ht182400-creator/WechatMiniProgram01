@@ -1,0 +1,68 @@
+<view class="container">
+  <!-- 市场概览 -->
+  <view class="card market-overview">
+    <view class="card-header">
+      <text class="title">市场概览</text>
+      <text class="update-time">{{updateTime}}</text>
+    </view>
+    <view class="market-list">
+      <view class="market-item" wx:for="{{marketData}}" wx:key="index">
+        <view class="market-name">{{item.name}}</view>
+        <view class="market-value" style="color: {{item.changeColor}}">{{item.index}}</view>
+        <view class="market-change" style="color: {{item.changeColor}}">
+          {{item.change}} ({{item.changePercent}})
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快捷功能 -->
+  <view class="card quick-actions">
+    <text class="title">快捷功能</text>
+    <view class="action-grid">
+      <view class="action-item" bindtap="navigateToStock">
+        <image src="/assets/stock.png" mode="aspectFit" />
+        <text>股票查询</text>
+      </view>
+      <view class="action-item" bindtap="navigateToBacktest">
+        <image src="/assets/backtest.png" mode="aspectFit" />
+        <text>策略回测</text>
+      </view>
+      <view class="action-item" bindtap="navigateToPredict">
+        <image src="/assets/predict.png" mode="aspectFit" />
+        <text>价格预测</text>
+      </view>
+      <view class="action-item" bindtap="showApiSettings">
+        <image src="/assets/settings.png" mode="aspectFit" />
+        <text>API设置</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 系统状态 -->
+  <view class="card system-status">
+    <text class="title">系统状态</text>
+    <view class="status-row">
+      <text class="status-label">后端服务</text>
+      <text class="status-value {{systemStatus.backend ? 'online' : 'offline'}}">
+        {{systemStatus.backend ? '在线' : '离线'}}
+      </text>
+    </view>
+    <view class="status-row">
+      <text class="status-label">数据源</text>
+      <text class="status-value {{systemStatus.dataSource ? 'online' : 'offline'}}">
+        {{systemStatus.dataSource || '未知'}}
+      </text>
+    </view>
+    <view class="status-row">
+      <text class="status-label">版本</text>
+      <text class="status-value">v3.0.0</text>
+    </view>
+  </view>
+
+  <!-- 免责声明 -->
+  <view class="disclaimer">
+    <text>本系统仅供学习研究使用，预测结果仅供参考</text>
+    <text>不构成任何投资建议，股票投资有风险</text>
+  </view>
+</view>

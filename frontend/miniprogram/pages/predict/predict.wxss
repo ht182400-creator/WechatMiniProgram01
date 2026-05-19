@@ -1,0 +1,240 @@
+/* 预测页面样式 */
+.container {
+  padding: 20rpx;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+/* 表单 */
+.form {
+  margin-bottom: 20rpx;
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  width: 160rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.input {
+  flex: 1;
+  font-size: 28rpx;
+  text-align: right;
+}
+
+.picker-value {
+  flex: 1;
+  font-size: 28rpx;
+  text-align: right;
+  color: #333;
+}
+
+/* 预测按钮 */
+.btn-predict {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #1890ff;
+  color: #fff;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+}
+
+/* 结果卡片 */
+.stock-info {
+  text-align: center;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  margin-bottom: 20rpx;
+}
+
+.stock-name {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.stock-code {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 当前价格 */
+.current-price {
+  text-align: center;
+  padding: 20rpx;
+  background: #f8f8f8;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.current-price .label {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.current-price .value {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 预测价格 */
+.predict-price {
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx 0;
+}
+
+.price-item {
+  text-align: center;
+}
+
+.price-item .label {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.price-item .value {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.price-item .value.highlight {
+  color: #1890ff;
+}
+
+.price-item .trend {
+  font-size: 24rpx;
+}
+
+.price-item .trend.up {
+  color: #ff4d4f;
+}
+
+.price-item .trend.down {
+  color: #52c41a;
+}
+
+/* 置信度 */
+.confidence {
+  padding: 20rpx 0;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.confidence .label {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 15rpx;
+}
+
+.confidence-bar {
+  height: 16rpx;
+  background: #f0f0f0;
+  border-radius: 8rpx;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+}
+
+.confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #1890ff, #52c41a);
+  border-radius: 8rpx;
+}
+
+.confidence-text {
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #1890ff;
+}
+
+/* 风险提示 */
+.risk-tip {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  background: #fffbe6;
+  border-radius: 8rpx;
+  border-left: 4rpx solid #faad14;
+}
+
+.risk-tip text {
+  display: block;
+  font-size: 24rpx;
+  color: #ad6800;
+  line-height: 1.6;
+}
+
+/* 历史记录 */
+.history-list {
+  margin-top: 10rpx;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-info text {
+  display: block;
+}
+
+.history-stock {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.history-date {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.history-result text {
+  display: block;
+  font-size: 24rpx;
+  color: #666;
+  text-align: right;
+}

@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/stock/stock",
+    "pages/backtest/backtest",
+    "pages/predict/predict"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1890ff",
+    "navigationBarTitleText": "股票量化分析",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1890ff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/home.png",
+        "selectedIconPath": "assets/home-active.png"
+      },
+      {
+        "pagePath": "pages/stock/stock",
+        "text": "股票",
+        "iconPath": "assets/stock.png",
+        "selectedIconPath": "assets/stock-active.png"
+      },
+      {
+        "pagePath": "pages/backtest/backtest",
+        "text": "回测",
+        "iconPath": "assets/backtest.png",
+        "selectedIconPath": "assets/backtest-active.png"
+      },
+      {
+        "pagePath": "pages/predict/predict",
+        "text": "预测",
+        "iconPath": "assets/predict.png",
+        "selectedIconPath": "assets/predict-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

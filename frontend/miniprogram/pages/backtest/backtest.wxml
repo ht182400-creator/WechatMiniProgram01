@@ -1,0 +1,105 @@
+<view class="container">
+  <!-- 策略选择 -->
+  <view class="card">
+    <text class="title">选择策略</text>
+    <view class="strategy-list">
+      <view 
+        class="strategy-item {{selectedStrategy === item.key ? 'active' : ''}}"
+        wx:for="{{strategies}}"
+        wx:key="key"
+        bindtap="onStrategySelect"
+        data-key="{{item.key}}"
+      >
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 参数设置 -->
+  <view class="card">
+    <text class="title">参数设置</text>
+    <view class="param-form">
+      <view class="form-item">
+        <text class="label">股票代码</text>
+        <input 
+          class="input" 
+          placeholder="如: 000001" 
+          value="{{stockCode}}"
+          bindinput="onInputChange"
+          data-field="stockCode"
+        />
+      </view>
+      <view class="form-item">
+        <text class="label">开始日期</text>
+        <picker mode="date" value="{{startDate}}" bindchange="onDateChange" data-field="startDate">
+          <view class="picker-value">{{startDate}}</view>
+        </picker>
+      </view>
+      <view class="form-item">
+        <text class="label">结束日期</text>
+        <picker mode="date" value="{{endDate}}" bindchange="onDateChange" data-field="endDate">
+          <view class="picker-value">{{endDate}}</view>
+        </picker>
+      </view>
+      <view class="form-item">
+        <text class="label">初始资金</text>
+        <input 
+          class="input" 
+          type="digit"
+          placeholder="如: 100000" 
+          value="{{initialCapital}}"
+          bindinput="onInputChange"
+          data-field="initialCapital"
+        />
+      </view>
+    </view>
+  </view>
+
+  <!-- 运行回测 -->
+  <button class="btn-run" bindtap="runBacktest" loading="{{running}}">
+    {{running ? '回测中...' : '运行回测'}}
+  </button>
+
+  <!-- 回测结果 -->
+  <view class="card result-card" wx:if="{{result}}">
+    <text class="title">回测结果</text>
+    
+    <!-- 收益概览 -->
+    <view class="result-section">
+      <view class="result-item highlight">
+        <text class="result-label">总收益率</text>
+        <text class="result-value" style="color: {{result.total_return >= 0 ? '#ff4d4f' : '#52c41a'}}">
+          {{result.total_return >= 0 ? '+' : ''}}{{result.total_return?.toFixed(2)}}%
+        </text>
+      </view>
+      <view class="result-item">
+        <text class="result-label">年化收益率</text>
+        <text class="result-value">{{result.annual_return?.toFixed(2)}}%</text>
+      </view>
+    </view>
+
+    <!-- 风险指标 -->
+    <view class="result-section">
+      <view class="result-item">
+        <text class="result-label">最大回撤</text>
+        <text class="result-value danger">{{result.max_drawdown?.toFixed(2)}}%</text>
+      </view>
+      <view class="result-item">
+        <text class="result-label">夏普比率</text>
+        <text class="result-value">{{result.sharpe_ratio?.toFixed(2)}}</text>
+      </view>
+    </view>
+
+    <!-- 交易统计 -->
+    <view class="result-section">
+      <view class="result-item">
+        <text class="result-label">交易次数</text>
+        <text class="result-value">{{result.total_trades}}</text>
+      </view>
+      <view class="result-item">
+        <text class="result-label">胜率</text>
+        <text class="result-value">{{result.win_rate?.toFixed(2)}}%</text>
+      </view>
+    </view>
+  </view>
+</view>

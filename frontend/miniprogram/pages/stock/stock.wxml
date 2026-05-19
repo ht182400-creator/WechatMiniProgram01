@@ -1,0 +1,44 @@
+<view class="container">
+  <!-- 搜索框 -->
+  <view class="search-bar">
+    <input 
+      class="search-input" 
+      placeholder="输入股票代码或名称" 
+      value="{{searchKey}}"
+      bindinput="onSearchInput"
+      bindconfirm="onSearch"
+    />
+    <button class="search-btn" bindtap="onSearch">搜索</button>
+  </view>
+
+  <!-- 股票列表 -->
+  <view class="stock-list">
+    <view 
+      class="stock-item" 
+      wx:for="{{stockList}}" 
+      wx:key="code"
+      bindtap="onStockTap"
+      data-code="{{item.code}}"
+    >
+      <view class="stock-info">
+        <text class="stock-name">{{item.name}}</text>
+        <text class="stock-code">{{item.code}}</text>
+      </view>
+      <view class="stock-price" style="color: {{item.changeColor}}">
+        <text class="price">{{item.price}}</text>
+        <text class="change">{{item.changeText}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{!loading && stockList.length === 0}}">
+    <text>暂无数据</text>
+    <text class="empty-hint">输入股票代码搜索</text>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+</view>
