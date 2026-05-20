@@ -1,3 +1,44 @@
+<wxs module="filters">
+/**
+ * 获取数组元素
+ */
+module.exports.getItem = function(arr, index) {
+  if (!arr || arr.length === 0) return null;
+  return arr[index] || null;
+};
+
+/**
+ * 获取对象属性
+ */
+module.exports.get = function(obj, key) {
+  if (!obj) return null;
+  return obj[key] || null;
+};
+
+/**
+ * 获取对象属性值
+ */
+module.exports.getVal = function(obj, prop) {
+  if (!obj) return '--';
+  var val = obj[prop];
+  return (val !== null && val !== undefined) ? val : '--';
+};
+
+/**
+ * 获取趋势颜色
+ */
+module.exports.getTrendColor = function(trend) {
+  return trend === 'up' ? '#ff4d4f' : '#52c41a';
+};
+
+/**
+ * 获取趋势文字
+ */
+module.exports.getTrendText = function(trend) {
+  return trend === 'up' ? '↑ 预测涨' : '↓ 预测跌';
+};
+</wxs>
+
 <view class="container">
   <!-- 预测表单 -->
   <view class="card">
@@ -43,20 +84,20 @@
 
     <!-- 预测价格 -->
     <view class="predict-price">
-      <view class="price-item">
+      <view class="price-item" wx:if="{{result.predictions && result.predictions.length > 0}}">
         <text class="label">1天后</text>
-        <text class="value" style="color: {{result.predictions[0]?.trend === 'up' ? '#ff4d4f' : '#52c41a'}}">
-          {{result.predictions[0]?.price || '--'}}
+        <text class="value" style="color: {{filters.getTrendColor(filters.getItem(result.predictions, 0).trend)}}">
+          {{filters.getVal(filters.getItem(result.predictions, 0), 'price')}}
         </text>
-        <text class="trend {{result.predictions[0]?.trend}}">
-          {{result.predictions[0]?.trend === 'up' ? '↑ 预测涨' : '↓ 预测跌'}}
+        <text class="trend {{filters.getItem(result.predictions, 0).trend}}">
+          {{filters.getTrendText(filters.getItem(result.predictions, 0).trend)}}
         </text>
       </view>
-      <view class="price-item">
+      <view class="price-item" wx:if="{{result.final_prediction}}">
         <text class="label">{{predictDays}}天后</text>
-        <text class="value highlight">{{result.final_prediction?.price || '--'}}</text>
-        <text class="trend {{result.final_prediction?.trend}}">
-          {{result.final_prediction?.trend === 'up' ? '↑ 预测涨' : '↓ 预测跌'}}
+        <text class="value highlight">{{filters.getVal(result.final_prediction, 'price')}}</text>
+        <text class="trend {{result.final_prediction.trend}}">
+          {{filters.getTrendText(result.final_prediction.trend)}}
         </text>
       </view>
     </view>

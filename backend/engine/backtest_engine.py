@@ -12,8 +12,8 @@ from datetime import datetime
 import pandas as pd
 import numpy as np
 
-from ..strategies import BaseStrategy, TradingSignal, SignalType, Position, Trade
-from ..config import settings
+from strategies import BaseStrategy, TradingSignal, SignalType, Position, Trade
+from config import settings
 
 logger = logging.getLogger(__name__)
 
@@ -115,10 +115,13 @@ class BacktestEngine:
         # 平仓（如果有持仓）
         if self.position and not self.data.empty:
             last_row = self.data.iloc[-1]
-            self._close_position(
-                date=str(last_row.name.date()) if hasattr(last_row.name, 'date') else str(last_row.name),
-                price=last_row['close']
-            )
+            # 从 date 列获取日期，而非索引
+            last_date = last_row['date']
+            if hasattr(last_date, 'strftime'):
+                date_str = last_date.strftime('%Y-%m-%d')
+            else:
+                date_str = str(last_date)
+            self._close_position(date=date_str, price=last_row['close'])
         
         # 计算回测指标
         result = self._calculate_metrics()
@@ -136,9 +139,10 @@ class BacktestEngine:
     
     def _execute_signal(self, signal: TradingSignal) -> None:
         """执行交易信号"""
+        # 每次都记录权益曲线
+        self._record_equity(signal.date)
+        
         if signal.signal == SignalType.HOLD:
-            # 记录当日权益
-            self._record_equity(signal.date)
             return
         
         if signal.signal == SignalType.BUY and self.position is None:
@@ -227,14 +231,15 @@ class BacktestEngine:
         """记录权益曲线"""
         position_value = 0
         if self.position is not None:
-            last_price = self.data.loc[self.data.index[-1], 'close'] if not self.data.empty else self.position.avg_cost
+            # 使用持仓均价或最新价格计算市值
+            last_price = self.position.current_price or self.position.avg_cost
             position_value = self.position.quantity * last_price
         
         self.equity_curve.append({
             'date': date,
-            'cash': self.current_capital,
-            'position_value': position_value,
-            'total_value': self.current_capital + position_value
+            'cash': round(self.current_capital, 2),
+            'position_value': round(position_value, 2),
+            'total_value': round(self.current_capital + position_value, 2)
         })
     
     def _calculate_metrics(self) -> BacktestResult:

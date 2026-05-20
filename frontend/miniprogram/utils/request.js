@@ -26,6 +26,7 @@ function request(options) {
       url: `${apiUrl}${options.url}`,
       method: options.method || 'GET',
       data: options.data || {},
+      timeout: options.timeout || 30000, // 默认30秒超时
       header: {
         'Content-Type': 'application/json',
         ...options.header
@@ -37,15 +38,23 @@ function request(options) {
         } else {
           reject({
             code: res.statusCode,
-            message: res.data?.message || '请求失败'
+            message: res.data && res.data.message ? res.data.message : '请求失败'
           })
         }
       },
       fail(err) {
         wx.hideLoading()
+        let errorMsg = '网络请求失败，请检查网络连接'
+        if (err && err.errMsg) {
+          if (err.errMsg.includes('timeout')) {
+            errorMsg = '请求超时，请检查后端服务是否运行'
+          } else if (err.errMsg.includes('abort')) {
+            errorMsg = '请求被取消'
+          }
+        }
         reject({
           code: -1,
-          message: '网络请求失败，请检查网络连接'
+          message: errorMsg
         })
       }
     })

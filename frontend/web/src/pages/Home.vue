@@ -156,8 +156,9 @@ const loadSystemInfo = async () => {
 
 const loadHealthInfo = async () => {
   try {
-    healthInfo.value = await systemApi.healthCheck()
+    healthInfo.value = await systemApi.health()
   } catch (e) {
+    console.error('加载健康状态失败:', e)
     healthInfo.value = { status: 'error' }
   }
 }
@@ -177,7 +178,7 @@ const loadDatasources = async () => {
 const loadBacktestHistory = async () => {
   loadingHistory.value = true
   try {
-    const res = await backtestApi.getHistory(5)
+    const res = await backtestApi.getHistory({ limit: 5 })
     backtestHistory.value = res.records || []
   } catch (e) {
     console.error('加载回测历史失败:', e)

@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 class MACrossStrategy(BaseStrategy):
     """双均线交叉策略"""
     
-    name = "MACrossStrategy"
+    name = "均线交叉 (MA)"
     description = "金叉买入，死叉卖出"
     
     def __init__(self, params: Optional[Dict] = None):
@@ -71,6 +71,13 @@ class MACrossStrategy(BaseStrategy):
             signal_type = SignalType.HOLD
             reason = ""
             
+            # 从 date 列获取日期，而非依赖索引
+            date_val = row['date']
+            if hasattr(date_val, 'strftime'):
+                date_str = date_val.strftime('%Y-%m-%d')
+            else:
+                date_str = str(date_val)
+            
             # 金叉 (短期均线上穿长期均线)
             if row['ma_cross_change'] > 0:
                 signal_type = SignalType.BUY
@@ -82,7 +89,7 @@ class MACrossStrategy(BaseStrategy):
                 reason = f"死叉: SMA{self.params['short_window']}={row['sma_short']:.2f} < SMA{self.params['long_window']}={row['sma_long']:.2f}"
             
             signal = TradingSignal(
-                date=str(idx.date()) if hasattr(idx, 'date') else str(idx),
+                date=date_str,
                 signal=signal_type,
                 price=row['close'],
                 reason=reason,

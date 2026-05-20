@@ -5,7 +5,7 @@
 App({
   globalData: {
     // API 基础地址 - 请根据实际部署环境修改
-    apiBaseUrl: 'http://localhost:8000',
+    apiBaseUrl: 'http://127.0.0.1:8000',
     // 用户信息
     userInfo: null,
     // 股票列表缓存

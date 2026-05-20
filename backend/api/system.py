@@ -10,9 +10,9 @@ from typing import Dict, Any
 import psutil
 from pathlib import Path
 
-from ..config import settings
-from ..cache import ParquetCache
-from ..adapters import get_data_source_manager
+from config import settings
+from cache import ParquetCache
+from adapters import get_data_source_manager
 
 router = APIRouter()
 

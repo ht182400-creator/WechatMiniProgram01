@@ -1,0 +1,1018 @@
+2026-05-19 22:04:49,744 [INFO] [main] ============================================================
+2026-05-19 22:04:49,744 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:04:49,744 [INFO] [main] ============================================================
+2026-05-19 22:04:49,858 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:04:49,858 [INFO] [main] 数据库初始化完成
+2026-05-19 22:04:49,859 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:04:50,416 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:04:50,931 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:04:50,931 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:04:50,932 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:04:50,932 [INFO] [main] ============================================================
+2026-05-19 22:04:50,932 [INFO] [main] 系统启动完成!
+2026-05-19 22:04:50,932 [INFO] [main] ============================================================
+2026-05-19 22:04:53,521 [INFO] [main] ============================================================
+2026-05-19 22:04:53,521 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:04:53,521 [INFO] [main] ============================================================
+2026-05-19 22:04:53,524 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:04:53,525 [INFO] [main] 数据库初始化完成
+2026-05-19 22:04:53,525 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:04:53,834 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:04:56,827 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:04:56,827 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:04:56,827 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:04:56,827 [INFO] [main] ============================================================
+2026-05-19 22:04:56,827 [INFO] [main] 系统启动完成!
+2026-05-19 22:04:56,827 [INFO] [main] ============================================================
+2026-05-19 22:05:03,265 [INFO] [main] ============================================================
+2026-05-19 22:05:03,266 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:05:03,266 [INFO] [main] ============================================================
+2026-05-19 22:05:03,268 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:05:03,268 [INFO] [main] 数据库初始化完成
+2026-05-19 22:05:03,268 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:05:03,590 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:05:04,789 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:05:04,789 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:05:04,789 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:05:04,789 [INFO] [main] ============================================================
+2026-05-19 22:05:04,790 [INFO] [main] 系统启动完成!
+2026-05-19 22:05:04,790 [INFO] [main] ============================================================
+2026-05-19 22:06:07,709 [INFO] [main] 系统关闭中...
+2026-05-19 22:06:07,709 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 22:06:07,961 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 22:06:07,961 [INFO] [main] 系统已关闭
+2026-05-19 22:06:10,021 [INFO] [main] ============================================================
+2026-05-19 22:06:10,021 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:06:10,021 [INFO] [main] ============================================================
+2026-05-19 22:06:10,023 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:06:10,023 [INFO] [main] 数据库初始化完成
+2026-05-19 22:06:10,023 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:06:10,308 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:06:10,446 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:06:10,446 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:06:10,446 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:06:10,446 [INFO] [main] ============================================================
+2026-05-19 22:06:10,446 [INFO] [main] 系统启动完成!
+2026-05-19 22:06:10,446 [INFO] [main] ============================================================
+2026-05-19 22:06:12,606 [INFO] [main] ============================================================
+2026-05-19 22:06:12,606 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:06:12,606 [INFO] [main] ============================================================
+2026-05-19 22:06:12,608 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:06:12,608 [INFO] [main] 数据库初始化完成
+2026-05-19 22:06:12,608 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:06:12,890 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:06:13,002 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:06:13,003 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:06:13,003 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:06:13,003 [INFO] [main] ============================================================
+2026-05-19 22:06:13,003 [INFO] [main] 系统启动完成!
+2026-05-19 22:06:13,003 [INFO] [main] ============================================================
+2026-05-19 22:06:19,260 [INFO] [main] 系统关闭中...
+2026-05-19 22:06:19,260 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 22:06:19,385 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 22:06:19,385 [INFO] [main] 系统已关闭
+2026-05-19 22:06:21,506 [INFO] [main] ============================================================
+2026-05-19 22:06:21,506 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:06:21,506 [INFO] [main] ============================================================
+2026-05-19 22:06:21,508 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:06:21,508 [INFO] [main] 数据库初始化完成
+2026-05-19 22:06:21,508 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:06:21,791 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:06:21,938 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:06:21,938 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:06:21,939 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:06:21,939 [INFO] [main] ============================================================
+2026-05-19 22:06:21,939 [INFO] [main] 系统启动完成!
+2026-05-19 22:06:21,939 [INFO] [main] ============================================================
+2026-05-19 22:06:24,040 [INFO] [main] ============================================================
+2026-05-19 22:06:24,040 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:06:24,040 [INFO] [main] ============================================================
+2026-05-19 22:06:24,041 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:06:24,041 [INFO] [main] 数据库初始化完成
+2026-05-19 22:06:24,041 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:06:24,320 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:06:24,455 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:06:24,456 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:06:24,456 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:06:24,457 [INFO] [main] ============================================================
+2026-05-19 22:06:24,457 [INFO] [main] 系统启动完成!
+2026-05-19 22:06:24,458 [INFO] [main] ============================================================
+2026-05-19 22:08:35,310 [INFO] [main] 系统关闭中...
+2026-05-19 22:08:35,310 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 22:08:35,414 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 22:08:35,417 [INFO] [main] 系统已关闭
+2026-05-19 22:08:37,983 [INFO] [main] ============================================================
+2026-05-19 22:08:37,983 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:08:37,983 [INFO] [main] ============================================================
+2026-05-19 22:08:37,986 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:08:37,986 [INFO] [main] 数据库初始化完成
+2026-05-19 22:08:37,987 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:08:38,314 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:08:39,572 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:08:39,573 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:08:39,573 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:08:39,573 [INFO] [main] ============================================================
+2026-05-19 22:08:39,573 [INFO] [main] 系统启动完成!
+2026-05-19 22:08:39,573 [INFO] [main] ============================================================
+2026-05-19 22:08:41,995 [INFO] [main] ============================================================
+2026-05-19 22:08:41,996 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:08:41,996 [INFO] [main] ============================================================
+2026-05-19 22:08:41,997 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:08:41,997 [INFO] [main] 数据库初始化完成
+2026-05-19 22:08:41,998 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:08:42,344 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:08:42,669 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:08:42,669 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:08:42,670 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:08:42,670 [INFO] [main] ============================================================
+2026-05-19 22:08:42,670 [INFO] [main] 系统启动完成!
+2026-05-19 22:08:42,671 [INFO] [main] ============================================================
+2026-05-19 22:08:45,200 [INFO] [main] ============================================================
+2026-05-19 22:08:45,201 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:08:45,201 [INFO] [main] ============================================================
+2026-05-19 22:08:45,203 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:08:45,203 [INFO] [main] 数据库初始化完成
+2026-05-19 22:08:45,204 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:08:45,530 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:08:45,687 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:08:45,687 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:08:45,688 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:08:45,688 [INFO] [main] ============================================================
+2026-05-19 22:08:45,688 [INFO] [main] 系统启动完成!
+2026-05-19 22:08:45,688 [INFO] [main] ============================================================
+2026-05-19 22:08:48,338 [INFO] [main] ============================================================
+2026-05-19 22:08:48,338 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:08:48,338 [INFO] [main] ============================================================
+2026-05-19 22:08:48,340 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:08:48,340 [INFO] [main] 数据库初始化完成
+2026-05-19 22:08:48,341 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:08:48,790 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:08:48,918 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:08:48,919 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:08:48,919 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:08:48,919 [INFO] [main] ============================================================
+2026-05-19 22:08:48,919 [INFO] [main] 系统启动完成!
+2026-05-19 22:08:48,920 [INFO] [main] ============================================================
+2026-05-19 22:08:54,873 [INFO] [main] 系统关闭中...
+2026-05-19 22:08:54,874 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 22:08:54,935 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 22:08:54,935 [INFO] [main] 系统已关闭
+2026-05-19 22:08:57,480 [INFO] [main] ============================================================
+2026-05-19 22:08:57,480 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:08:57,480 [INFO] [main] ============================================================
+2026-05-19 22:08:57,482 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:08:57,483 [INFO] [main] 数据库初始化完成
+2026-05-19 22:08:57,483 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:08:57,805 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:08:57,985 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:08:57,985 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:08:57,985 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:08:57,985 [INFO] [main] ============================================================
+2026-05-19 22:08:57,985 [INFO] [main] 系统启动完成!
+2026-05-19 22:08:57,985 [INFO] [main] ============================================================
+2026-05-19 22:09:00,300 [INFO] [main] ============================================================
+2026-05-19 22:09:00,301 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:09:00,301 [INFO] [main] ============================================================
+2026-05-19 22:09:00,302 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:09:00,303 [INFO] [main] 数据库初始化完成
+2026-05-19 22:09:00,303 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:09:00,607 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:09:01,785 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:09:01,786 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:09:01,786 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:09:01,786 [INFO] [main] ============================================================
+2026-05-19 22:09:01,786 [INFO] [main] 系统启动完成!
+2026-05-19 22:09:01,787 [INFO] [main] ============================================================
+2026-05-19 22:09:07,145 [INFO] [main] 系统关闭中...
+2026-05-19 22:09:07,145 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 22:09:07,232 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 22:09:07,233 [INFO] [main] 系统已关闭
+2026-05-19 22:09:09,779 [INFO] [main] ============================================================
+2026-05-19 22:09:09,780 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:09:09,780 [INFO] [main] ============================================================
+2026-05-19 22:09:09,782 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:09:09,782 [INFO] [main] 数据库初始化完成
+2026-05-19 22:09:09,783 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:09:10,180 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:09:10,404 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:09:10,407 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:09:10,410 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:09:10,411 [INFO] [main] ============================================================
+2026-05-19 22:09:10,412 [INFO] [main] 系统启动完成!
+2026-05-19 22:09:10,414 [INFO] [main] ============================================================
+2026-05-19 22:09:12,907 [INFO] [main] ============================================================
+2026-05-19 22:09:12,908 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:09:12,908 [INFO] [main] ============================================================
+2026-05-19 22:09:12,909 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:09:12,910 [INFO] [main] 数据库初始化完成
+2026-05-19 22:09:12,910 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:09:13,242 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:09:13,374 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:09:13,375 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:09:13,376 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:09:13,377 [INFO] [main] ============================================================
+2026-05-19 22:09:13,378 [INFO] [main] 系统启动完成!
+2026-05-19 22:09:13,378 [INFO] [main] ============================================================
+2026-05-19 22:09:15,626 [INFO] [main] ============================================================
+2026-05-19 22:09:15,627 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:09:15,628 [INFO] [main] ============================================================
+2026-05-19 22:09:15,633 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:09:15,633 [INFO] [main] 数据库初始化完成
+2026-05-19 22:09:15,634 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:09:15,967 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:09:16,094 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:09:16,094 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:09:16,095 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:09:16,096 [INFO] [main] ============================================================
+2026-05-19 22:09:16,096 [INFO] [main] 系统启动完成!
+2026-05-19 22:09:16,097 [INFO] [main] ============================================================
+2026-05-19 22:09:44,928 [INFO] [main] 系统关闭中...
+2026-05-19 22:09:44,929 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 22:09:45,039 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 22:09:45,040 [INFO] [main] 系统已关闭
+2026-05-19 22:09:47,125 [INFO] [main] ============================================================
+2026-05-19 22:09:47,125 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:09:47,125 [INFO] [main] ============================================================
+2026-05-19 22:09:47,127 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:09:47,127 [INFO] [main] 数据库初始化完成
+2026-05-19 22:09:47,127 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:09:47,406 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:09:48,529 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:09:48,530 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:09:48,531 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:09:48,531 [INFO] [main] ============================================================
+2026-05-19 22:09:48,532 [INFO] [main] 系统启动完成!
+2026-05-19 22:09:48,533 [INFO] [main] ============================================================
+2026-05-19 22:09:50,566 [INFO] [main] ============================================================
+2026-05-19 22:09:50,566 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:09:50,566 [INFO] [main] ============================================================
+2026-05-19 22:09:50,568 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:09:50,568 [INFO] [main] 数据库初始化完成
+2026-05-19 22:09:50,568 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:09:50,849 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:09:52,420 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:09:52,420 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:09:52,420 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:09:52,421 [INFO] [main] ============================================================
+2026-05-19 22:09:52,421 [INFO] [main] 系统启动完成!
+2026-05-19 22:09:52,421 [INFO] [main] ============================================================
+2026-05-19 22:11:07,732 [INFO] [main] 系统关闭中...
+2026-05-19 22:11:07,732 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 22:11:29,377 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 22:11:29,377 [INFO] [main] 系统已关闭
+2026-05-19 22:11:31,615 [INFO] [main] ============================================================
+2026-05-19 22:11:31,615 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:11:31,615 [INFO] [main] ============================================================
+2026-05-19 22:11:31,616 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:11:31,616 [INFO] [main] 数据库初始化完成
+2026-05-19 22:11:31,617 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:11:31,891 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:11:32,480 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:11:32,480 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:11:32,480 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:11:32,480 [INFO] [main] ============================================================
+2026-05-19 22:11:32,480 [INFO] [main] 系统启动完成!
+2026-05-19 22:11:32,480 [INFO] [main] ============================================================
+2026-05-19 22:16:29,917 [INFO] [main] 系统关闭中...
+2026-05-19 22:16:29,917 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 22:16:49,144 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 22:16:49,144 [INFO] [main] 系统已关闭
+2026-05-19 22:16:51,305 [INFO] [main] ============================================================
+2026-05-19 22:16:51,305 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 22:16:51,305 [INFO] [main] ============================================================
+2026-05-19 22:16:51,307 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 22:16:51,307 [INFO] [main] 数据库初始化完成
+2026-05-19 22:16:51,307 [INFO] [adapters.data_source_manager] 已初始化 2 个数据源: ['akshare', 'baostock']
+2026-05-19 22:16:51,607 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:16:51,960 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 22:16:51,961 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 22:16:51,961 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 22:16:51,961 [INFO] [main] ============================================================
+2026-05-19 22:16:51,961 [INFO] [main] 系统启动完成!
+2026-05-19 22:16:51,961 [INFO] [main] ============================================================
+2026-05-19 22:20:01,412 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:20:26,161 [INFO] [adapters.akshare_adapter] 获取到 5519 只股票
+2026-05-19 22:20:26,161 [INFO] [adapters.data_source_manager] 从 akshare 获取股票列表成功
+2026-05-19 22:20:26,162 [ERROR] [cache.parquet_cache] 写入缓存失败 [stock_list]: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+2026-05-19 22:20:32,770 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:44:21,765 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:44:21,767 [ERROR] [adapters.akshare_adapter] 获取股票列表失败: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2026-05-19 22:44:46,895 [ERROR] [adapters.baostock_adapter] 获取股票列表失败: Length mismatch: Expected axis has 0 elements, new values have 5 elements
+2026-05-19 22:45:06,511 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:45:33,032 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:45:33,033 [ERROR] [adapters.akshare_adapter] 获取股票列表失败: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2026-05-19 22:45:33,034 [ERROR] [adapters.baostock_adapter] 获取股票列表失败: Length mismatch: Expected axis has 0 elements, new values have 5 elements
+2026-05-19 22:46:35,260 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:46:35,263 [ERROR] [adapters.akshare_adapter] 获取股票列表失败: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2026-05-19 22:46:35,265 [ERROR] [adapters.baostock_adapter] 获取股票列表失败: Length mismatch: Expected axis has 0 elements, new values have 5 elements
+2026-05-19 22:47:35,375 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:47:35,378 [ERROR] [adapters.akshare_adapter] 获取股票列表失败: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2026-05-19 22:47:35,380 [ERROR] [adapters.baostock_adapter] 获取股票列表失败: Length mismatch: Expected axis has 0 elements, new values have 5 elements
+2026-05-19 22:48:27,100 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:48:27,102 [ERROR] [adapters.akshare_adapter] 获取股票列表失败: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2026-05-19 22:48:27,103 [ERROR] [adapters.baostock_adapter] 获取股票列表失败: Length mismatch: Expected axis has 0 elements, new values have 5 elements
+2026-05-19 22:48:38,987 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:48:38,991 [ERROR] [adapters.akshare_adapter] 获取股票列表失败: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2026-05-19 22:48:38,992 [ERROR] [adapters.baostock_adapter] 获取股票列表失败: Length mismatch: Expected axis has 0 elements, new values have 5 elements
+2026-05-19 22:48:42,590 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:48:53,532 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:48:53,533 [ERROR] [adapters.akshare_adapter] 获取股票列表失败: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2026-05-19 22:48:53,535 [ERROR] [adapters.baostock_adapter] 获取股票列表失败: Length mismatch: Expected axis has 0 elements, new values have 5 elements
+2026-05-19 22:48:56,492 [ERROR] [adapters.akshare_adapter] 获取股票列表失败: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2026-05-19 22:48:56,493 [ERROR] [adapters.baostock_adapter] 获取股票列表失败: Length mismatch: Expected axis has 0 elements, new values have 5 elements
+2026-05-19 22:49:09,318 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:49:09,320 [ERROR] [adapters.akshare_adapter] 获取股票列表失败: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2026-05-19 22:49:09,322 [ERROR] [adapters.baostock_adapter] 获取股票列表失败: Length mismatch: Expected axis has 0 elements, new values have 5 elements
+2026-05-19 22:50:10,952 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 22:50:10,964 [ERROR] [adapters.akshare_adapter] 获取股票列表失败: Length mismatch: Expected axis has 3 elements, new values have 2 elements
+2026-05-19 22:50:10,965 [ERROR] [adapters.baostock_adapter] 获取股票列表失败: Length mismatch: Expected axis has 0 elements, new values have 5 elements
+2026-05-19 23:02:49,706 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:02:49,886 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:02:51,065 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:02:52,182 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:03:14,673 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:03:14,790 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:03:45,228 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:03:46,097 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:04:12,515 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:04:12,684 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:05:04,455 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:05:04,456 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:05:04,571 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:05:11,453 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:05:11,456 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:05:12,064 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:08:28,810 [INFO] [main] 系统关闭中...
+2026-05-19 23:08:28,813 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 23:08:32,379 [INFO] [main] ============================================================
+2026-05-19 23:08:32,380 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:08:32,380 [INFO] [main] ============================================================
+2026-05-19 23:08:32,382 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:08:32,382 [INFO] [main] 数据库初始化完成
+2026-05-19 23:08:32,382 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:08:32,889 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:08:34,763 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:08:34,763 [ERROR] [adapters.tushare_adapter] 请安装 tushare: pip install tushare
+2026-05-19 23:08:34,764 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:08:34,764 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:08:34,764 [INFO] [main] 数据源 tushare: ✗
+2026-05-19 23:08:34,765 [INFO] [main] ============================================================
+2026-05-19 23:08:34,765 [INFO] [main] 系统启动完成!
+2026-05-19 23:08:34,765 [INFO] [main] ============================================================
+2026-05-19 23:09:25,529 [INFO] [main] ============================================================
+2026-05-19 23:09:25,530 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:09:25,530 [INFO] [main] ============================================================
+2026-05-19 23:09:25,533 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:09:25,533 [INFO] [main] 数据库初始化完成
+2026-05-19 23:09:25,534 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:09:25,883 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:09:29,406 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:09:29,442 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:09:29,443 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:09:29,443 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:09:29,444 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:09:29,444 [INFO] [main] ============================================================
+2026-05-19 23:09:29,444 [INFO] [main] 系统启动完成!
+2026-05-19 23:09:29,444 [INFO] [main] ============================================================
+2026-05-19 23:09:55,287 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:09:55,428 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:09:55,429 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:10:24,361 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:10:24,447 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:10:32,137 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:10:32,500 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:10:32,872 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:10:33,146 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:10:53,325 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:10:53,437 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:11:10,352 [INFO] [main] ============================================================
+2026-05-19 23:11:10,352 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:11:10,352 [INFO] [main] ============================================================
+2026-05-19 23:11:10,354 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:11:10,354 [INFO] [main] 数据库初始化完成
+2026-05-19 23:11:10,354 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:11:10,656 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:11:10,909 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:11:10,940 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:11:10,940 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:11:10,940 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:11:10,940 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:11:10,940 [INFO] [main] ============================================================
+2026-05-19 23:11:10,940 [INFO] [main] 系统启动完成!
+2026-05-19 23:11:10,940 [INFO] [main] ============================================================
+2026-05-19 23:11:18,252 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:11:18,339 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:11:18,339 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:11:30,079 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:11:31,177 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:11:31,178 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:12:56,485 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:12:56,504 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:12:56,642 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:12:56,642 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:13:01,184 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:13:01,200 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:13:01,321 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:13:01,322 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:13:03,993 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:13:03,998 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:13:05,139 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:13:05,139 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:13:40,009 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:13:40,389 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:13:40,399 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:13:40,409 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:14:01,250 [INFO] [adapters.akshare_adapter] 获取到 5519 只股票
+2026-05-19 23:14:01,250 [INFO] [adapters.data_source_manager] 从 akshare 获取股票列表成功
+2026-05-19 23:14:01,251 [ERROR] [cache.parquet_cache] 写入缓存失败 [stock_list]: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+2026-05-19 23:15:10,665 [ERROR] [adapters.akshare_adapter] 获取实时行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:15:11,229 [INFO] [adapters.data_source_manager] 从 baostock 获取 000001 日线数据成功 (95 条)
+2026-05-19 23:15:11,230 [ERROR] [cache.parquet_cache] 写入缓存失败 [daily/adjust=qfq/code=000001/end=2026-05-19/start=2025-12-20]: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+2026-05-19 23:15:11,776 [INFO] [adapters.data_source_manager] 从 baostock 获取 000001 日线数据成功 (57 条)
+2026-05-19 23:15:11,778 [ERROR] [cache.parquet_cache] 写入缓存失败 [daily/adjust=qfq/code=000001/end=2026-05-19/start=2026-02-18]: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+2026-05-19 23:15:31,495 [ERROR] [adapters.akshare_adapter] 获取实时行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:15:31,807 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000001]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:15:31,873 [INFO] [adapters.data_source_manager] 从 baostock 获取 000001 日线数据成功 (95 条)
+2026-05-19 23:15:31,873 [ERROR] [cache.parquet_cache] 写入缓存失败 [daily/adjust=qfq/code=000001/end=2026-05-19/start=2025-12-20]: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+2026-05-19 23:15:32,186 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000001]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:15:32,598 [INFO] [adapters.data_source_manager] 从 baostock 获取 000001 日线数据成功 (57 条)
+2026-05-19 23:15:32,598 [ERROR] [cache.parquet_cache] 写入缓存失败 [daily/adjust=qfq/code=000001/end=2026-05-19/start=2026-02-18]: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+ - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+2026-05-19 23:19:17,071 [ERROR] [adapters.akshare_adapter] 获取实时行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:19:17,593 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000001]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:19:17,665 [INFO] [adapters.data_source_manager] 从 baostock 获取 000001 日线数据成功 (57 条)
+2026-05-19 23:19:17,719 [ERROR] [cache.parquet_cache] 写入缓存失败 [daily/adjust=qfq/code=000001/end=2026-05-19/start=2026-02-18]: No type extension with name arrow.py_extension_type found
+2026-05-19 23:19:18,319 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000001]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:19:18,370 [INFO] [adapters.data_source_manager] 从 baostock 获取 000001 日线数据成功 (95 条)
+2026-05-19 23:19:18,372 [ERROR] [cache.parquet_cache] 写入缓存失败 [daily/adjust=qfq/code=000001/end=2026-05-19/start=2025-12-20]: A type extension with name pandas.period already defined
+2026-05-19 23:19:56,893 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:19:57,248 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:19:57,248 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:19:57,251 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:20:01,213 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:20:01,279 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:20:01,280 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:25:23,910 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [600000]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:25:43,154 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [600000]: 请指定正确的接口名
+2026-05-19 23:27:44,062 [INFO] [main] ============================================================
+2026-05-19 23:27:44,062 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:27:44,062 [INFO] [main] ============================================================
+2026-05-19 23:27:44,064 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:27:44,064 [INFO] [main] 数据库初始化完成
+2026-05-19 23:27:44,064 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:27:44,359 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:27:45,464 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:27:45,497 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:27:45,497 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:27:45,497 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:27:45,497 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:27:45,498 [INFO] [main] ============================================================
+2026-05-19 23:27:45,498 [INFO] [main] 系统启动完成!
+2026-05-19 23:27:45,498 [INFO] [main] ============================================================
+2026-05-19 23:27:56,320 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [600000]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:27:57,513 [INFO] [adapters.data_source_manager] 从 baostock 获取 600000 日线数据成功 (197 条)
+2026-05-19 23:29:37,555 [INFO] [main] 系统关闭中...
+2026-05-19 23:29:37,555 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 23:29:37,612 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 23:29:37,613 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-19 23:29:37,613 [INFO] [main] 系统已关闭
+2026-05-19 23:29:40,049 [INFO] [main] ============================================================
+2026-05-19 23:29:40,050 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:29:40,050 [INFO] [main] ============================================================
+2026-05-19 23:29:40,051 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:29:40,051 [INFO] [main] 数据库初始化完成
+2026-05-19 23:29:40,051 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:29:40,364 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:29:40,562 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:29:40,592 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:29:40,592 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:29:40,592 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:29:40,592 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:29:40,592 [INFO] [main] ============================================================
+2026-05-19 23:29:40,592 [INFO] [main] 系统启动完成!
+2026-05-19 23:29:40,592 [INFO] [main] ============================================================
+2026-05-19 23:29:42,857 [INFO] [main] ============================================================
+2026-05-19 23:29:42,857 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:29:42,858 [INFO] [main] ============================================================
+2026-05-19 23:29:42,859 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:29:42,859 [INFO] [main] 数据库初始化完成
+2026-05-19 23:29:42,859 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:29:43,174 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:29:43,242 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:29:43,275 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:29:43,275 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:29:43,275 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:29:43,275 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:29:43,275 [INFO] [main] ============================================================
+2026-05-19 23:29:43,275 [INFO] [main] 系统启动完成!
+2026-05-19 23:29:43,276 [INFO] [main] ============================================================
+2026-05-19 23:31:33,819 [INFO] [main] 系统关闭中...
+2026-05-19 23:31:33,821 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 23:31:33,909 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 23:31:33,909 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-19 23:31:33,910 [INFO] [main] 系统已关闭
+2026-05-19 23:31:36,811 [INFO] [main] ============================================================
+2026-05-19 23:31:36,811 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:31:36,811 [INFO] [main] ============================================================
+2026-05-19 23:31:36,813 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:31:36,813 [INFO] [main] 数据库初始化完成
+2026-05-19 23:31:36,813 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:31:37,147 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:31:37,333 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:31:37,366 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:31:37,366 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:31:37,366 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:31:37,366 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:31:37,367 [INFO] [main] ============================================================
+2026-05-19 23:31:37,367 [INFO] [main] 系统启动完成!
+2026-05-19 23:31:37,367 [INFO] [main] ============================================================
+2026-05-19 23:33:58,338 [INFO] [main] 系统关闭中...
+2026-05-19 23:33:58,339 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 23:33:58,618 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 23:33:58,619 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-19 23:33:58,619 [INFO] [main] 系统已关闭
+2026-05-19 23:34:01,456 [INFO] [main] ============================================================
+2026-05-19 23:34:01,456 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:34:01,457 [INFO] [main] ============================================================
+2026-05-19 23:34:01,459 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:34:01,460 [INFO] [main] 数据库初始化完成
+2026-05-19 23:34:01,460 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:34:01,831 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:34:01,930 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:34:01,974 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:34:01,977 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:34:01,977 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:34:01,978 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:34:01,978 [INFO] [main] ============================================================
+2026-05-19 23:34:01,978 [INFO] [main] 系统启动完成!
+2026-05-19 23:34:01,978 [INFO] [main] ============================================================
+2026-05-19 23:35:18,742 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [300433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:35:19,646 [INFO] [adapters.data_source_manager] 从 baostock 获取 300433 日线数据成功 (197 条)
+2026-05-19 23:38:59,273 [INFO] [main] 系统关闭中...
+2026-05-19 23:38:59,273 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 23:38:59,365 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 23:38:59,365 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-19 23:38:59,366 [INFO] [main] 系统已关闭
+2026-05-19 23:39:01,730 [INFO] [main] ============================================================
+2026-05-19 23:39:01,731 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:39:01,731 [INFO] [main] ============================================================
+2026-05-19 23:39:01,732 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:39:01,732 [INFO] [main] 数据库初始化完成
+2026-05-19 23:39:01,733 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:39:02,043 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:39:02,125 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:39:02,163 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:39:02,163 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:39:02,163 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:39:02,163 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:39:02,163 [INFO] [main] ============================================================
+2026-05-19 23:39:02,163 [INFO] [main] 系统启动完成!
+2026-05-19 23:39:02,163 [INFO] [main] ============================================================
+2026-05-19 23:39:04,445 [INFO] [main] ============================================================
+2026-05-19 23:39:04,445 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:39:04,445 [INFO] [main] ============================================================
+2026-05-19 23:39:04,446 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:39:04,446 [INFO] [main] 数据库初始化完成
+2026-05-19 23:39:04,447 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:39:04,748 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:39:05,673 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:39:05,712 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:39:05,713 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:39:05,713 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:39:05,713 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:39:05,713 [INFO] [main] ============================================================
+2026-05-19 23:39:05,713 [INFO] [main] 系统启动完成!
+2026-05-19 23:39:05,713 [INFO] [main] ============================================================
+2026-05-19 23:40:12,377 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [300433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:40:12,793 [INFO] [adapters.data_source_manager] 从 baostock 获取 300433 日线数据成功 (273 条)
+2026-05-19 23:40:12,827 [INFO] [engine.backtest_engine] 设置策略: MACrossStrategy
+2026-05-19 23:40:12,827 [INFO] [engine.backtest_engine] 设置回测数据: 273 条K线
+2026-05-19 23:40:12,828 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:40:12,828 [INFO] [engine.backtest_engine] 开始回测: MACrossStrategy
+2026-05-19 23:40:12,828 [INFO] [engine.backtest_engine] 初始资金: 100,000.00
+2026-05-19 23:40:12,829 [INFO] [engine.backtest_engine] 手续费: 0.03%
+2026-05-19 23:40:12,829 [INFO] [engine.backtest_engine] 滑点: 0.01%
+2026-05-19 23:40:12,829 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:40:12,836 [INFO] [strategies.ma_cross_strategy] 均线策略初始化: 短期=5, 长期=20
+2026-05-19 23:40:12,861 [INFO] [engine.backtest_engine] [买入] 19 价格:19.88 数量:4700 总额:93492.73 原因:金叉: SMA5=20.10 > SMA20=19.82
+2026-05-19 23:40:12,863 [INFO] [engine.backtest_engine] [卖出] 34 价格:20.52 数量:4700 盈利:2950.89
+2026-05-19 23:40:12,863 [INFO] [engine.backtest_engine] [买入] 45 价格:21.11 数量:4600 总额:97132.43 原因:金叉: SMA5=21.12 > SMA20=20.86
+2026-05-19 23:40:12,869 [INFO] [engine.backtest_engine] [卖出] 81 价格:22.70 数量:4600 盈利:7301.91
+2026-05-19 23:40:12,869 [INFO] [engine.backtest_engine] [买入] 89 价格:24.18 数量:4300 总额:104010.44 原因:金叉: SMA5=23.27 > SMA20=23.26
+2026-05-19 23:40:12,870 [INFO] [engine.backtest_engine] [卖出] 114 价格:30.27 数量:4300 盈利:26133.00
+2026-05-19 23:40:12,873 [INFO] [engine.backtest_engine] [买入] 117 价格:31.30 数量:4100 总额:128401.31 原因:金叉: SMA5=30.63 > SMA20=30.54
+2026-05-19 23:40:12,873 [INFO] [engine.backtest_engine] [卖出] 130 价格:29.34 数量:4100 盈利:-8098.09
+2026-05-19 23:40:12,874 [INFO] [engine.backtest_engine] [买入] 146 价格:31.27 数量:3800 总额:118873.53 原因:金叉: SMA5=29.48 > SMA20=29.39
+2026-05-19 23:40:12,874 [INFO] [engine.backtest_engine] [卖出] 152 价格:27.90 数量:3800 盈利:-12848.41
+2026-05-19 23:40:12,874 [INFO] [engine.backtest_engine] [买入] 166 价格:28.32 数量:3800 总额:107659.05 原因:金叉: SMA5=28.33 > SMA20=28.01
+2026-05-19 23:40:12,875 [INFO] [engine.backtest_engine] [卖出] 180 价格:28.98 数量:3800 盈利:2463.95
+2026-05-19 23:40:12,875 [INFO] [engine.backtest_engine] [买入] 185 价格:30.27 数量:3600 总额:109015.59 原因:金叉: SMA5=29.27 > SMA20=29.14
+2026-05-19 23:40:12,876 [INFO] [engine.backtest_engine] [卖出] 206 价格:35.80 数量:3600 盈利:19856.45
+2026-05-19 23:40:12,876 [INFO] [engine.backtest_engine] [买入] 249 价格:29.71 数量:4300 总额:127804.10 原因:金叉: SMA5=29.55 > SMA20=29.12
+2026-05-19 23:40:12,877 [INFO] [engine.backtest_engine] [卖出] 253 价格:25.99 数量:4300 盈利:-16040.70
+2026-05-19 23:40:12,877 [INFO] [engine.backtest_engine] [买入] 266 价格:30.82 数量:3700 总额:114079.61 原因:金叉: SMA5=27.86 > SMA20=27.61
+2026-05-19 23:40:12,878 [INFO] [engine.backtest_engine] [卖出] 272 价格:37.96 数量:3700 盈利:26361.82
+2026-05-19 23:43:04,763 [INFO] [engine.backtest_engine] 设置策略: MACrossStrategy
+2026-05-19 23:43:04,763 [INFO] [engine.backtest_engine] 设置回测数据: 273 条K线
+2026-05-19 23:43:04,764 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:43:04,764 [INFO] [engine.backtest_engine] 开始回测: MACrossStrategy
+2026-05-19 23:43:04,764 [INFO] [engine.backtest_engine] 初始资金: 100,000.00
+2026-05-19 23:43:04,764 [INFO] [engine.backtest_engine] 手续费: 0.03%
+2026-05-19 23:43:04,764 [INFO] [engine.backtest_engine] 滑点: 0.01%
+2026-05-19 23:43:04,765 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:43:04,767 [INFO] [strategies.ma_cross_strategy] 均线策略初始化: 短期=5, 长期=20
+2026-05-19 23:43:04,793 [INFO] [engine.backtest_engine] [买入] 19 价格:19.88 数量:4700 总额:93492.73 原因:金叉: SMA5=20.10 > SMA20=19.82
+2026-05-19 23:43:04,794 [INFO] [engine.backtest_engine] [卖出] 34 价格:20.52 数量:4700 盈利:2950.89
+2026-05-19 23:43:04,794 [INFO] [engine.backtest_engine] [买入] 45 价格:21.11 数量:4600 总额:97132.43 原因:金叉: SMA5=21.12 > SMA20=20.86
+2026-05-19 23:43:04,795 [INFO] [engine.backtest_engine] [卖出] 81 价格:22.70 数量:4600 盈利:7301.91
+2026-05-19 23:43:04,796 [INFO] [engine.backtest_engine] [买入] 89 价格:24.18 数量:4300 总额:104010.44 原因:金叉: SMA5=23.27 > SMA20=23.26
+2026-05-19 23:43:04,797 [INFO] [engine.backtest_engine] [卖出] 114 价格:30.27 数量:4300 盈利:26133.00
+2026-05-19 23:43:04,797 [INFO] [engine.backtest_engine] [买入] 117 价格:31.30 数量:4100 总额:128401.31 原因:金叉: SMA5=30.63 > SMA20=30.54
+2026-05-19 23:43:04,798 [INFO] [engine.backtest_engine] [卖出] 130 价格:29.34 数量:4100 盈利:-8098.09
+2026-05-19 23:43:04,798 [INFO] [engine.backtest_engine] [买入] 146 价格:31.27 数量:3800 总额:118873.53 原因:金叉: SMA5=29.48 > SMA20=29.39
+2026-05-19 23:43:04,798 [INFO] [engine.backtest_engine] [卖出] 152 价格:27.90 数量:3800 盈利:-12848.41
+2026-05-19 23:43:04,799 [INFO] [engine.backtest_engine] [买入] 166 价格:28.32 数量:3800 总额:107659.05 原因:金叉: SMA5=28.33 > SMA20=28.01
+2026-05-19 23:43:04,799 [INFO] [engine.backtest_engine] [卖出] 180 价格:28.98 数量:3800 盈利:2463.95
+2026-05-19 23:43:04,800 [INFO] [engine.backtest_engine] [买入] 185 价格:30.27 数量:3600 总额:109015.59 原因:金叉: SMA5=29.27 > SMA20=29.14
+2026-05-19 23:43:04,801 [INFO] [engine.backtest_engine] [卖出] 206 价格:35.80 数量:3600 盈利:19856.45
+2026-05-19 23:43:04,801 [INFO] [engine.backtest_engine] [买入] 249 价格:29.71 数量:4300 总额:127804.10 原因:金叉: SMA5=29.55 > SMA20=29.12
+2026-05-19 23:43:04,801 [INFO] [engine.backtest_engine] [卖出] 253 价格:25.99 数量:4300 盈利:-16040.70
+2026-05-19 23:43:04,801 [INFO] [engine.backtest_engine] [买入] 266 价格:30.82 数量:3700 总额:114079.61 原因:金叉: SMA5=27.86 > SMA20=27.61
+2026-05-19 23:43:04,802 [INFO] [engine.backtest_engine] [卖出] 272 价格:37.96 数量:3700 盈利:26361.82
+2026-05-19 23:43:04,907 [INFO] [main] 系统关闭中...
+2026-05-19 23:43:04,908 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 23:43:04,966 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 23:43:04,967 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-19 23:43:04,967 [INFO] [main] 系统已关闭
+2026-05-19 23:43:07,669 [INFO] [main] ============================================================
+2026-05-19 23:43:07,669 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:43:07,670 [INFO] [main] ============================================================
+2026-05-19 23:43:07,673 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:43:07,676 [INFO] [main] 数据库初始化完成
+2026-05-19 23:43:07,678 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:43:08,233 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:43:08,371 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:43:08,417 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:43:08,417 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:43:08,418 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:43:08,418 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:43:08,418 [INFO] [main] ============================================================
+2026-05-19 23:43:08,418 [INFO] [main] 系统启动完成!
+2026-05-19 23:43:08,419 [INFO] [main] ============================================================
+2026-05-19 23:43:11,021 [INFO] [main] ============================================================
+2026-05-19 23:43:11,021 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:43:11,021 [INFO] [main] ============================================================
+2026-05-19 23:43:11,023 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:43:11,023 [INFO] [main] 数据库初始化完成
+2026-05-19 23:43:11,023 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:43:11,384 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:43:11,697 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:43:11,726 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:43:11,726 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:43:11,726 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:43:11,726 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:43:11,726 [INFO] [main] ============================================================
+2026-05-19 23:43:11,726 [INFO] [main] 系统启动完成!
+2026-05-19 23:43:11,727 [INFO] [main] ============================================================
+2026-05-19 23:43:28,102 [INFO] [api.backtest] 开始回测: 股票=300433, 策略=ma_cross, 时间=2025-04-01至2026-05-19
+2026-05-19 23:43:28,165 [INFO] [api.backtest] 获取数据成功: 273 条
+2026-05-19 23:43:28,165 [INFO] [api.backtest] 创建策略成功: MACrossStrategy
+2026-05-19 23:43:28,166 [INFO] [engine.backtest_engine] 设置策略: MACrossStrategy
+2026-05-19 23:43:28,166 [INFO] [engine.backtest_engine] 设置回测数据: 273 条K线
+2026-05-19 23:43:28,166 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:43:28,166 [INFO] [engine.backtest_engine] 开始回测: MACrossStrategy
+2026-05-19 23:43:28,167 [INFO] [engine.backtest_engine] 初始资金: 100,000.00
+2026-05-19 23:43:28,167 [INFO] [engine.backtest_engine] 手续费: 0.03%
+2026-05-19 23:43:28,167 [INFO] [engine.backtest_engine] 滑点: 0.01%
+2026-05-19 23:43:28,167 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:43:28,170 [INFO] [strategies.ma_cross_strategy] 均线策略初始化: 短期=5, 长期=20
+2026-05-19 23:43:28,191 [INFO] [engine.backtest_engine] [买入] 19 价格:19.88 数量:4700 总额:93492.73 原因:金叉: SMA5=20.10 > SMA20=19.82
+2026-05-19 23:43:28,194 [INFO] [engine.backtest_engine] [卖出] 34 价格:20.52 数量:4700 盈利:2950.89
+2026-05-19 23:43:28,195 [INFO] [engine.backtest_engine] [买入] 45 价格:21.11 数量:4600 总额:97132.43 原因:金叉: SMA5=21.12 > SMA20=20.86
+2026-05-19 23:43:28,196 [INFO] [engine.backtest_engine] [卖出] 81 价格:22.70 数量:4600 盈利:7301.91
+2026-05-19 23:43:28,196 [INFO] [engine.backtest_engine] [买入] 89 价格:24.18 数量:4300 总额:104010.44 原因:金叉: SMA5=23.27 > SMA20=23.26
+2026-05-19 23:43:28,198 [INFO] [engine.backtest_engine] [卖出] 114 价格:30.27 数量:4300 盈利:26133.00
+2026-05-19 23:43:28,198 [INFO] [engine.backtest_engine] [买入] 117 价格:31.30 数量:4100 总额:128401.31 原因:金叉: SMA5=30.63 > SMA20=30.54
+2026-05-19 23:43:28,199 [INFO] [engine.backtest_engine] [卖出] 130 价格:29.34 数量:4100 盈利:-8098.09
+2026-05-19 23:43:28,199 [INFO] [engine.backtest_engine] [买入] 146 价格:31.27 数量:3800 总额:118873.53 原因:金叉: SMA5=29.48 > SMA20=29.39
+2026-05-19 23:43:28,199 [INFO] [engine.backtest_engine] [卖出] 152 价格:27.90 数量:3800 盈利:-12848.41
+2026-05-19 23:43:28,200 [INFO] [engine.backtest_engine] [买入] 166 价格:28.32 数量:3800 总额:107659.05 原因:金叉: SMA5=28.33 > SMA20=28.01
+2026-05-19 23:43:28,200 [INFO] [engine.backtest_engine] [卖出] 180 价格:28.98 数量:3800 盈利:2463.95
+2026-05-19 23:43:28,200 [INFO] [engine.backtest_engine] [买入] 185 价格:30.27 数量:3600 总额:109015.59 原因:金叉: SMA5=29.27 > SMA20=29.14
+2026-05-19 23:43:28,201 [INFO] [engine.backtest_engine] [卖出] 206 价格:35.80 数量:3600 盈利:19856.45
+2026-05-19 23:43:28,201 [INFO] [engine.backtest_engine] [买入] 249 价格:29.71 数量:4300 总额:127804.10 原因:金叉: SMA5=29.55 > SMA20=29.12
+2026-05-19 23:43:28,201 [INFO] [engine.backtest_engine] [卖出] 253 价格:25.99 数量:4300 盈利:-16040.70
+2026-05-19 23:43:28,202 [INFO] [engine.backtest_engine] [买入] 266 价格:30.82 数量:3700 总额:114079.61 原因:金叉: SMA5=27.86 > SMA20=27.61
+2026-05-19 23:43:28,202 [INFO] [engine.backtest_engine] [卖出] 272 价格:37.96 数量:3700 盈利:26361.82
+2026-05-19 23:43:28,204 [ERROR] [api.backtest] 回测执行失败: Given date string "272" not likely a datetime, at position 0
+2026-05-19 23:45:01,387 [INFO] [main] 系统关闭中...
+2026-05-19 23:45:01,388 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 23:45:01,431 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 23:45:01,431 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-19 23:45:01,431 [INFO] [main] 系统已关闭
+2026-05-19 23:45:03,764 [INFO] [main] ============================================================
+2026-05-19 23:45:03,765 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:45:03,765 [INFO] [main] ============================================================
+2026-05-19 23:45:03,766 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:45:03,766 [INFO] [main] 数据库初始化完成
+2026-05-19 23:45:03,766 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:45:04,066 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:45:04,163 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:45:04,196 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:45:04,197 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:45:04,197 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:45:04,197 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:45:04,197 [INFO] [main] ============================================================
+2026-05-19 23:45:04,197 [INFO] [main] 系统启动完成!
+2026-05-19 23:45:04,197 [INFO] [main] ============================================================
+2026-05-19 23:45:06,359 [INFO] [main] ============================================================
+2026-05-19 23:45:06,359 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:45:06,359 [INFO] [main] ============================================================
+2026-05-19 23:45:06,360 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:45:06,361 [INFO] [main] 数据库初始化完成
+2026-05-19 23:45:06,361 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:45:06,649 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:45:06,728 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:45:06,760 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:45:06,760 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:45:06,760 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:45:06,760 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:45:06,760 [INFO] [main] ============================================================
+2026-05-19 23:45:06,760 [INFO] [main] 系统启动完成!
+2026-05-19 23:45:06,761 [INFO] [main] ============================================================
+2026-05-19 23:45:12,822 [INFO] [api.backtest] 开始回测: 股票=300433, 策略=ma_cross, 时间=2025-04-01至2026-05-19
+2026-05-19 23:45:12,880 [INFO] [api.backtest] 获取数据成功: 273 条
+2026-05-19 23:45:12,881 [INFO] [api.backtest] 创建策略成功: MACrossStrategy
+2026-05-19 23:45:12,881 [INFO] [engine.backtest_engine] 设置策略: MACrossStrategy
+2026-05-19 23:45:12,881 [INFO] [engine.backtest_engine] 设置回测数据: 273 条K线
+2026-05-19 23:45:12,882 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:45:12,882 [INFO] [engine.backtest_engine] 开始回测: MACrossStrategy
+2026-05-19 23:45:12,882 [INFO] [engine.backtest_engine] 初始资金: 100,000.00
+2026-05-19 23:45:12,882 [INFO] [engine.backtest_engine] 手续费: 0.03%
+2026-05-19 23:45:12,882 [INFO] [engine.backtest_engine] 滑点: 0.01%
+2026-05-19 23:45:12,883 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:45:12,886 [INFO] [strategies.ma_cross_strategy] 均线策略初始化: 短期=5, 长期=20
+2026-05-19 23:45:12,910 [INFO] [engine.backtest_engine] [买入] 2025-04-29 价格:19.88 数量:4700 总额:93492.73 原因:金叉: SMA5=20.10 > SMA20=19.82
+2026-05-19 23:45:12,912 [INFO] [engine.backtest_engine] [卖出] 2025-05-23 价格:20.52 数量:4700 盈利:2950.89
+2026-05-19 23:45:12,914 [INFO] [engine.backtest_engine] [买入] 2025-06-10 价格:21.11 数量:4600 总额:97132.43 原因:金叉: SMA5=21.12 > SMA20=20.86
+2026-05-19 23:45:12,916 [INFO] [engine.backtest_engine] [卖出] 2025-07-30 价格:22.70 数量:4600 盈利:7301.91
+2026-05-19 23:45:12,916 [INFO] [engine.backtest_engine] [买入] 2025-08-11 价格:24.18 数量:4300 总额:104010.44 原因:金叉: SMA5=23.27 > SMA20=23.26
+2026-05-19 23:45:12,917 [INFO] [engine.backtest_engine] [卖出] 2025-09-15 价格:30.27 数量:4300 盈利:26133.00
+2026-05-19 23:45:12,917 [INFO] [engine.backtest_engine] [买入] 2025-09-18 价格:31.30 数量:4100 总额:128401.31 原因:金叉: SMA5=30.63 > SMA20=30.54
+2026-05-19 23:45:12,918 [INFO] [engine.backtest_engine] [卖出] 2025-10-15 价格:29.34 数量:4100 盈利:-8098.09
+2026-05-19 23:45:12,918 [INFO] [engine.backtest_engine] [买入] 2025-11-06 价格:31.27 数量:3800 总额:118873.53 原因:金叉: SMA5=29.48 > SMA20=29.39
+2026-05-19 23:45:12,919 [INFO] [engine.backtest_engine] [卖出] 2025-11-14 价格:27.90 数量:3800 盈利:-12848.41
+2026-05-19 23:45:12,919 [INFO] [engine.backtest_engine] [买入] 2025-12-04 价格:28.32 数量:3800 总额:107659.05 原因:金叉: SMA5=28.33 > SMA20=28.01
+2026-05-19 23:45:12,919 [INFO] [engine.backtest_engine] [卖出] 2025-12-24 价格:28.98 数量:3800 盈利:2463.95
+2026-05-19 23:45:12,920 [INFO] [engine.backtest_engine] [买入] 2025-12-31 价格:30.27 数量:3600 总额:109015.59 原因:金叉: SMA5=29.27 > SMA20=29.14
+2026-05-19 23:45:12,920 [INFO] [engine.backtest_engine] [卖出] 2026-02-02 价格:35.80 数量:3600 盈利:19856.45
+2026-05-19 23:45:12,920 [INFO] [engine.backtest_engine] [买入] 2026-04-13 价格:29.71 数量:4300 总额:127804.10 原因:金叉: SMA5=29.55 > SMA20=29.12
+2026-05-19 23:45:12,921 [INFO] [engine.backtest_engine] [卖出] 2026-04-17 价格:25.99 数量:4300 盈利:-16040.70
+2026-05-19 23:45:12,921 [INFO] [engine.backtest_engine] [买入] 2026-05-11 价格:30.82 数量:3700 总额:114079.61 原因:金叉: SMA5=27.86 > SMA20=27.61
+2026-05-19 23:45:12,922 [INFO] [engine.backtest_engine] [卖出] 2026-05-19 价格:37.96 数量:3700 盈利:26361.82
+2026-05-19 23:45:12,931 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:45:12,933 [INFO] [engine.backtest_engine] 回测完成!
+2026-05-19 23:45:12,934 [INFO] [engine.backtest_engine] 总收益率: 47.68%
+2026-05-19 23:45:12,935 [INFO] [engine.backtest_engine] 年化收益率: 44.86%
+2026-05-19 23:45:12,935 [INFO] [engine.backtest_engine] 最大回撤: 44.35%
+2026-05-19 23:45:12,936 [INFO] [engine.backtest_engine] 夏普比率: 0.49
+2026-05-19 23:45:12,936 [INFO] [engine.backtest_engine] 胜率: 66.67%
+2026-05-19 23:45:12,936 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:45:12,936 [INFO] [api.backtest] 回测执行成功: 总收益率=0.4768
+2026-05-19 23:45:12,941 [INFO] [api.backtest] 回测记录已保存
+2026-05-19 23:50:04,666 [INFO] [main] 系统关闭中...
+2026-05-19 23:50:04,667 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-19 23:50:23,901 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-19 23:50:23,901 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-19 23:50:23,902 [INFO] [main] 系统已关闭
+2026-05-19 23:50:26,297 [INFO] [main] ============================================================
+2026-05-19 23:50:26,298 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:50:26,298 [INFO] [main] ============================================================
+2026-05-19 23:50:26,299 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:50:26,299 [INFO] [main] 数据库初始化完成
+2026-05-19 23:50:26,300 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:50:26,591 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:50:28,703 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:50:28,732 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:50:28,732 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:50:28,732 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:50:28,732 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:50:28,732 [INFO] [main] ============================================================
+2026-05-19 23:50:28,732 [INFO] [main] 系统启动完成!
+2026-05-19 23:50:28,733 [INFO] [main] ============================================================
+2026-05-19 23:50:30,920 [INFO] [main] ============================================================
+2026-05-19 23:50:30,920 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-19 23:50:30,920 [INFO] [main] ============================================================
+2026-05-19 23:50:30,922 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-19 23:50:30,922 [INFO] [main] 数据库初始化完成
+2026-05-19 23:50:30,922 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-19 23:50:31,226 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:50:33,161 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:50:33,189 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:50:33,189 [INFO] [main] 数据源 akshare: ✓
+2026-05-19 23:50:33,189 [INFO] [main] 数据源 baostock: ✓
+2026-05-19 23:50:33,189 [INFO] [main] 数据源 tushare: ✓
+2026-05-19 23:50:33,189 [INFO] [main] ============================================================
+2026-05-19 23:50:33,190 [INFO] [main] 系统启动完成!
+2026-05-19 23:50:33,190 [INFO] [main] ============================================================
+2026-05-19 23:51:11,930 [INFO] [api.backtest] 开始回测: 股票=300433, 策略=ma_cross, 时间=2025-04-01至2026-05-19
+2026-05-19 23:51:11,996 [INFO] [api.backtest] 获取数据成功: 273 条
+2026-05-19 23:51:11,996 [INFO] [api.backtest] 创建策略成功: 均线交叉 (MA)
+2026-05-19 23:51:11,997 [INFO] [engine.backtest_engine] 设置策略: 均线交叉 (MA)
+2026-05-19 23:51:11,997 [INFO] [engine.backtest_engine] 设置回测数据: 273 条K线
+2026-05-19 23:51:11,997 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:51:11,997 [INFO] [engine.backtest_engine] 开始回测: 均线交叉 (MA)
+2026-05-19 23:51:11,998 [INFO] [engine.backtest_engine] 初始资金: 100,000.00
+2026-05-19 23:51:11,998 [INFO] [engine.backtest_engine] 手续费: 0.03%
+2026-05-19 23:51:11,998 [INFO] [engine.backtest_engine] 滑点: 0.01%
+2026-05-19 23:51:11,998 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:51:12,001 [INFO] [strategies.ma_cross_strategy] 均线策略初始化: 短期=5, 长期=20
+2026-05-19 23:51:12,027 [INFO] [engine.backtest_engine] [买入] 2025-04-29 价格:19.88 数量:4700 总额:93492.73 原因:金叉: SMA5=20.10 > SMA20=19.82
+2026-05-19 23:51:12,028 [INFO] [engine.backtest_engine] [卖出] 2025-05-23 价格:20.52 数量:4700 盈利:2950.89
+2026-05-19 23:51:12,030 [INFO] [engine.backtest_engine] [买入] 2025-06-10 价格:21.11 数量:4600 总额:97132.43 原因:金叉: SMA5=21.12 > SMA20=20.86
+2026-05-19 23:51:12,031 [INFO] [engine.backtest_engine] [卖出] 2025-07-30 价格:22.70 数量:4600 盈利:7301.91
+2026-05-19 23:51:12,032 [INFO] [engine.backtest_engine] [买入] 2025-08-11 价格:24.18 数量:4300 总额:104010.44 原因:金叉: SMA5=23.27 > SMA20=23.26
+2026-05-19 23:51:12,032 [INFO] [engine.backtest_engine] [卖出] 2025-09-15 价格:30.27 数量:4300 盈利:26133.00
+2026-05-19 23:51:12,032 [INFO] [engine.backtest_engine] [买入] 2025-09-18 价格:31.30 数量:4100 总额:128401.31 原因:金叉: SMA5=30.63 > SMA20=30.54
+2026-05-19 23:51:12,033 [INFO] [engine.backtest_engine] [卖出] 2025-10-15 价格:29.34 数量:4100 盈利:-8098.09
+2026-05-19 23:51:12,033 [INFO] [engine.backtest_engine] [买入] 2025-11-06 价格:31.27 数量:3800 总额:118873.53 原因:金叉: SMA5=29.48 > SMA20=29.39
+2026-05-19 23:51:12,033 [INFO] [engine.backtest_engine] [卖出] 2025-11-14 价格:27.90 数量:3800 盈利:-12848.41
+2026-05-19 23:51:12,034 [INFO] [engine.backtest_engine] [买入] 2025-12-04 价格:28.32 数量:3800 总额:107659.05 原因:金叉: SMA5=28.33 > SMA20=28.01
+2026-05-19 23:51:12,034 [INFO] [engine.backtest_engine] [卖出] 2025-12-24 价格:28.98 数量:3800 盈利:2463.95
+2026-05-19 23:51:12,034 [INFO] [engine.backtest_engine] [买入] 2025-12-31 价格:30.27 数量:3600 总额:109015.59 原因:金叉: SMA5=29.27 > SMA20=29.14
+2026-05-19 23:51:12,035 [INFO] [engine.backtest_engine] [卖出] 2026-02-02 价格:35.80 数量:3600 盈利:19856.45
+2026-05-19 23:51:12,035 [INFO] [engine.backtest_engine] [买入] 2026-04-13 价格:29.71 数量:4300 总额:127804.10 原因:金叉: SMA5=29.55 > SMA20=29.12
+2026-05-19 23:51:12,035 [INFO] [engine.backtest_engine] [卖出] 2026-04-17 价格:25.99 数量:4300 盈利:-16040.70
+2026-05-19 23:51:12,035 [INFO] [engine.backtest_engine] [买入] 2026-05-11 价格:30.82 数量:3700 总额:114079.61 原因:金叉: SMA5=27.86 > SMA20=27.61
+2026-05-19 23:51:12,036 [INFO] [engine.backtest_engine] [卖出] 2026-05-19 价格:37.96 数量:3700 盈利:26361.82
+2026-05-19 23:51:12,040 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:51:12,040 [INFO] [engine.backtest_engine] 回测完成!
+2026-05-19 23:51:12,041 [INFO] [engine.backtest_engine] 总收益率: 47.68%
+2026-05-19 23:51:12,043 [INFO] [engine.backtest_engine] 年化收益率: 44.72%
+2026-05-19 23:51:12,044 [INFO] [engine.backtest_engine] 最大回撤: 15.48%
+2026-05-19 23:51:12,045 [INFO] [engine.backtest_engine] 夏普比率: 0.72
+2026-05-19 23:51:12,045 [INFO] [engine.backtest_engine] 胜率: 66.67%
+2026-05-19 23:51:12,046 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:51:12,046 [INFO] [api.backtest] 回测执行成功: 总收益率=0.4768
+2026-05-19 23:51:12,046 [INFO] [api.backtest] 回测记录已保存
+2026-05-19 23:51:39,218 [INFO] [api.backtest] 开始回测: 股票=300433, 策略=rsi, 时间=2025-04-01至2026-05-19
+2026-05-19 23:51:39,225 [INFO] [api.backtest] 获取数据成功: 273 条
+2026-05-19 23:51:39,225 [INFO] [api.backtest] 创建策略成功: RSI超买超卖 (RSI)
+2026-05-19 23:51:39,226 [INFO] [engine.backtest_engine] 设置策略: RSI超买超卖 (RSI)
+2026-05-19 23:51:39,227 [INFO] [engine.backtest_engine] 设置回测数据: 273 条K线
+2026-05-19 23:51:39,227 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:51:39,228 [INFO] [engine.backtest_engine] 开始回测: RSI超买超卖 (RSI)
+2026-05-19 23:51:39,228 [INFO] [engine.backtest_engine] 初始资金: 100,000.00
+2026-05-19 23:51:39,229 [INFO] [engine.backtest_engine] 手续费: 0.03%
+2026-05-19 23:51:39,229 [INFO] [engine.backtest_engine] 滑点: 0.01%
+2026-05-19 23:51:39,230 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:51:39,236 [INFO] [strategies.rsi_strategy] RSI策略初始化: 周期=14, 超卖=30, 超买=70
+2026-05-19 23:51:39,269 [INFO] [engine.backtest_engine] [买入] 2025-06-04 价格:20.11 数量:4700 总额:94550.96 原因:RSI从超卖回升: 20.53 -> 30.21
+2026-05-19 23:51:39,270 [INFO] [engine.backtest_engine] [卖出] 2025-07-04 价格:23.66 数量:4700 盈利:16646.91
+2026-05-19 23:51:39,270 [INFO] [engine.backtest_engine] [买入] 2025-10-21 价格:28.83 数量:3800 总额:109609.88 原因:RSI从超卖回升: 28.80 -> 38.26
+2026-05-19 23:51:39,270 [INFO] [engine.backtest_engine] [卖出] 2025-12-10 价格:28.90 数量:3800 盈利:210.02
+2026-05-19 23:51:39,271 [INFO] [engine.backtest_engine] [买入] 2026-02-26 价格:35.53 数量:3100 总额:110187.06 原因:RSI从超卖回升: 29.80 -> 38.16
+2026-05-19 23:51:39,271 [INFO] [engine.backtest_engine] [卖出] 2026-05-19 价格:37.96 数量:3100 盈利:7485.93
+2026-05-19 23:51:39,274 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:51:39,274 [INFO] [engine.backtest_engine] 回测完成!
+2026-05-19 23:51:39,274 [INFO] [engine.backtest_engine] 总收益率: 24.22%
+2026-05-19 23:51:39,274 [INFO] [engine.backtest_engine] 年化收益率: 22.31%
+2026-05-19 23:51:39,274 [INFO] [engine.backtest_engine] 最大回撤: 0.04%
+2026-05-19 23:51:39,275 [INFO] [engine.backtest_engine] 夏普比率: 0.99
+2026-05-19 23:51:39,275 [INFO] [engine.backtest_engine] 胜率: 100.00%
+2026-05-19 23:51:39,275 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:51:39,275 [INFO] [api.backtest] 回测执行成功: 总收益率=0.2422
+2026-05-19 23:51:39,276 [INFO] [api.backtest] 回测记录已保存
+2026-05-19 23:52:09,057 [INFO] [api.backtest] 开始回测: 股票=300433, 策略=macd, 时间=2025-04-01至2026-05-19
+2026-05-19 23:52:09,062 [INFO] [api.backtest] 获取数据成功: 273 条
+2026-05-19 23:52:09,063 [INFO] [api.backtest] 创建策略成功: MACD指标 (MACD)
+2026-05-19 23:52:09,063 [INFO] [engine.backtest_engine] 设置策略: MACD指标 (MACD)
+2026-05-19 23:52:09,064 [INFO] [engine.backtest_engine] 设置回测数据: 273 条K线
+2026-05-19 23:52:09,065 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:52:09,065 [INFO] [engine.backtest_engine] 开始回测: MACD指标 (MACD)
+2026-05-19 23:52:09,065 [INFO] [engine.backtest_engine] 初始资金: 100,000.00
+2026-05-19 23:52:09,066 [INFO] [engine.backtest_engine] 手续费: 0.03%
+2026-05-19 23:52:09,066 [INFO] [engine.backtest_engine] 滑点: 0.01%
+2026-05-19 23:52:09,066 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:52:09,069 [INFO] [strategies.macd_strategy] MACD策略初始化: 快线=12, 慢线=26, 信号线=9
+2026-05-19 23:52:09,113 [INFO] [engine.backtest_engine] [买入] 2025-04-02 价格:24.74 数量:3800 总额:94040.93 原因:MACD金叉: MACD=0.0500, Signal=0.0100
+2026-05-19 23:52:09,114 [INFO] [engine.backtest_engine] [卖出] 2025-04-03 价格:22.10 数量:3800 盈利:-10073.50
+2026-05-19 23:52:09,114 [INFO] [engine.backtest_engine] [买入] 2025-04-22 价格:19.15 数量:4400 总额:84294.60 原因:MACD金叉: MACD=-1.2364, Signal=-1.2432
+2026-05-19 23:52:09,114 [INFO] [engine.backtest_engine] [卖出] 2025-05-26 价格:20.54 数量:4400 盈利:6077.82
+2026-05-19 23:52:09,115 [INFO] [engine.backtest_engine] [买入] 2025-06-05 价格:21.41 数量:4200 总额:89960.71 原因:MACD金叉: MACD=-0.1537, Signal=-0.1588
+2026-05-19 23:52:09,115 [INFO] [engine.backtest_engine] [卖出] 2025-07-25 价格:23.54 数量:4200 盈利:8907.68
+2026-05-19 23:52:09,115 [INFO] [engine.backtest_engine] [买入] 2025-08-12 价格:24.01 数量:4100 总额:98477.80 原因:MACD金叉: MACD=0.2479, Signal=0.2096
+2026-05-19 23:52:09,115 [INFO] [engine.backtest_engine] [卖出] 2025-09-09 价格:29.73 数量:4100 盈利:23406.47
+2026-05-19 23:52:09,116 [INFO] [engine.backtest_engine] [买入] 2025-09-24 价格:33.21 数量:3600 总额:119598.34 原因:MACD金叉: MACD=1.3398, Signal=1.3309
+2026-05-19 23:52:09,116 [INFO] [engine.backtest_engine] [卖出] 2025-09-26 价格:31.87 数量:3600 盈利:-4853.75
+2026-05-19 23:52:09,116 [INFO] [engine.backtest_engine] [买入] 2025-10-09 价格:33.76 数量:3400 总额:114818.48 原因:MACD金叉: MACD=1.3496, Signal=1.3316
+2026-05-19 23:52:09,117 [INFO] [engine.backtest_engine] [卖出] 2025-10-10 价格:31.79 数量:3400 盈利:-6718.82
+2026-05-19 23:52:09,117 [INFO] [engine.backtest_engine] [买入] 2025-11-06 价格:31.27 数量:3500 总额:109488.78 原因:MACD金叉: MACD=-0.1224, Signal=-0.1748
+2026-05-19 23:52:09,117 [INFO] [engine.backtest_engine] [卖出] 2025-11-13 价格:29.16 数量:3500 盈利:-7425.82
+2026-05-19 23:52:09,117 [INFO] [engine.backtest_engine] [买入] 2025-12-01 价格:28.66 数量:3600 总额:103217.27 原因:MACD金叉: MACD=-0.5720, Signal=-0.6747
+2026-05-19 23:52:09,118 [INFO] [engine.backtest_engine] [卖出] 2025-12-23 价格:28.44 数量:3600 盈利:-832.95
+2026-05-19 23:52:09,118 [INFO] [engine.backtest_engine] [买入] 2025-12-25 价格:29.22 数量:3500 总额:102310.91 原因:MACD金叉: MACD=0.1036, Signal=0.1026
+2026-05-19 23:52:09,118 [INFO] [engine.backtest_engine] [卖出] 2025-12-26 价格:28.71 数量:3500 盈利:-1825.19
+2026-05-19 23:52:09,118 [INFO] [engine.backtest_engine] [买入] 2025-12-30 价格:29.66 数量:3400 总额:100884.34 原因:MACD金叉: MACD=0.1016, Signal=0.0891
+2026-05-19 23:52:09,119 [INFO] [engine.backtest_engine] [卖出] 2026-01-27 价格:38.72 数量:3400 盈利:30751.34
+2026-05-19 23:52:09,119 [INFO] [engine.backtest_engine] [买入] 2026-04-07 价格:28.29 数量:4600 总额:130186.05 原因:MACD金叉: MACD=-1.4304, Signal=-1.4761
+2026-05-19 23:52:09,119 [INFO] [engine.backtest_engine] [卖出] 2026-04-17 价格:25.99 数量:4600 盈利:-10627.82
+2026-05-19 23:52:09,120 [INFO] [engine.backtest_engine] [买入] 2026-05-06 价格:26.62 数量:4500 总额:119837.92 原因:MACD金叉: MACD=-1.1046, Signal=-1.1179
+2026-05-19 23:52:09,120 [INFO] [engine.backtest_engine] [卖出] 2026-05-19 价格:37.96 数量:4500 盈利:50961.67
+2026-05-19 23:52:09,127 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:52:09,127 [INFO] [engine.backtest_engine] 回测完成!
+2026-05-19 23:52:09,128 [INFO] [engine.backtest_engine] 总收益率: 77.24%
+2026-05-19 23:52:09,128 [INFO] [engine.backtest_engine] 年化收益率: 66.04%
+2026-05-19 23:52:09,128 [INFO] [engine.backtest_engine] 最大回撤: 17.10%
+2026-05-19 23:52:09,129 [INFO] [engine.backtest_engine] 夏普比率: 0.72
+2026-05-19 23:52:09,129 [INFO] [engine.backtest_engine] 胜率: 41.67%
+2026-05-19 23:52:09,130 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:52:09,130 [INFO] [api.backtest] 回测执行成功: 总收益率=0.7724
+2026-05-19 23:52:09,130 [INFO] [api.backtest] 回测记录已保存
+2026-05-19 23:53:20,187 [INFO] [api.backtest] 开始回测: 股票=300433, 策略=bollinger, 时间=2025-04-01至2026-05-19
+2026-05-19 23:53:20,193 [INFO] [api.backtest] 获取数据成功: 273 条
+2026-05-19 23:53:20,193 [INFO] [api.backtest] 创建策略成功: 布林带 (BOLL)
+2026-05-19 23:53:20,194 [INFO] [engine.backtest_engine] 设置策略: 布林带 (BOLL)
+2026-05-19 23:53:20,194 [INFO] [engine.backtest_engine] 设置回测数据: 273 条K线
+2026-05-19 23:53:20,195 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:53:20,195 [INFO] [engine.backtest_engine] 开始回测: 布林带 (BOLL)
+2026-05-19 23:53:20,195 [INFO] [engine.backtest_engine] 初始资金: 100,000.00
+2026-05-19 23:53:20,196 [INFO] [engine.backtest_engine] 手续费: 0.03%
+2026-05-19 23:53:20,197 [INFO] [engine.backtest_engine] 滑点: 0.01%
+2026-05-19 23:53:20,197 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:53:20,205 [INFO] [strategies.bollinger_strategy] 布林带策略初始化: 周期=20, 标准差=2
+2026-05-19 23:53:20,240 [INFO] [engine.backtest_engine] [买入] 2025-05-30 价格:19.84 数量:4700 总额:93262.67 原因:价格触及下轨: 位置=9.62%, 价格=19.84
+2026-05-19 23:53:20,241 [INFO] [engine.backtest_engine] [卖出] 2025-06-18 价格:21.96 数量:4700 盈利:9927.79
+2026-05-19 23:53:20,241 [INFO] [engine.backtest_engine] [买入] 2025-08-01 价格:22.31 数量:4600 总额:102644.47 原因:价格触及下轨: 位置=8.10%, 价格=22.31
+2026-05-19 23:53:20,241 [INFO] [engine.backtest_engine] [卖出] 2025-08-11 价格:24.18 数量:4600 盈利:8574.57
+2026-05-19 23:53:20,241 [INFO] [engine.backtest_engine] [买入] 2025-10-16 价格:28.49 数量:3900 总额:111172.26 原因:价格触及下轨: 位置=7.18%, 价格=28.49
+2026-05-19 23:53:20,242 [INFO] [engine.backtest_engine] [卖出] 2025-11-06 价格:31.27 数量:3900 盈利:10776.41
+2026-05-19 23:53:20,242 [INFO] [engine.backtest_engine] [买入] 2025-11-17 价格:27.23 数量:4500 总额:122584.01 原因:价格触及下轨: 位置=-4.53%, 价格=27.23
+2026-05-19 23:53:20,242 [INFO] [engine.backtest_engine] [卖出] 2025-12-11 价格:30.65 数量:4500 盈利:15334.83
+2026-05-19 23:53:20,242 [INFO] [engine.backtest_engine] [买入] 2026-03-03 价格:32.51 数量:4200 总额:136596.62 原因:价格触及下轨: 位置=-0.66%, 价格=32.51
+2026-05-19 23:53:20,243 [INFO] [engine.backtest_engine] [卖出] 2026-05-11 价格:30.82 数量:4200 盈利:-7149.78
+2026-05-19 23:53:20,245 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:53:20,245 [INFO] [engine.backtest_engine] 回测完成!
+2026-05-19 23:53:20,246 [INFO] [engine.backtest_engine] 总收益率: 37.24%
+2026-05-19 23:53:20,247 [INFO] [engine.backtest_engine] 年化收益率: 35.00%
+2026-05-19 23:53:20,250 [INFO] [engine.backtest_engine] 最大回撤: 4.99%
+2026-05-19 23:53:20,252 [INFO] [engine.backtest_engine] 夏普比率: 1.66
+2026-05-19 23:53:20,253 [INFO] [engine.backtest_engine] 胜率: 80.00%
+2026-05-19 23:53:20,253 [INFO] [engine.backtest_engine] ==================================================
+2026-05-19 23:53:20,253 [INFO] [api.backtest] 回测执行成功: 总收益率=0.3724
+2026-05-19 23:53:20,254 [INFO] [api.backtest] 回测记录已保存
+2026-05-19 23:53:37,709 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:53:37,713 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:53:38,267 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:53:38,267 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:54:04,403 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:54:04,406 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-19 23:54:05,494 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-19 23:54:05,494 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-19 23:54:30,546 [INFO] [adapters.akshare_adapter] 获取到 5519 只股票
+2026-05-19 23:54:30,546 [INFO] [adapters.data_source_manager] 从 akshare 获取股票列表成功
+2026-05-19 23:55:12,353 [ERROR] [adapters.akshare_adapter] 获取实时行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:55:12,894 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [300433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:55:12,936 [INFO] [adapters.data_source_manager] 从 baostock 获取 300433 日线数据成功 (57 条)
+2026-05-19 23:55:13,480 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [300433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:55:13,537 [INFO] [adapters.data_source_manager] 从 baostock 获取 300433 日线数据成功 (95 条)
+2026-05-19 23:59:46,655 [ERROR] [adapters.akshare_adapter] 获取实时行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-19 23:59:54,610 [ERROR] [adapters.akshare_adapter] 获取实时行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 00:00:01,123 [ERROR] [adapters.akshare_adapter] 获取实时行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 00:00:39,068 [ERROR] [adapters.akshare_adapter] 获取实时行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 00:00:39,393 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [300433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 00:00:58,642 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [300433]: 请指定正确的接口名
+2026-05-20 00:00:59,256 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [300433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 00:00:59,311 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [300433]: 请指定正确的接口名
+2026-05-20 00:02:19,789 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 00:02:19,800 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 00:02:22,306 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 00:02:22,307 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 00:03:08,960 [ERROR] [adapters.akshare_adapter] 获取实时行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 00:03:09,292 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000001]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 00:03:09,410 [INFO] [adapters.data_source_manager] 从 baostock 获取 000001 日线数据成功 (95 条)
+2026-05-20 00:03:09,731 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000001]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 00:03:10,006 [INFO] [adapters.data_source_manager] 从 baostock 获取 000001 日线数据成功 (57 条)

@@ -6,15 +6,26 @@
 """
 
 from fastapi import APIRouter, Query, HTTPException
-from typing import Optional, Dict, Any
+from pydantic import BaseModel
+from typing import Optional, Dict, Any, List
 from datetime import datetime, timedelta
 
-from ..adapters import get_data_source_manager
-from ..engine import BacktestEngine, BacktestConfig
-from ..strategies import get_strategy, list_strategies, STRATEGY_REGISTRY
-from ..models import get_db_session, BacktestRecord
+from adapters import get_data_source_manager
+from engine import BacktestEngine, BacktestConfig
+from strategies import get_strategy, list_strategies, STRATEGY_REGISTRY
+from models import get_db_session, BacktestRecord
 
 router = APIRouter()
+
+
+class BacktestRequest(BaseModel):
+    """回测请求参数"""
+    code: str
+    strategy_name: str
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
+    initial_cash: float = 100000
+    params: Optional[List[Dict[str, float]]] = None
 
 
 @router.get("/strategies", summary="获取策略列表")
@@ -28,41 +39,50 @@ async def get_strategies() -> Dict[str, Any]:
 
 
 @router.post("/run", summary="运行回测")
-async def run_backtest(
-    code: str = Query(..., description="股票代码"),
-    strategy_name: str = Query(..., description="策略名称"),
-    start_date: Optional[str] = Query(None, description="回测开始日期"),
-    end_date: Optional[str] = Query(None, description="回测结束日期"),
-    initial_cash: float = Query(100000, description="初始资金"),
-    params: Optional[str] = Query(None, description="策略参数字符串，如: short_window=5,long_window=20")
-) -> Dict[str, Any]:
+async def run_backtest(request: BacktestRequest) -> Dict[str, Any]:
     """运行回测"""
+    import logging
+    logger = logging.getLogger(__name__)
+    
     try:
+        code = request.code
+        strategy_name = request.strategy_name
+        initial_cash = request.initial_cash
+        
         # 默认回测时间
-        if not end_date:
-            end_date = datetime.now().strftime("%Y-%m-%d")
-        if not start_date:
-            start_date = (datetime.now() - timedelta(days=365)).strftime("%Y-%m-%d")
+        end_date = request.end_date or datetime.now().strftime("%Y-%m-%d")
+        start_date = request.start_date or (datetime.now() - timedelta(days=365)).strftime("%Y-%m-%d")
+        
+        logger.info(f"开始回测: 股票={code}, 策略={strategy_name}, 时间={start_date}至{end_date}")
         
         # 获取数据
-        data_manager = get_data_source_manager()
-        df = data_manager.get_daily_data(code, start_date, end_date)
+        try:
+            data_manager = get_data_source_manager()
+            df = data_manager.get_daily_data(code, start_date, end_date)
+            logger.info(f"获取数据成功: {len(df)} 条")
+        except Exception as e:
+            logger.error(f"获取数据失败: {e}")
+            raise HTTPException(status_code=500, detail=f"获取数据失败: {str(e)}")
         
         if df.empty:
             raise HTTPException(status_code=404, detail=f"获取 {code} 数据失败")
         
         # 解析策略参数
         strategy_params = {}
-        if params:
+        if request.params:
             try:
-                for pair in params.split(','):
-                    key, value = pair.split('=')
-                    strategy_params[key.strip()] = float(value.strip())
+                for item in request.params:
+                    strategy_params.update(item)
             except Exception:
-                raise HTTPException(status_code=400, detail="策略参数格式错误，应为: key1=value1,key2=value2")
+                raise HTTPException(status_code=400, detail="策略参数格式错误")
         
         # 创建策略
-        strategy = get_strategy(strategy_name, strategy_params)
+        try:
+            strategy = get_strategy(strategy_name, strategy_params)
+            logger.info(f"创建策略成功: {strategy.name}")
+        except Exception as e:
+            logger.error(f"创建策略失败: {e}")
+            raise HTTPException(status_code=400, detail=f"创建策略失败: {str(e)}")
         
         # 创建回测配置
         config = BacktestConfig(
@@ -72,12 +92,18 @@ async def run_backtest(
         )
         
         # 创建并运行回测引擎
-        engine = BacktestEngine(config)
-        engine.set_strategy(strategy)
-        engine.set_data(df)
-        result = engine.run()
+        try:
+            engine = BacktestEngine(config)
+            engine.set_strategy(strategy)
+            engine.set_data(df)
+            result = engine.run()
+            logger.info(f"回测执行成功: 总收益率={result.total_return:.4f}")
+        except Exception as e:
+            logger.error(f"回测执行失败: {e}")
+            raise HTTPException(status_code=500, detail=f"回测执行失败: {str(e)}")
         
-        # 保存回测记录
+        # 保存回测记录（失败不影响主流程）
+        db_saved = False
         try:
             with get_db_session() as session:
                 record = BacktestRecord(
@@ -96,8 +122,11 @@ async def run_backtest(
                     params=strategy_params
                 )
                 session.add(record)
+                # session.commit() 由 context manager 自动调用
+                db_saved = True
+                logger.info("回测记录已保存")
         except Exception as e:
-            pass  # 保存失败不影响回测结果
+            logger.warning(f"保存回测记录失败(不影响结果): {e}")
         
         return {
             "success": True,
@@ -127,11 +156,26 @@ async def run_backtest(
                 "avg_loss": round(result.avg_loss, 2),
                 "profit_factor": round(result.profit_factor, 4)
             },
-            "equity_curve": result.equity_curve[-100:] if len(result.equity_curve) > 100 else result.equity_curve
+            "equity_curve": result.equity_curve[-100:] if len(result.equity_curve) > 100 else result.equity_curve,
+            # 交易明细
+            "trades": [
+                {
+                    "date": t.date,
+                    "action": t.action,
+                    "price": round(t.price, 2),
+                    "quantity": t.quantity,
+                    "amount": round(t.total_amount, 2),
+                    "commission": round(t.commission, 2),
+                    "slippage": round(t.slippage, 2)
+                }
+                for t in result.trades
+            ]
         }
     except HTTPException:
         raise
     except Exception as e:
+        import traceback
+        logger.error(f"回测失败: {e}\n{traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=f"回测失败: {str(e)}")
 
 

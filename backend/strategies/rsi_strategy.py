@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 class RSIStrategy(BaseStrategy):
     """RSI 超买超卖策略"""
     
-    name = "RSIStrategy"
+    name = "RSI超买超卖 (RSI)"
     description = "RSI低于30买入，高于70卖出"
     
     def __init__(self, params: Optional[Dict] = None):
@@ -70,6 +70,13 @@ class RSIStrategy(BaseStrategy):
             signal_type = SignalType.HOLD
             reason = ""
             
+            # 从 date 列获取日期
+            date_val = row['date']
+            if hasattr(date_val, 'strftime'):
+                date_str = date_val.strftime('%Y-%m-%d')
+            else:
+                date_str = str(date_val)
+            
             # RSI 从超卖区域上穿
             if prev_rsi is not None and prev_rsi < self.params['oversold'] and row['rsi'] >= self.params['oversold']:
                 signal_type = SignalType.BUY
@@ -83,7 +90,7 @@ class RSIStrategy(BaseStrategy):
             prev_rsi = row['rsi']
             
             signal = TradingSignal(
-                date=str(idx.date()) if hasattr(idx, 'date') else str(idx),
+                date=date_str,
                 signal=signal_type,
                 price=row['close'],
                 reason=reason,

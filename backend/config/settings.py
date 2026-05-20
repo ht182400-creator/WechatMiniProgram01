@@ -32,8 +32,8 @@ class Settings(BaseSettings):
     BAOSTOCK_ENABLE: bool = True
     
     # Tushare (需要Token，高频数据需付费)
-    TUSHARE_ENABLE: bool = False
-    TUSHARE_TOKEN: str = ""
+    TUSHARE_ENABLE: bool = True
+    TUSHARE_TOKEN: str = "818c2bf8f8c77b0cafc80d88a05b7741ca9afe324ff5a79750a32879"
     
     # ==================== 缓存配置 ====================
     CACHE_ENABLE: bool = True

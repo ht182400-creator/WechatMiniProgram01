@@ -1,14 +1,19 @@
 <template>
   <div class="stock-detail-page" v-loading="loading">
+    <!-- 页面导航 -->
+    <div class="page-nav">
+      <el-button @click="$router.push('/')" :icon="ArrowLeft">返回主页</el-button>
+    </div>
+
     <!-- 股票信息 -->
     <el-card class="info-card">
       <div class="stock-header">
         <div class="stock-title">
           <h2>{{ stockCode }}</h2>
-          <el-tag type="success">{{ stockInfo.name }}</el-tag>
+          <el-tag v-if="stockInfo.name" type="success">{{ stockInfo.name }}</el-tag>
         </div>
         <div class="stock-price">
-          <span class="current-price">{{ stockInfo.close || '--' }}</span>
+          <span class="current-price">{{ stockInfo.price || stockInfo.close || '--' }}</span>
           <span :class="['change', priceChange >= 0 ? 'price-up' : 'price-down']">
             {{ priceChange >= 0 ? '+' : '' }}{{ priceChange?.toFixed(2) || '--' }}
             ({{ priceChangePct?.toFixed(2) || '--' }}%)
@@ -55,6 +60,7 @@
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import * as echarts from 'echarts'
+import { ArrowLeft, Refresh } from '@element-plus/icons-vue'
 import { stockApi } from '@/api'
 
 const route = useRoute()
@@ -67,8 +73,44 @@ const chartData = ref([])
 const indicators = ref({})
 const loading = ref(false)
 
-const priceChange = computed(() => stockInfo.value.pct_change || 0)
-const priceChangePct = computed(() => stockInfo.value.pct_change || 0)
+/** 计算价格涨跌额（price - last_close 或 close - pre_close） */
+const priceChange = computed(() => {
+  const info = stockInfo.value
+  if (!info) return 0
+  // tushare realtime_quote 字段: price(现价), last_close(昨收), pre_close, pct_chg(涨跌幅%)
+  if (info.price && info.last_close) {
+    return info.price - info.last_close
+  }
+  if (info.close && info.pre_close) {
+    return info.close - info.pre_close
+  }
+  return 0
+})
+
+/** 计算价格涨跌幅百分比 */
+const priceChangePct = computed(() => {
+  const info = stockInfo.value
+  if (!info) return 0
+  // 优先使用 tushare 的 pct_chg 字段（已经是百分比）
+  if (info.pct_chg !== undefined && info.pct_chg !== null) {
+    return Number(info.pct_chg)
+  }
+  // fallback: 用 close 和 last_close 手动计算
+  const change = priceChange.value
+  const base = (info.last_close || info.pre_close || 1)
+  return (change / base) * 100
+})
+
+/** 刷新所有数据 */
+const refreshData = async () => {
+  loading.value = true
+  await Promise.all([
+    loadStockInfo(),
+    loadChartData(),
+    loadIndicators()
+  ])
+  loading.value = false
+}
 
 const loadStockInfo = async () => {
   try {
@@ -217,6 +259,13 @@ watch(stockCode, () => {
 .stock-detail-page {
   max-width: 1400px;
   margin: 0 auto;
+}
+
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .info-card {

@@ -7,9 +7,9 @@
           <el-input v-model="config.code" placeholder="如: 600000" style="width: 120px" />
         </el-form-item>
         <el-form-item label="预测模型">
-          <el-select v-model="config.modelType" style="width: 120px">
-            <el-option label="随机森林" value="rf" />
-            <el-option label="梯度提升" value="gb" />
+          <el-select v-model="config.modelType" style="width: 150px">
+            <el-option label="随机森林 (RF)" value="rf" />
+            <el-option label="梯度提升 (GB)" value="gb" />
           </el-select>
         </el-form-item>
         <el-form-item>
@@ -82,7 +82,11 @@
       <el-table :data="history" stripe v-loading="loadingHistory">
         <el-table-column prop="code" label="股票" width="100" />
         <el-table-column prop="date" label="日期" width="120" />
-        <el-table-column prop="model_name" label="模型" width="100" />
+        <el-table-column prop="model_name" label="模型" width="140">
+          <template #default="{ row }">
+            {{ formatModelName(row.model_name) }}
+          </template>
+        </el-table-column>
         <el-table-column label="当前价格" width="100">
           <template #default="{ row }">
             {{ row.current_price?.toFixed(2) }}
@@ -123,6 +127,19 @@ const prediction = ref(null)
 const history = ref([])
 const loading = ref(false)
 const loadingHistory = ref(false)
+
+/** 模型名称映射 */
+const modelNameMap = {
+  'rf_model': '随机森林 (RF)',
+  'rf': '随机森林 (RF)',
+  'gb_model': '梯度提升 (GB)',
+  'gb': '梯度提升 (GB)'
+}
+
+/** 格式化模型名称 */
+const formatModelName = (name) => {
+  return modelNameMap[name] || name
+}
 
 const runPredict = async () => {
   if (!config.value.code) {

@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 class BollingerStrategy(BaseStrategy):
     """布林带策略"""
     
-    name = "BollingerStrategy"
+    name = "布林带 (BOLL)"
     description = "价格触及下轨买入，触及上轨卖出"
     
     def __init__(self, params: Optional[Dict] = None):
@@ -74,6 +74,13 @@ class BollingerStrategy(BaseStrategy):
             signal_type = SignalType.HOLD
             reason = ""
             
+            # 从 date 列获取日期
+            date_val = row['date']
+            if hasattr(date_val, 'strftime'):
+                date_str = date_val.strftime('%Y-%m-%d')
+            else:
+                date_str = str(date_val)
+            
             # 价格触及下轨附近 (买入)
             if row['bb_position'] <= self.params['buy_threshold']:
                 signal_type = SignalType.BUY
@@ -85,7 +92,7 @@ class BollingerStrategy(BaseStrategy):
                 reason = f"价格触及上轨: 位置={row['bb_position']:.2%}, 价格={row['close']:.2f}"
             
             signal = TradingSignal(
-                date=str(idx.date()) if hasattr(idx, 'date') else str(idx),
+                date=date_str,
                 signal=signal_type,
                 price=row['close'],
                 reason=reason,

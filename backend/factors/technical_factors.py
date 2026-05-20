@@ -48,7 +48,7 @@ class TechnicalFactors:
     
     def add_moving_averages(self, df: Optional[pd.DataFrame] = None) -> pd.DataFrame:
         """添加移动平均线"""
-        df = df or self.data.copy()
+        df = df if df is not None else self.data.copy()
         
         # 简单移动平均 SMA
         for period in [5, 10, 20, 30, 60, 120, 250]:
@@ -74,7 +74,7 @@ class TechnicalFactors:
     
     def add_macd(self, df: Optional[pd.DataFrame] = None) -> pd.DataFrame:
         """添加 MACD 指标"""
-        df = df or self.data.copy()
+        df = df if df is not None else self.data.copy()
         
         # MACD 基本计算
         df['macd'] = df['close'].ewm(span=12, adjust=False).mean() - \
@@ -90,7 +90,7 @@ class TechnicalFactors:
     
     def add_rsi(self, df: Optional[pd.DataFrame] = None, period: int = 14) -> pd.DataFrame:
         """添加 RSI 相对强弱指标"""
-        df = df or self.data.copy()
+        df = df if df is not None else self.data.copy()
         
         delta = df['close'].diff()
         gain = (delta.where(delta > 0, 0)).rolling(window=period).mean()
@@ -107,7 +107,7 @@ class TechnicalFactors:
     
     def add_bollinger_bands(self, df: Optional[pd.DataFrame] = None, period: int = 20, std_dev: float = 2) -> pd.DataFrame:
         """添加布林带指标"""
-        df = df or self.data.copy()
+        df = df if df is not None else self.data.copy()
         
         df[f'bb_middle_{period}'] = df['close'].rolling(window=period).mean()
         df[f'bb_std_{period}'] = df['close'].rolling(window=period).std()
@@ -123,7 +123,7 @@ class TechnicalFactors:
     
     def add_kdj(self, df: Optional[pd.DataFrame] = None, period: int = 9) -> pd.DataFrame:
         """添加 KDJ 随机指标"""
-        df = df or self.data.copy()
+        df = df if df is not None else self.data.copy()
         
         low_n = df['low'].rolling(window=period, min_periods=1).min()
         high_n = df['high'].rolling(window=period, min_periods=1).max()
@@ -139,7 +139,7 @@ class TechnicalFactors:
     
     def add_obv(self, df: Optional[pd.DataFrame] = None) -> pd.DataFrame:
         """添加 OBV 能量潮指标"""
-        df = df or self.data.copy()
+        df = df if df is not None else self.data.copy()
         
         obv = (np.sign(df['close'].diff()) * df['volume']).fillna(0).cumsum()
         df['obv'] = obv
@@ -149,7 +149,7 @@ class TechnicalFactors:
     
     def add_atr(self, df: Optional[pd.DataFrame] = None, period: int = 14) -> pd.DataFrame:
         """添加 ATR 平均真实波幅"""
-        df = df or self.data.copy()
+        df = df if df is not None else self.data.copy()
         
         high_low = df['high'] - df['low']
         high_close = np.abs(df['high'] - df['close'].shift())
@@ -162,7 +162,7 @@ class TechnicalFactors:
     
     def add_volatility(self, df: Optional[pd.DataFrame] = None, period: int = 20) -> pd.DataFrame:
         """添加波动率指标"""
-        df = df or self.data.copy()
+        df = df if df is not None else self.data.copy()
         
         # 历史波动率
         df[f'volatility_{period}'] = df['close'].pct_change().rolling(window=period).std() * np.sqrt(252) * 100
@@ -171,7 +171,7 @@ class TechnicalFactors:
     
     def add_volume_indicators(self, df: Optional[pd.DataFrame] = None) -> pd.DataFrame:
         """添加成交量指标"""
-        df = df or self.data.copy()
+        df = df if df is not None else self.data.copy()
         
         # 成交量移动平均
         df['volume_ma5'] = df['volume'].rolling(window=5).mean()

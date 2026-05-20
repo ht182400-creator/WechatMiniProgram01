@@ -15,10 +15,10 @@ from sklearn.preprocessing import StandardScaler
 import joblib
 from pathlib import Path
 
-from ..adapters import get_data_source_manager
-from ..factors import TechnicalFactors
-from ..config import settings
-from ..models import get_db_session, PredictionRecord
+from adapters import get_data_source_manager
+from factors import TechnicalFactors
+from config import settings
+from models import get_db_session, PredictionRecord
 
 router = APIRouter()
 
@@ -26,14 +26,6 @@ router = APIRouter()
 def prepare_features(df: pd.DataFrame, lookback: int = 60) -> tuple:
     """准备机器学习特征"""
     if len(df) < lookback:
-        return None, None, None
-    
-    # 计算技术指标
-    factors = TechnicalFactors(df)
-    df_features = factors.add_all_indicators()
-    df_features = df_features.dropna()
-    
-    if len(df_features) < lookback:
         return None, None, None
     
     # 特征列
@@ -44,6 +36,10 @@ def prepare_features(df: pd.DataFrame, lookback: int = 60) -> tuple:
         'bb_position_20', 'atr_14'
     ]
     
+    # 计算技术指标
+    factors = TechnicalFactors(df)
+    df_features = factors.add_all_indicators()
+    
     # 确保所有特征列存在
     available_cols = [col for col in feature_cols if col in df_features.columns]
     
@@ -51,8 +47,8 @@ def prepare_features(df: pd.DataFrame, lookback: int = 60) -> tuple:
     df_features['future_return'] = df_features['close'].shift(-5) / df_features['close'] - 1
     df_features['target'] = (df_features['future_return'] > 0.01).astype(int)  # 涨超1%为1
     
-    # 移除包含NaN的行
-    df_features = df_features.dropna(subset=available_cols + ['target'])
+    # 只对需要的列移除NaN，而不是整个DataFrame
+    df_features = df_features.dropna(subset=available_cols + ['target', 'future_return'])
     
     if len(df_features) < lookback:
         return None, None, None
@@ -144,7 +140,7 @@ async def predict_trend(
                 record = PredictionRecord(
                     code=code,
                     date=datetime.now().strftime("%Y-%m-%d"),
-                    model_name=f"{model_type}_model",
+                    model_name="随机森林 (RF)" if model_type == 'rf' else "梯度提升 (GB)",
                     current_price=current_price,
                     predicted_price=predicted_price,
                     predicted_direction=direction.lower(),

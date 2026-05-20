@@ -43,14 +43,21 @@ Page({
   async checkSystemStatus() {
     try {
       const res = await get('/api/system/health', {}, '')
+      // 后端返回顶层字段，不是嵌套在 data 里
       this.setData({
         'systemStatus.backend': true,
-        'systemStatus.dataSource': res.data?.data_source || 'AKShare'
+        'systemStatus.dataSource': res.datasource_available ? 'AKShare' : '离线'
       })
     } catch (err) {
+      console.error('后端连接失败:', err)
       this.setData({
         'systemStatus.backend': false,
         'systemStatus.dataSource': '离线'
+      })
+      wx.showToast({
+        title: '后端服务连接失败',
+        icon: 'none',
+        duration: 2000
       })
     }
   },
@@ -61,8 +68,10 @@ Page({
   async getMarketOverview() {
     try {
       const res = await get('/api/stock/list', { limit: 4 }, '')
-      if (res.data?.length > 0) {
-        const marketData = res.data.slice(0, 4).map((item, index) => {
+      // 后端返回 { total, stocks } 或 { data } 两种格式，兼容处理
+      const stockList = res.stocks || res.data || []
+      if (stockList.length > 0) {
+        const marketData = stockList.slice(0, 4).map((item, index) => {
           const names = ['上证指数', '深证成指', '创业板指', '沪深300']
           return {
             name: item.name || names[index] || '未知',

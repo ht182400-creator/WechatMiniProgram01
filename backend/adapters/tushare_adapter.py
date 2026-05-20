@@ -10,8 +10,8 @@ from typing import List, Optional
 import pandas as pd
 from datetime import datetime
 
-from .base_adapter import BaseDataAdapter
-from ..config import settings
+from adapters.base_adapter import BaseDataAdapter
+from config import settings
 
 logger = logging.getLogger(__name__)
 

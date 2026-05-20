@@ -1,3 +1,28 @@
+<wxs module="filters">
+/**
+ * 格式化数值为固定小数位
+ * @param {number} value - 要格式化的数值
+ * @param {number} decimals - 小数位数，默认2位
+ * @returns {string} 格式化后的字符串
+ */
+module.exports.toFixed = function(value, decimals) {
+  if (value === null || value === undefined) return '0.00';
+  decimals = decimals || 2;
+  return Number(value).toFixed(decimals);
+};
+
+/**
+ * 格式化收益率显示
+ * @param {number} value - 收益率值
+ * @returns {string} 带正负号的百分比字符串
+ */
+module.exports.formatPercent = function(value) {
+  if (value === null || value === undefined) return '0.00%';
+  var sign = value >= 0 ? '+' : '';
+  return sign + Number(value).toFixed(2) + '%';
+};
+</wxs>
+
 <view class="container">
   <!-- 策略选择 -->
   <view class="card">
@@ -69,12 +94,12 @@
       <view class="result-item highlight">
         <text class="result-label">总收益率</text>
         <text class="result-value" style="color: {{result.total_return >= 0 ? '#ff4d4f' : '#52c41a'}}">
-          {{result.total_return >= 0 ? '+' : ''}}{{result.total_return?.toFixed(2)}}%
+          {{filters.formatPercent(result.total_return)}}
         </text>
       </view>
       <view class="result-item">
         <text class="result-label">年化收益率</text>
-        <text class="result-value">{{result.annual_return?.toFixed(2)}}%</text>
+        <text class="result-value">{{filters.toFixed(result.annual_return, 2)}}%</text>
       </view>
     </view>
 
@@ -82,11 +107,11 @@
     <view class="result-section">
       <view class="result-item">
         <text class="result-label">最大回撤</text>
-        <text class="result-value danger">{{result.max_drawdown?.toFixed(2)}}%</text>
+        <text class="result-value danger">{{filters.toFixed(result.max_drawdown, 2)}}%</text>
       </view>
       <view class="result-item">
         <text class="result-label">夏普比率</text>
-        <text class="result-value">{{result.sharpe_ratio?.toFixed(2)}}</text>
+        <text class="result-value">{{filters.toFixed(result.sharpe_ratio, 2)}}</text>
       </view>
     </view>
 
@@ -98,7 +123,7 @@
       </view>
       <view class="result-item">
         <text class="result-label">胜率</text>
-        <text class="result-value">{{result.win_rate?.toFixed(2)}}%</text>
+        <text class="result-value">{{filters.toFixed(result.win_rate, 2)}}%</text>
       </view>
     </view>
   </view>

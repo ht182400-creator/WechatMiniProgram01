@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 class MACDStrategy(BaseStrategy):
     """MACD 策略"""
     
-    name = "MACDStrategy"
+    name = "MACD指标 (MACD)"
     description = "MACD金叉买入，死叉卖出"
     
     def __init__(self, params: Optional[Dict] = None):
@@ -77,6 +77,13 @@ class MACDStrategy(BaseStrategy):
             signal_type = SignalType.HOLD
             reason = ""
             
+            # 从 date 列获取日期
+            date_val = row['date']
+            if hasattr(date_val, 'strftime'):
+                date_str = date_val.strftime('%Y-%m-%d')
+            else:
+                date_str = str(date_val)
+            
             # MACD 金叉
             if row['macd_cross_change'] > 0:
                 signal_type = SignalType.BUY
@@ -88,7 +95,7 @@ class MACDStrategy(BaseStrategy):
                 reason = f"MACD死叉: MACD={row['macd']:.4f}, Signal={row['macd_signal']:.4f}"
             
             signal = TradingSignal(
-                date=str(idx.date()) if hasattr(idx, 'date') else str(idx),
+                date=date_str,
                 signal=signal_type,
                 price=row['close'],
                 reason=reason,

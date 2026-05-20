@@ -12,7 +12,14 @@ from contextlib import contextmanager
 from typing import Generator
 import logging
 
-from ..config import settings
+try:
+    from config import settings
+except ImportError:
+    import sys
+    import os
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from config import settings
+
 from .database import Base
 
 logger = logging.getLogger(__name__)
