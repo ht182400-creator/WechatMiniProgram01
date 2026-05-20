@@ -29,6 +29,10 @@
               <el-icon><MagicStick /></el-icon>
               <span>趋势预测</span>
             </el-menu-item>
+            <el-menu-item index="/train">
+              <el-icon><Box /></el-icon>
+              <span>模型训练</span>
+            </el-menu-item>
           </el-menu>
         </el-aside>
 
@@ -69,7 +73,8 @@ const pageTitle = computed(() => {
     '/': '首页概览',
     '/stock': '股票行情',
     '/backtest': '策略回测',
-    '/predict': '趋势预测'
+    '/predict': '趋势预测',
+    '/train': '模型训练'
   }
   return titles[route.path] || '股票量化系统'
 })
@@ -85,7 +90,7 @@ const refreshData = () => {
 }
 
 .sidebar {
-  background: #001529;
+  background: #304156;
   color: #fff;
 }
 
@@ -111,17 +116,17 @@ const refreshData = () => {
   background: transparent;
 }
 
-:deep(.el-menu) {
+::deep(.el-menu) {
   background: transparent;
 }
 
-:deep(.el-menu-item) {
-  color: rgba(255, 255, 255, 0.7);
+::deep(.el-menu-item) {
+  color: #fff;
 }
 
-:deep(.el-menu-item:hover),
-:deep(.el-menu-item.is-active) {
-  background: #001529;
+::deep(.el-menu-item:hover),
+::deep(.el-menu-item.is-active) {
+  background: rgba(64, 158, 255, 0.15);
   color: #409eff;
 }
 

@@ -66,11 +66,9 @@ class AKShareAdapter(BaseDataAdapter):
         try:
             code = self.normalize_code(code)
             
-            # 判断市场
-            if code.startswith('6'):
-                symbol = f"sh{code}"
-            else:
-                symbol = f"sz{code}"
+            # 判断市场（上交所sh / 深交所sz / 北交所bj）
+            market = self.get_market(code)
+            symbol = f"{market}{code}"
             
             df = self.ak.stock_zh_a_hist(
                 symbol=symbol,
@@ -142,10 +140,9 @@ class AKShareAdapter(BaseDataAdapter):
     def _format_realtime_code(self, code: str) -> str:
         """格式化实时行情股票代码"""
         code = self.normalize_code(code)
-        if code.startswith('6'):
-            return f"1.{code}"  # 上海
-        else:
-            return f"0.{code}"  # 深圳
+        market = self.get_market(code)
+        market_num = {'sh': '1', 'sz': '0', 'bj': '0'}
+        return f"{market_num[market]}.{code}"
     
     def get_index_data(self, code: str = "000001", start_date: str = "", end_date: str = "") -> pd.DataFrame:
         """获取指数数据"""

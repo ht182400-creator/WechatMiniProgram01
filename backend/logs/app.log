@@ -1016,3 +1016,835 @@ Trying to import the above resulted in these errors:
 2026-05-20 00:03:09,410 [INFO] [adapters.data_source_manager] 从 baostock 获取 000001 日线数据成功 (95 条)
 2026-05-20 00:03:09,731 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000001]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
 2026-05-20 00:03:10,006 [INFO] [adapters.data_source_manager] 从 baostock 获取 000001 日线数据成功 (57 条)
+2026-05-20 09:36:32,561 [ERROR] [adapters.akshare_adapter] 获取实时行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 09:36:32,886 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000001]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 09:36:52,151 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [000001]: 请指定正确的接口名
+2026-05-20 09:36:52,745 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [000001]: 请指定正确的接口名
+2026-05-20 10:24:46,991 [INFO] [main] 系统关闭中...
+2026-05-20 10:24:46,992 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 10:24:46,992 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 10:24:46,993 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 10:24:46,993 [INFO] [main] 系统已关闭
+2026-05-20 10:24:53,665 [INFO] [main] ============================================================
+2026-05-20 10:24:53,665 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 10:24:53,665 [INFO] [main] ============================================================
+2026-05-20 10:24:53,667 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 10:24:53,667 [INFO] [main] 数据库初始化完成
+2026-05-20 10:24:53,667 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 10:24:54,325 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 10:24:54,408 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 10:24:54,460 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 10:24:54,460 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 10:24:54,460 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 10:24:54,461 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 10:24:54,461 [INFO] [main] ============================================================
+2026-05-20 10:24:54,461 [INFO] [main] 系统启动完成!
+2026-05-20 10:24:54,461 [INFO] [main] ============================================================
+2026-05-20 10:24:58,100 [INFO] [main] ============================================================
+2026-05-20 10:24:58,100 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 10:24:58,100 [INFO] [main] ============================================================
+2026-05-20 10:24:58,102 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 10:24:58,103 [INFO] [main] 数据库初始化完成
+2026-05-20 10:24:58,103 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 10:24:58,464 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 10:24:58,585 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 10:24:58,620 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 10:24:58,621 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 10:24:58,621 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 10:24:58,621 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 10:24:58,621 [INFO] [main] ============================================================
+2026-05-20 10:24:58,621 [INFO] [main] 系统启动完成!
+2026-05-20 10:24:58,622 [INFO] [main] ============================================================
+2026-05-20 10:25:03,648 [INFO] [main] 系统关闭中...
+2026-05-20 10:25:03,648 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 10:25:04,164 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 10:25:04,165 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 10:25:04,165 [INFO] [main] 系统已关闭
+2026-05-20 10:54:18,692 [INFO] [main] ============================================================
+2026-05-20 10:54:18,692 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 10:54:18,692 [INFO] [main] ============================================================
+2026-05-20 10:54:18,693 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 10:54:18,693 [INFO] [main] 数据库初始化完成
+2026-05-20 10:54:18,693 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 10:54:19,015 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 10:54:19,162 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 10:54:19,196 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 10:54:19,197 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 10:54:19,197 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 10:54:19,197 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 10:54:19,197 [INFO] [main] ============================================================
+2026-05-20 10:54:19,197 [INFO] [main] 系统启动完成!
+2026-05-20 10:54:19,197 [INFO] [main] ============================================================
+2026-05-20 10:54:57,264 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 10:54:57,266 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 10:54:57,695 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 10:54:57,696 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 10:55:37,773 [INFO] [api.predict] 开始训练混合模型: 600433, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 10:55:37,774 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 10:55:38,426 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [600433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 10:55:38,840 [INFO] [adapters.data_source_manager] 从 baostock 获取 600433 日线数据成功 (242 条)
+2026-05-20 10:55:38,909 [INFO] [api.predict] 获取到 242 条历史数据
+2026-05-20 10:55:39,246 [INFO] [api.predict] 训练样本: 197 (LSTM: (197, 20, 10), LightGBM: (197, 12))
+2026-05-20 10:55:39,294 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 10:55:46,604 [INFO] [predict.hybrid_model] LSTM Epoch 10/50, Loss: 0.5564, Val Loss: 0.6785
+2026-05-20 10:55:49,008 [INFO] [predict.hybrid_model] LSTM Epoch 20/50, Loss: 0.4236, Val Loss: 0.6622
+2026-05-20 10:55:51,052 [INFO] [predict.hybrid_model] LSTM Epoch 30/50, Loss: 0.2614, Val Loss: 0.9643
+2026-05-20 10:55:52,877 [INFO] [predict.hybrid_model] LSTM Epoch 40/50, Loss: 0.2629, Val Loss: 1.0808
+2026-05-20 10:55:54,632 [INFO] [predict.hybrid_model] LSTM Epoch 50/50, Loss: 0.2016, Val Loss: 0.9364
+2026-05-20 10:55:54,632 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 10:55:54,682 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 10:55:56,257 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 10:55:56,267 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 10:55:56,297 [INFO] [api.predict] 训练完成! 耗时: 17.0秒, 指标: {'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0, 'f1': 1.0, 'auc': 1.0}
+2026-05-20 10:55:56,329 [INFO] [predict.hybrid_model] 模型已保存到: ./models/hybrid/600433_20260520_105556
+2026-05-20 10:55:56,330 [INFO] [api.predict] 模型已保存: ./models/hybrid/600433_20260520_105556
+2026-05-20 10:56:20,353 [INFO] [api.predict] 开始 Walk-Forward 验证: 600433
+2026-05-20 10:56:26,209 [INFO] [api.predict] 开始 Walk-Forward 验证: 600433
+2026-05-20 11:08:30,572 [INFO] [main] 系统关闭中...
+2026-05-20 11:08:30,573 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 11:08:49,797 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 11:08:49,798 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 11:08:49,799 [INFO] [main] 系统已关闭
+2026-05-20 11:11:24,339 [INFO] [main] ============================================================
+2026-05-20 11:11:24,339 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 11:11:24,339 [INFO] [main] ============================================================
+2026-05-20 11:11:24,341 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 11:11:24,341 [INFO] [main] 数据库初始化完成
+2026-05-20 11:11:24,341 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 11:11:24,922 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 11:11:25,034 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 11:11:25,126 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 11:11:25,127 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 11:11:25,127 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 11:11:25,127 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 11:11:25,127 [INFO] [main] ============================================================
+2026-05-20 11:11:25,127 [INFO] [main] 系统启动完成!
+2026-05-20 11:11:25,127 [INFO] [main] ============================================================
+2026-05-20 11:13:03,499 [INFO] [api.predict] 开始 Walk-Forward 验证: string
+2026-05-20 11:13:03,501 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [string]: 无效的股票代码: string
+2026-05-20 11:13:03,502 [ERROR] [adapters.baostock_adapter] 获取日线数据失败 [string]: 无效的股票代码: string
+2026-05-20 11:13:03,504 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [string]: 无效的股票代码: string
+2026-05-20 11:13:37,993 [INFO] [api.predict] 开始 Walk-Forward 验证: 600433
+2026-05-20 11:13:40,376 [INFO] [api.predict] 开始训练混合模型: 600433, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 11:13:40,377 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 11:13:40,384 [INFO] [api.predict] 获取到 242 条历史数据
+2026-05-20 11:13:40,622 [INFO] [api.predict] 训练样本: 197 (LSTM: (197, 20, 10), LightGBM: (197, 12))
+2026-05-20 11:13:40,629 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 11:13:47,367 [INFO] [predict.hybrid_model] LSTM Epoch 10/50, Loss: 0.5981, Val Loss: 0.7586
+2026-05-20 11:13:50,413 [INFO] [predict.hybrid_model] LSTM Epoch 20/50, Loss: 0.4954, Val Loss: 0.8186
+2026-05-20 11:13:52,172 [INFO] [predict.hybrid_model] LSTM Epoch 30/50, Loss: 0.4467, Val Loss: 0.8379
+2026-05-20 11:13:53,911 [INFO] [predict.hybrid_model] LSTM Epoch 40/50, Loss: 0.4145, Val Loss: 0.8843
+2026-05-20 11:13:55,646 [INFO] [predict.hybrid_model] LSTM Epoch 50/50, Loss: 0.3275, Val Loss: 1.1946
+2026-05-20 11:13:55,646 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 11:13:55,692 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 11:13:57,670 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 11:13:57,681 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 11:13:57,707 [INFO] [api.predict] 训练完成! 耗时: 17.1秒, 指标: {'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0, 'f1': 1.0, 'auc': 1.0}
+2026-05-20 11:13:57,737 [INFO] [predict.hybrid_model] 模型已保存到: ./models/hybrid/600433_20260520_111357
+2026-05-20 11:13:57,737 [INFO] [api.predict] 模型已保存: ./models/hybrid/600433_20260520_111357
+2026-05-20 11:14:37,446 [INFO] [api.predict] 开始 Walk-Forward 验证: 600433
+2026-05-20 11:18:20,870 [INFO] [main] 系统关闭中...
+2026-05-20 11:18:20,871 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 11:18:40,059 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 11:18:40,060 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 11:18:40,060 [INFO] [main] 系统已关闭
+2026-05-20 11:18:48,051 [INFO] [main] ============================================================
+2026-05-20 11:18:48,051 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 11:18:48,051 [INFO] [main] ============================================================
+2026-05-20 11:18:48,055 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 11:18:48,055 [INFO] [main] 数据库初始化完成
+2026-05-20 11:18:48,056 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 11:18:49,438 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 11:18:49,780 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 11:18:49,881 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 11:18:49,882 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 11:18:49,882 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 11:18:49,882 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 11:18:49,883 [INFO] [main] ============================================================
+2026-05-20 11:18:49,883 [INFO] [main] 系统启动完成!
+2026-05-20 11:18:49,883 [INFO] [main] ============================================================
+2026-05-20 11:19:54,796 [INFO] [main] 系统关闭中...
+2026-05-20 11:19:54,797 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 11:19:54,838 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 11:19:54,839 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 11:19:54,839 [INFO] [main] 系统已关闭
+2026-05-20 11:20:01,880 [INFO] [main] ============================================================
+2026-05-20 11:20:01,880 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 11:20:01,881 [INFO] [main] ============================================================
+2026-05-20 11:20:01,884 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 11:20:01,885 [INFO] [main] 数据库初始化完成
+2026-05-20 11:20:01,885 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 11:20:02,934 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 11:20:03,098 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 11:20:03,228 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 11:20:03,230 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 11:20:03,230 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 11:20:03,230 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 11:20:03,231 [INFO] [main] ============================================================
+2026-05-20 11:20:03,231 [INFO] [main] 系统启动完成!
+2026-05-20 11:20:03,232 [INFO] [main] ============================================================
+2026-05-20 11:29:47,466 [INFO] [api.predict] 开始训练混合模型: 600433, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 11:29:47,467 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 11:29:48,701 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [600433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 11:30:07,963 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [600433]: 请指定正确的接口名
+2026-05-20 11:30:20,528 [INFO] [api.predict] 开始训练混合模型: 600433, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 11:30:20,529 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 11:30:21,059 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [600433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 11:30:21,167 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [600433]: 请指定正确的接口名
+2026-05-20 11:30:53,576 [INFO] [api.predict] 开始 Walk-Forward 验证: 600433
+2026-05-20 11:30:54,126 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [600433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 11:30:54,187 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [600433]: 请指定正确的接口名
+2026-05-20 11:30:54,189 [INFO] [api.predict] Walk-Forward 获取到 0 条原始数据 (需要 >= 165 条)
+2026-05-20 11:30:58,192 [INFO] [api.predict] 开始训练混合模型: 600433, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 11:30:58,193 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 11:30:58,762 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [600433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 11:30:58,810 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [600433]: 请指定正确的接口名
+2026-05-20 11:31:43,738 [INFO] [main] 系统关闭中...
+2026-05-20 11:31:43,738 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 11:31:43,739 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 11:31:43,739 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 11:31:43,740 [INFO] [main] 系统已关闭
+2026-05-20 11:31:49,945 [INFO] [main] ============================================================
+2026-05-20 11:31:49,945 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 11:31:49,945 [INFO] [main] ============================================================
+2026-05-20 11:31:49,946 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 11:31:49,946 [INFO] [main] 数据库初始化完成
+2026-05-20 11:31:49,947 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 11:31:50,442 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 11:31:50,552 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 11:31:50,604 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 11:31:50,604 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 11:31:50,604 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 11:31:50,604 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 11:31:50,604 [INFO] [main] ============================================================
+2026-05-20 11:31:50,604 [INFO] [main] 系统启动完成!
+2026-05-20 11:31:50,604 [INFO] [main] ============================================================
+2026-05-20 11:32:23,370 [INFO] [main] 系统关闭中...
+2026-05-20 11:32:23,370 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 11:32:23,531 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 11:32:23,531 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 11:32:23,531 [INFO] [main] 系统已关闭
+2026-05-20 11:32:29,533 [INFO] [main] ============================================================
+2026-05-20 11:32:29,534 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 11:32:29,534 [INFO] [main] ============================================================
+2026-05-20 11:32:29,536 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 11:32:29,536 [INFO] [main] 数据库初始化完成
+2026-05-20 11:32:29,536 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 11:32:29,869 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 11:32:30,162 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 11:32:30,190 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 11:32:30,190 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 11:32:30,190 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 11:32:30,191 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 11:32:30,191 [INFO] [main] ============================================================
+2026-05-20 11:32:30,191 [INFO] [main] 系统启动完成!
+2026-05-20 11:32:30,191 [INFO] [main] ============================================================
+2026-05-20 11:33:08,947 [INFO] [api.predict] 开始训练混合模型: 300433, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 11:33:08,947 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 11:33:09,487 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [300433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 11:33:10,043 [INFO] [adapters.data_source_manager] 从 baostock 获取 300433 日线数据成功 (242 条)
+2026-05-20 11:33:10,151 [INFO] [api.predict] 获取到 242 条历史数据
+2026-05-20 11:33:10,589 [INFO] [api.predict] 训练样本: 197 (LSTM: (197, 20, 10), LightGBM: (197, 12))
+2026-05-20 11:33:10,636 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 11:33:17,622 [INFO] [predict.hybrid_model] LSTM Epoch 10/50, Loss: 0.5927, Val Loss: 0.6830
+2026-05-20 11:33:21,635 [INFO] [predict.hybrid_model] LSTM Epoch 20/50, Loss: 0.5811, Val Loss: 0.6833
+2026-05-20 11:33:24,746 [INFO] [predict.hybrid_model] LSTM Epoch 30/50, Loss: 0.5612, Val Loss: 0.6816
+2026-05-20 11:33:26,552 [INFO] [predict.hybrid_model] LSTM Epoch 40/50, Loss: 0.5739, Val Loss: 0.6816
+2026-05-20 11:33:28,456 [INFO] [predict.hybrid_model] LSTM Epoch 50/50, Loss: 0.5493, Val Loss: 0.6826
+2026-05-20 11:33:28,457 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 11:33:28,539 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 11:33:29,977 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 11:33:29,987 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 11:33:30,012 [INFO] [api.predict] 训练完成! 耗时: 19.4秒, 指标: {'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0, 'f1': 1.0, 'auc': 1.0}
+2026-05-20 11:33:30,037 [INFO] [predict.hybrid_model] 模型已保存到: ./models/hybrid/300433_20260520_113330
+2026-05-20 11:33:30,037 [INFO] [api.predict] 模型已保存: ./models/hybrid/300433_20260520_113330
+2026-05-20 11:33:40,240 [INFO] [api.predict] 开始 Walk-Forward 验证: 300433
+2026-05-20 11:33:40,395 [INFO] [api.predict] Walk-Forward 获取到 242 条原始数据 (需要 >= 165 条)
+2026-05-20 11:33:40,396 [INFO] [api.predict] 获取到 242 条数据
+2026-05-20 11:33:40,797 [INFO] [api.predict] 执行 Walk-Forward 验证: 训练窗口=120, 测试窗口=15
+2026-05-20 11:33:40,798 [INFO] [predict.hybrid_model] 开始 Walk-Forward 验证: 总样本=197, 训练窗口=120, 测试窗口=15
+2026-05-20 11:33:40,803 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 11:33:43,300 [INFO] [predict.hybrid_model] LSTM Epoch 10/20, Loss: 0.5290, Val Loss: 1.0169
+2026-05-20 11:33:46,039 [INFO] [predict.hybrid_model] LSTM Epoch 20/20, Loss: 0.5253, Val Loss: 0.6744
+2026-05-20 11:33:46,039 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 11:33:46,097 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 11:33:46,161 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 11:33:46,182 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 11:33:46,213 [INFO] [predict.hybrid_model] 窗口 [120-135]: Acc=0.733, F1=0.000, AUC=0.308
+2026-05-20 11:33:46,218 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 11:33:48,143 [INFO] [predict.hybrid_model] LSTM Epoch 10/20, Loss: 0.6134, Val Loss: 0.7108
+2026-05-20 11:33:49,457 [INFO] [predict.hybrid_model] LSTM Epoch 20/20, Loss: 0.5587, Val Loss: 0.7211
+2026-05-20 11:33:49,457 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 11:33:49,482 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 11:33:49,497 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 11:33:49,505 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 11:33:49,525 [INFO] [predict.hybrid_model] 窗口 [135-150]: Acc=0.333, F1=0.286, AUC=0.558
+2026-05-20 11:33:49,530 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 11:33:50,857 [INFO] [predict.hybrid_model] LSTM Epoch 10/20, Loss: 0.6663, Val Loss: 0.7476
+2026-05-20 11:33:52,179 [INFO] [predict.hybrid_model] LSTM Epoch 20/20, Loss: 0.6060, Val Loss: 0.8238
+2026-05-20 11:33:52,180 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 11:33:52,204 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 11:33:52,219 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 11:33:52,227 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 11:33:52,246 [INFO] [predict.hybrid_model] 窗口 [150-165]: Acc=0.400, F1=0.182, AUC=0.596
+2026-05-20 11:33:52,250 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 11:33:53,572 [INFO] [predict.hybrid_model] LSTM Epoch 10/20, Loss: 0.6890, Val Loss: 0.5690
+2026-05-20 11:33:54,881 [INFO] [predict.hybrid_model] LSTM Epoch 20/20, Loss: 0.6791, Val Loss: 0.6050
+2026-05-20 11:33:54,882 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 11:33:54,907 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 11:33:54,923 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 11:33:54,931 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 11:33:54,948 [INFO] [predict.hybrid_model] 窗口 [165-180]: Acc=0.733, F1=0.714, AUC=0.830
+2026-05-20 11:33:54,952 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 11:33:56,297 [INFO] [predict.hybrid_model] LSTM Epoch 10/20, Loss: 0.6533, Val Loss: 0.7215
+2026-05-20 11:33:57,620 [INFO] [predict.hybrid_model] LSTM Epoch 20/20, Loss: 0.5859, Val Loss: 1.1585
+2026-05-20 11:33:57,620 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 11:33:57,643 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 11:33:57,660 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 11:33:57,667 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 11:33:57,685 [INFO] [predict.hybrid_model] 窗口 [180-195]: Acc=0.400, F1=0.182, AUC=0.630
+2026-05-20 11:37:25,888 [INFO] [main] 系统关闭中...
+2026-05-20 11:37:25,888 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 11:37:45,067 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 11:37:45,067 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 11:37:45,068 [INFO] [main] 系统已关闭
+2026-05-20 11:37:50,886 [INFO] [main] ============================================================
+2026-05-20 11:37:50,886 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 11:37:50,886 [INFO] [main] ============================================================
+2026-05-20 11:37:50,889 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 11:37:50,890 [INFO] [main] 数据库初始化完成
+2026-05-20 11:37:50,891 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 11:37:51,574 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 11:37:51,653 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 11:37:51,713 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 11:37:51,713 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 11:37:51,713 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 11:37:51,713 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 11:37:51,713 [INFO] [main] ============================================================
+2026-05-20 11:37:51,713 [INFO] [main] 系统启动完成!
+2026-05-20 11:37:51,713 [INFO] [main] ============================================================
+2026-05-20 11:37:56,369 [INFO] [main] ============================================================
+2026-05-20 11:37:56,370 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 11:37:56,370 [INFO] [main] ============================================================
+2026-05-20 11:37:56,371 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 11:37:56,371 [INFO] [main] 数据库初始化完成
+2026-05-20 11:37:56,372 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 11:37:56,680 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 11:37:56,760 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 11:37:56,792 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 11:37:56,792 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 11:37:56,793 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 11:37:56,793 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 11:37:56,793 [INFO] [main] ============================================================
+2026-05-20 11:37:56,793 [INFO] [main] 系统启动完成!
+2026-05-20 11:37:56,793 [INFO] [main] ============================================================
+2026-05-20 11:42:20,948 [INFO] [api.predict] 开始训练混合模型: 300433, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 11:42:20,949 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 11:42:21,041 [INFO] [api.predict] 获取到 242 条历史数据
+2026-05-20 11:42:21,393 [INFO] [api.predict] 训练样本: 197 (LSTM: (197, 20, 10), LightGBM: (197, 12))
+2026-05-20 11:42:21,399 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 11:42:27,191 [INFO] [predict.hybrid_model] LSTM Epoch 10/50, Loss: 0.5916, Val Loss: 0.6815
+2026-05-20 11:42:30,778 [INFO] [predict.hybrid_model] LSTM Epoch 20/50, Loss: 0.5771, Val Loss: 0.6841
+2026-05-20 11:42:34,269 [INFO] [predict.hybrid_model] LSTM Epoch 30/50, Loss: 0.5690, Val Loss: 0.6819
+2026-05-20 11:42:37,521 [INFO] [predict.hybrid_model] LSTM Epoch 40/50, Loss: 0.5584, Val Loss: 0.6801
+2026-05-20 11:42:40,327 [INFO] [predict.hybrid_model] LSTM Epoch 50/50, Loss: 0.5687, Val Loss: 0.6814
+2026-05-20 11:42:40,328 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 11:42:40,375 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 11:42:41,691 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 11:42:41,700 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 11:42:41,869 [INFO] [api.predict] 训练完成! 耗时: 20.3秒, 指标: {'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0, 'f1': 1.0, 'auc': 1.0}
+2026-05-20 11:42:41,884 [INFO] [predict.hybrid_model] 模型已保存到: ./models/hybrid/300433_20260520_114241
+2026-05-20 11:42:41,884 [INFO] [api.predict] 模型已保存: ./models/hybrid/300433_20260520_114241
+2026-05-20 11:43:06,641 [INFO] [api.predict] 开始 Walk-Forward 验证: 300433
+2026-05-20 11:43:06,649 [INFO] [api.predict] Walk-Forward 获取到 242 条原始数据 (需要 >= 165 条)
+2026-05-20 11:43:06,651 [INFO] [api.predict] 获取到 242 条数据
+2026-05-20 11:43:06,927 [INFO] [api.predict] 执行 Walk-Forward 验证: 训练窗口=120, 测试窗口=15
+2026-05-20 11:43:06,927 [INFO] [predict.hybrid_model] 开始 Walk-Forward 验证: 总样本=197, 训练窗口=120, 测试窗口=15
+2026-05-20 11:43:06,932 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 11:43:09,426 [INFO] [predict.hybrid_model] LSTM Epoch 10/20, Loss: 0.6006, Val Loss: 0.7238
+2026-05-20 11:43:12,146 [INFO] [predict.hybrid_model] LSTM Epoch 20/20, Loss: 0.5233, Val Loss: 0.6401
+2026-05-20 11:43:12,147 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 11:43:12,203 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 11:43:12,267 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 11:43:12,291 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 11:43:12,325 [INFO] [predict.hybrid_model] 窗口 [120-135]: Acc=0.733, F1=0.000, AUC=0.308
+2026-05-20 11:43:12,330 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 11:43:14,753 [INFO] [predict.hybrid_model] LSTM Epoch 10/20, Loss: 0.5483, Val Loss: 0.5006
+2026-05-20 11:43:17,356 [INFO] [predict.hybrid_model] LSTM Epoch 20/20, Loss: 0.4398, Val Loss: 0.5892
+2026-05-20 11:43:17,356 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 11:43:17,437 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 11:43:17,538 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 11:43:17,571 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 11:43:17,683 [INFO] [predict.hybrid_model] 窗口 [135-150]: Acc=0.333, F1=0.286, AUC=0.577
+2026-05-20 11:43:17,720 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 11:43:19,250 [INFO] [predict.hybrid_model] LSTM Epoch 10/20, Loss: 0.6768, Val Loss: 0.6982
+2026-05-20 11:43:20,596 [INFO] [predict.hybrid_model] LSTM Epoch 20/20, Loss: 0.6670, Val Loss: 0.8216
+2026-05-20 11:43:20,596 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 11:43:20,621 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 11:43:20,636 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 11:43:20,644 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 11:43:20,665 [INFO] [predict.hybrid_model] 窗口 [150-165]: Acc=0.400, F1=0.182, AUC=0.596
+2026-05-20 11:43:20,668 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 11:43:22,057 [INFO] [predict.hybrid_model] LSTM Epoch 10/20, Loss: 0.6846, Val Loss: 0.5403
+2026-05-20 11:43:23,404 [INFO] [predict.hybrid_model] LSTM Epoch 20/20, Loss: 0.6709, Val Loss: 0.5774
+2026-05-20 11:43:23,404 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 11:43:23,428 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 11:43:23,445 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 11:43:23,452 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 11:43:23,476 [INFO] [predict.hybrid_model] 窗口 [165-180]: Acc=0.733, F1=0.714, AUC=0.830
+2026-05-20 11:43:23,479 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 11:43:24,870 [INFO] [predict.hybrid_model] LSTM Epoch 10/20, Loss: 0.6201, Val Loss: 0.7650
+2026-05-20 11:43:26,227 [INFO] [predict.hybrid_model] LSTM Epoch 20/20, Loss: 0.6135, Val Loss: 1.1444
+2026-05-20 11:43:26,227 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 11:43:26,251 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 11:43:26,264 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 11:43:26,273 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 11:43:26,296 [INFO] [predict.hybrid_model] 窗口 [180-195]: Acc=0.400, F1=0.182, AUC=0.713
+2026-05-20 13:32:12,911 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [600000]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 13:32:32,194 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [600000]: 请指定正确的接口名
+2026-05-20 16:18:39,090 [INFO] [main] 系统关闭中...
+2026-05-20 16:18:39,090 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 16:18:39,092 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 16:18:39,092 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 16:18:39,092 [INFO] [main] 系统已关闭
+2026-05-20 16:18:45,671 [INFO] [main] ============================================================
+2026-05-20 16:18:45,672 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 16:18:45,672 [INFO] [main] ============================================================
+2026-05-20 16:18:45,674 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 16:18:45,674 [INFO] [main] 数据库初始化完成
+2026-05-20 16:18:45,674 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 16:18:46,184 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 16:18:46,747 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 16:18:46,822 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 16:18:46,822 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 16:18:46,822 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 16:18:46,822 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 16:18:46,823 [INFO] [main] ============================================================
+2026-05-20 16:18:46,823 [INFO] [main] 系统启动完成!
+2026-05-20 16:18:46,823 [INFO] [main] ============================================================
+2026-05-20 16:18:51,253 [INFO] [main] ============================================================
+2026-05-20 16:18:51,253 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 16:18:51,253 [INFO] [main] ============================================================
+2026-05-20 16:18:51,254 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 16:18:51,254 [INFO] [main] 数据库初始化完成
+2026-05-20 16:18:51,255 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 16:18:51,582 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 16:18:52,225 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 16:18:52,253 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 16:18:52,253 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 16:18:52,253 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 16:18:52,254 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 16:18:52,254 [INFO] [main] ============================================================
+2026-05-20 16:18:52,254 [INFO] [main] 系统启动完成!
+2026-05-20 16:18:52,254 [INFO] [main] ============================================================
+2026-05-20 16:22:06,094 [INFO] [api.predict] 混合模型预测: 300433, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 16:22:06,709 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [300433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 16:22:07,855 [INFO] [adapters.data_source_manager] 从 baostock 获取 300433 日线数据成功 (242 条)
+2026-05-20 16:22:08,720 [INFO] [predict.hybrid_model] 模型已加载: models\hybrid\300433_20260520_113330
+2026-05-20 16:22:08,721 [INFO] [api.predict] 已加载保存的模型: models\hybrid\300433_20260520_113330
+2026-05-20 16:23:53,807 [INFO] [main] 系统关闭中...
+2026-05-20 16:23:53,808 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 16:23:54,067 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 16:23:54,068 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 16:23:54,068 [INFO] [main] 系统已关闭
+2026-05-20 16:24:00,380 [INFO] [main] ============================================================
+2026-05-20 16:24:00,381 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 16:24:00,383 [INFO] [main] ============================================================
+2026-05-20 16:24:00,392 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 16:24:00,393 [INFO] [main] 数据库初始化完成
+2026-05-20 16:24:00,394 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 16:24:01,491 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 16:24:01,955 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 16:24:02,083 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 16:24:02,084 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 16:24:02,084 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 16:24:02,084 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 16:24:02,084 [INFO] [main] ============================================================
+2026-05-20 16:24:02,085 [INFO] [main] 系统启动完成!
+2026-05-20 16:24:02,085 [INFO] [main] ============================================================
+2026-05-20 16:24:02,127 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 16:24:02,348 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 16:24:02,348 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 16:24:02,350 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 16:58:15,089 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 16:58:15,116 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 16:58:15,230 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 16:58:15,230 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 17:00:24,054 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 17:00:24,058 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 17:00:24,678 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 17:00:24,679 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 17:00:59,414 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 17:00:59,418 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 17:00:59,585 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 17:00:59,585 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 17:01:43,534 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 17:01:43,540 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 17:01:45,202 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 17:01:45,203 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 17:01:45,205 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 17:01:45,206 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 17:01:45,804 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 17:01:45,804 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 17:06:15,408 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 17:06:17,214 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 17:06:17,215 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 17:06:17,217 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 17:06:48,973 [INFO] [api.predict] 开始训练混合模型: 600000, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 17:06:48,974 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 17:06:49,590 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [600000]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 17:06:49,829 [INFO] [adapters.data_source_manager] 从 baostock 获取 600000 日线数据成功 (242 条)
+2026-05-20 17:06:49,862 [INFO] [api.predict] 获取到 242 条历史数据
+2026-05-20 17:06:50,084 [INFO] [api.predict] 训练样本: 197 (LSTM: (197, 20, 10), LightGBM: (197, 12))
+2026-05-20 17:06:50,090 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 17:06:57,032 [INFO] [predict.hybrid_model] LSTM Epoch 10/50, Loss: 0.5070, Val Loss: 1.5804
+2026-05-20 17:07:00,617 [INFO] [predict.hybrid_model] LSTM Epoch 20/50, Loss: 0.3258, Val Loss: 3.7574
+2026-05-20 17:07:02,888 [INFO] [predict.hybrid_model] LSTM Epoch 30/50, Loss: 0.2703, Val Loss: 4.9651
+2026-05-20 17:07:04,707 [INFO] [predict.hybrid_model] LSTM Epoch 40/50, Loss: 0.1554, Val Loss: 5.7880
+2026-05-20 17:07:06,442 [INFO] [predict.hybrid_model] LSTM Epoch 50/50, Loss: 0.1569, Val Loss: 6.4686
+2026-05-20 17:07:06,442 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 17:07:06,488 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 17:07:07,830 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 17:07:07,839 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 17:07:07,862 [INFO] [api.predict] 训练完成! 耗时: 17.7秒, 指标: {'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0, 'f1': 1.0, 'auc': 1.0}
+2026-05-20 17:07:07,879 [INFO] [predict.hybrid_model] 模型已保存到: ./models/hybrid/600000_20260520_170707
+2026-05-20 17:07:07,880 [INFO] [api.predict] 模型已保存: ./models/hybrid/600000_20260520_170707
+2026-05-20 17:17:06,629 [INFO] [main] 系统关闭中...
+2026-05-20 17:17:06,629 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 17:17:25,849 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 17:17:25,849 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 17:17:25,850 [INFO] [main] 系统已关闭
+2026-05-20 17:17:30,425 [INFO] [main] ============================================================
+2026-05-20 17:17:30,425 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 17:17:30,426 [INFO] [main] ============================================================
+2026-05-20 17:17:30,427 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 17:17:30,428 [INFO] [main] 数据库初始化完成
+2026-05-20 17:17:30,428 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 17:17:30,786 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 17:17:31,359 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 17:17:31,392 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 17:17:31,392 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 17:17:31,392 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 17:17:31,392 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 17:17:31,393 [INFO] [main] ============================================================
+2026-05-20 17:17:31,393 [INFO] [main] 系统启动完成!
+2026-05-20 17:17:31,393 [INFO] [main] ============================================================
+2026-05-20 20:16:29,810 [INFO] [api.predict] 开始训练混合模型: 000001, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 20:16:29,810 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 20:16:30,636 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000001]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 20:16:49,876 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [000001]: 请指定正确的接口名
+2026-05-20 20:17:03,336 [INFO] [api.predict] 开始训练混合模型: 000001, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 20:17:03,337 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 20:17:04,166 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000001]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 20:17:04,218 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [000001]: 请指定正确的接口名
+2026-05-20 20:17:05,887 [INFO] [api.predict] 开始训练混合模型: 000001, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 20:17:05,888 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 20:17:06,841 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000001]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 20:17:06,882 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [000001]: 请指定正确的接口名
+2026-05-20 20:17:16,568 [INFO] [api.predict] 开始训练混合模型: 000002, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 20:17:16,569 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 20:17:17,249 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000002]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 20:17:17,293 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [000002]: 请指定正确的接口名
+2026-05-20 20:17:26,258 [INFO] [api.predict] 开始训练混合模型: 000008, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 20:17:26,259 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 20:17:26,782 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000008]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 20:17:26,837 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [000008]: 请指定正确的接口名
+2026-05-20 20:17:30,621 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 20:17:30,726 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 20:17:30,726 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 20:17:30,729 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 20:18:06,827 [INFO] [api.predict] 开始训练混合模型: 920119, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 20:18:06,827 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 20:18:07,342 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [920119]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 20:18:07,450 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [920119]: 请指定正确的接口名
+2026-05-20 20:18:16,323 [INFO] [main] 系统关闭中...
+2026-05-20 20:18:16,323 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 20:18:16,429 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 20:18:16,430 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 20:18:16,430 [INFO] [main] 系统已关闭
+2026-05-20 20:18:22,059 [INFO] [main] ============================================================
+2026-05-20 20:18:22,060 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 20:18:22,060 [INFO] [main] ============================================================
+2026-05-20 20:18:22,061 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 20:18:22,062 [INFO] [main] 数据库初始化完成
+2026-05-20 20:18:22,062 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 20:18:22,398 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 20:18:22,734 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 20:18:22,769 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 20:18:22,770 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 20:18:22,770 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 20:18:22,770 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 20:18:22,770 [INFO] [main] ============================================================
+2026-05-20 20:18:22,770 [INFO] [main] 系统启动完成!
+2026-05-20 20:18:22,770 [INFO] [main] ============================================================
+2026-05-20 20:18:28,562 [INFO] [api.predict] 开始训练混合模型: 920119, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 20:18:28,563 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 20:18:29,172 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [920119]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 20:18:29,679 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [920119]: 请指定正确的接口名
+2026-05-20 20:22:13,843 [INFO] [api.predict] 开始训练混合模型: 920119, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 20:22:13,844 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 20:22:14,357 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [920119]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 20:22:14,756 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [920119]: 请指定正确的接口名
+2026-05-20 20:22:14,870 [INFO] [main] 系统关闭中...
+2026-05-20 20:22:14,871 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 20:22:15,129 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 20:22:15,130 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 20:22:15,130 [INFO] [main] 系统已关闭
+2026-05-20 20:22:19,968 [INFO] [main] ============================================================
+2026-05-20 20:22:19,968 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 20:22:19,968 [INFO] [main] ============================================================
+2026-05-20 20:22:19,970 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 20:22:19,970 [INFO] [main] 数据库初始化完成
+2026-05-20 20:22:19,970 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 20:22:20,308 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 20:22:21,410 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 20:22:21,438 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 20:22:21,439 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 20:22:21,439 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 20:22:21,439 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 20:22:21,439 [INFO] [main] ============================================================
+2026-05-20 20:22:21,439 [INFO] [main] 系统启动完成!
+2026-05-20 20:22:21,439 [INFO] [main] ============================================================
+2026-05-20 20:22:25,347 [INFO] [main] ============================================================
+2026-05-20 20:22:25,348 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 20:22:25,348 [INFO] [main] ============================================================
+2026-05-20 20:22:25,350 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 20:22:25,350 [INFO] [main] 数据库初始化完成
+2026-05-20 20:22:25,350 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 20:22:25,679 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 20:22:25,805 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 20:22:25,836 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 20:22:25,836 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 20:22:25,836 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 20:22:25,837 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 20:22:25,837 [INFO] [main] ============================================================
+2026-05-20 20:22:25,837 [INFO] [main] 系统启动完成!
+2026-05-20 20:22:25,837 [INFO] [main] ============================================================
+2026-05-20 20:22:37,412 [INFO] [api.predict] 开始训练混合模型: 920119, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 20:22:37,412 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 20:22:37,940 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [920119]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 20:22:38,104 [ERROR] [adapters.tushare_adapter] 获取日线数据失败 [920119]: 请指定正确的接口名
+2026-05-20 20:23:06,882 [INFO] [api.predict] 开始训练混合模型: 300433, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 20:23:06,883 [INFO] [api.predict] 参数: seq_length=20, lstm_hidden=128, lstm_epochs=50, lgb_n_estimators=200
+2026-05-20 20:23:07,418 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [300433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 20:23:07,621 [INFO] [adapters.data_source_manager] 从 baostock 获取 300433 日线数据成功 (243 条)
+2026-05-20 20:23:07,666 [INFO] [api.predict] 获取到 243 条历史数据
+2026-05-20 20:23:07,901 [INFO] [api.predict] 训练样本: 198 (LSTM: (198, 20, 10), LightGBM: (198, 12))
+2026-05-20 20:23:07,907 [INFO] [predict.hybrid_model] 训练 LSTM...
+2026-05-20 20:23:12,543 [INFO] [predict.hybrid_model] LSTM Epoch 10/50, Loss: 0.5880, Val Loss: 0.6828
+2026-05-20 20:23:14,285 [INFO] [predict.hybrid_model] LSTM Epoch 20/50, Loss: 0.5405, Val Loss: 0.6633
+2026-05-20 20:23:16,038 [INFO] [predict.hybrid_model] LSTM Epoch 30/50, Loss: 0.5101, Val Loss: 0.5771
+2026-05-20 20:23:17,794 [INFO] [predict.hybrid_model] LSTM Epoch 40/50, Loss: 0.4334, Val Loss: 0.4739
+2026-05-20 20:23:19,577 [INFO] [predict.hybrid_model] LSTM Epoch 50/50, Loss: 0.4951, Val Loss: 0.4658
+2026-05-20 20:23:19,578 [INFO] [predict.hybrid_model] 提取 LSTM 特征...
+2026-05-20 20:23:19,621 [INFO] [predict.hybrid_model] 训练 LightGBM...
+2026-05-20 20:23:21,053 [INFO] [predict.hybrid_model] 训练元模型（堆叠层）...
+2026-05-20 20:23:21,061 [INFO] [predict.hybrid_model] 混合模型训练完成！
+2026-05-20 20:23:21,084 [INFO] [api.predict] 训练完成! 耗时: 13.2秒, 指标: {'accuracy': 1.0, 'precision': 1.0, 'recall': 1.0, 'f1': 1.0, 'auc': 1.0}
+2026-05-20 20:23:21,103 [INFO] [predict.hybrid_model] 模型已保存到: ./models/hybrid/300433_20260520_202321
+2026-05-20 20:23:21,103 [INFO] [api.predict] 模型已保存: ./models/hybrid/300433_20260520_202321
+2026-05-20 20:24:22,458 [INFO] [api.predict] 混合模型预测: 300433, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 20:24:22,900 [INFO] [predict.hybrid_model] 模型已加载: models\hybrid\300433_20260520_114241
+2026-05-20 20:24:22,900 [INFO] [api.predict] 已加载保存的模型: models\hybrid\300433_20260520_114241
+2026-05-20 20:26:47,093 [INFO] [main] 系统关闭中...
+2026-05-20 20:26:47,095 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 20:26:47,176 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 20:26:47,178 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 20:26:47,179 [INFO] [main] 系统已关闭
+2026-05-20 20:26:52,865 [INFO] [main] ============================================================
+2026-05-20 20:26:52,865 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 20:26:52,865 [INFO] [main] ============================================================
+2026-05-20 20:26:52,868 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 20:26:52,868 [INFO] [main] 数据库初始化完成
+2026-05-20 20:26:52,868 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 20:26:53,600 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 20:26:53,738 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 20:26:53,820 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 20:26:53,820 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 20:26:53,821 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 20:26:53,821 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 20:26:53,821 [INFO] [main] ============================================================
+2026-05-20 20:26:53,822 [INFO] [main] 系统启动完成!
+2026-05-20 20:26:53,822 [INFO] [main] ============================================================
+2026-05-20 20:27:03,305 [INFO] [api.predict] 混合模型预测: 300433, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 20:27:03,798 [INFO] [predict.hybrid_model] 模型已加载: models\hybrid\300433_20260520_114241
+2026-05-20 20:27:03,798 [INFO] [api.predict] 已加载保存的模型: models\hybrid\300433_20260520_114241
+2026-05-20 20:29:36,299 [INFO] [main] 系统关闭中...
+2026-05-20 20:29:36,299 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 20:29:36,658 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 20:29:36,658 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 20:29:36,658 [INFO] [main] 系统已关闭
+2026-05-20 20:29:43,074 [INFO] [main] ============================================================
+2026-05-20 20:29:43,074 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 20:29:43,074 [INFO] [main] ============================================================
+2026-05-20 20:29:43,076 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 20:29:43,076 [INFO] [main] 数据库初始化完成
+2026-05-20 20:29:43,076 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 20:29:43,479 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 20:29:43,668 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 20:29:43,726 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 20:29:43,726 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 20:29:43,726 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 20:29:43,726 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 20:29:43,726 [INFO] [main] ============================================================
+2026-05-20 20:29:43,726 [INFO] [main] 系统启动完成!
+2026-05-20 20:29:43,726 [INFO] [main] ============================================================
+2026-05-20 20:58:00,672 [INFO] [main] 系统关闭中...
+2026-05-20 20:58:00,673 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 20:58:19,921 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 20:58:19,921 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 20:58:19,922 [INFO] [main] 系统已关闭
+2026-05-20 20:58:23,893 [INFO] [main] ============================================================
+2026-05-20 20:58:23,893 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 20:58:23,893 [INFO] [main] ============================================================
+2026-05-20 20:58:23,895 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 20:58:23,895 [INFO] [main] 数据库初始化完成
+2026-05-20 20:58:23,895 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 20:58:24,188 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 20:58:24,329 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 20:58:24,366 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 20:58:24,366 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 20:58:24,366 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 20:58:24,366 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 20:58:24,366 [INFO] [main] ============================================================
+2026-05-20 20:58:24,366 [INFO] [main] 系统启动完成!
+2026-05-20 20:58:24,366 [INFO] [main] ============================================================
+2026-05-20 20:58:30,419 [INFO] [main] ============================================================
+2026-05-20 20:58:30,419 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 20:58:30,419 [INFO] [main] ============================================================
+2026-05-20 20:58:30,424 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 20:58:30,425 [INFO] [main] 数据库初始化完成
+2026-05-20 20:58:30,425 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 20:58:30,731 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 20:58:31,199 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 20:58:31,232 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 20:58:31,233 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 20:58:31,233 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 20:58:31,233 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 20:58:31,233 [INFO] [main] ============================================================
+2026-05-20 20:58:31,233 [INFO] [main] 系统启动完成!
+2026-05-20 20:58:31,233 [INFO] [main] ============================================================
+2026-05-20 20:58:54,634 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [600000]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 20:58:54,692 [INFO] [adapters.data_source_manager] 从 baostock 获取 600000 日线数据成功 (8 条)
+2026-05-20 20:58:54,735 [INFO] [api.predict] 回填 600000 实际价格: 8.94
+2026-05-20 20:58:55,237 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [300433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 20:58:55,342 [INFO] [adapters.data_source_manager] 从 baostock 获取 300433 日线数据成功 (8 条)
+2026-05-20 20:58:55,356 [INFO] [api.predict] 回填 300433 实际价格: 36.31
+2026-05-20 20:58:55,387 [INFO] [api.predict] 已回填记录 id=5: 实际价格=36.31, 准确率=0.0%
+2026-05-20 20:58:55,403 [INFO] [api.predict] 已回填记录 id=4: 实际价格=36.31, 准确率=0.0%
+2026-05-20 20:58:55,421 [INFO] [api.predict] 已回填记录 id=3: 实际价格=8.94, 准确率=0.0%
+2026-05-20 20:58:55,438 [INFO] [api.predict] 已回填记录 id=2: 实际价格=8.94, 准确率=0.0%
+2026-05-20 20:58:55,452 [INFO] [api.predict] 已回填记录 id=1: 实际价格=8.94, 准确率=0.0%
+2026-05-20 21:03:06,607 [INFO] [main] 系统关闭中...
+2026-05-20 21:03:06,608 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 21:03:25,815 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 21:03:25,815 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 21:03:25,816 [INFO] [main] 系统已关闭
+2026-05-20 21:03:30,630 [INFO] [main] ============================================================
+2026-05-20 21:03:30,630 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 21:03:30,630 [INFO] [main] ============================================================
+2026-05-20 21:03:30,631 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 21:03:30,631 [INFO] [main] 数据库初始化完成
+2026-05-20 21:03:30,632 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 21:03:30,945 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 21:03:31,198 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 21:03:31,235 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 21:03:31,235 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 21:03:31,235 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 21:03:31,235 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 21:03:31,235 [INFO] [main] ============================================================
+2026-05-20 21:03:31,236 [INFO] [main] 系统启动完成!
+2026-05-20 21:03:31,236 [INFO] [main] ============================================================
+2026-05-20 21:08:26,788 [INFO] [main] 系统关闭中...
+2026-05-20 21:08:26,788 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 21:08:46,035 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 21:08:46,035 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 21:08:46,036 [INFO] [main] 系统已关闭
+2026-05-20 21:08:50,928 [INFO] [main] ============================================================
+2026-05-20 21:08:50,928 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 21:08:50,928 [INFO] [main] ============================================================
+2026-05-20 21:08:50,930 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 21:08:50,930 [INFO] [main] 数据库初始化完成
+2026-05-20 21:08:50,930 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 21:08:51,259 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 21:08:52,413 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 21:08:52,450 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 21:08:52,450 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 21:08:52,450 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 21:08:52,450 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 21:08:52,451 [INFO] [main] ============================================================
+2026-05-20 21:08:52,451 [INFO] [main] 系统启动完成!
+2026-05-20 21:08:52,451 [INFO] [main] ============================================================
+2026-05-20 21:10:35,878 [INFO] [main] 系统关闭中...
+2026-05-20 21:10:35,879 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 21:10:35,937 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 21:10:35,937 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 21:10:35,937 [INFO] [main] 系统已关闭
+2026-05-20 21:10:40,724 [INFO] [main] ============================================================
+2026-05-20 21:10:40,724 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 21:10:40,724 [INFO] [main] ============================================================
+2026-05-20 21:10:40,726 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 21:10:40,726 [INFO] [main] 数据库初始化完成
+2026-05-20 21:10:40,726 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 21:10:41,082 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 21:10:41,208 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 21:10:41,244 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 21:10:41,244 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 21:10:41,244 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 21:10:41,244 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 21:10:41,244 [INFO] [main] ============================================================
+2026-05-20 21:10:41,244 [INFO] [main] 系统启动完成!
+2026-05-20 21:10:41,244 [INFO] [main] ============================================================
+2026-05-20 21:10:46,383 [INFO] [main] ============================================================
+2026-05-20 21:10:46,383 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 21:10:46,383 [INFO] [main] ============================================================
+2026-05-20 21:10:46,386 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 21:10:46,386 [INFO] [main] 数据库初始化完成
+2026-05-20 21:10:46,387 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 21:10:46,788 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 21:10:48,128 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 21:10:48,163 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 21:10:48,163 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 21:10:48,164 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 21:10:48,164 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 21:10:48,164 [INFO] [main] ============================================================
+2026-05-20 21:10:48,164 [INFO] [main] 系统启动完成!
+2026-05-20 21:10:48,164 [INFO] [main] ============================================================
+2026-05-20 21:12:12,356 [INFO] [main] 系统关闭中...
+2026-05-20 21:12:12,356 [INFO] [adapters.akshare_adapter] AKShare 数据源已断开
+2026-05-20 21:12:12,901 [INFO] [adapters.baostock_adapter] Baostock 数据源已断开
+2026-05-20 21:12:12,902 [INFO] [adapters.tushare_adapter] Tushare 数据源已断开
+2026-05-20 21:12:12,902 [INFO] [main] 系统已关闭
+2026-05-20 21:12:16,966 [INFO] [main] ============================================================
+2026-05-20 21:12:16,967 [INFO] [main] 股票量化分析与预测系统 V3.0 启动中...
+2026-05-20 21:12:16,967 [INFO] [main] ============================================================
+2026-05-20 21:12:16,968 [INFO] [models.database_manager] 数据库表创建完成
+2026-05-20 21:12:16,968 [INFO] [main] 数据库初始化完成
+2026-05-20 21:12:16,969 [INFO] [adapters.data_source_manager] 已初始化 3 个数据源: ['akshare', 'baostock', 'tushare']
+2026-05-20 21:12:17,276 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 21:12:17,369 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 21:12:17,399 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 21:12:17,399 [INFO] [main] 数据源 akshare: ✓
+2026-05-20 21:12:17,399 [INFO] [main] 数据源 baostock: ✓
+2026-05-20 21:12:17,399 [INFO] [main] 数据源 tushare: ✓
+2026-05-20 21:12:17,400 [INFO] [main] ============================================================
+2026-05-20 21:12:17,400 [INFO] [main] 系统启动完成!
+2026-05-20 21:12:17,400 [INFO] [main] ============================================================
+2026-05-20 21:13:24,645 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [600000]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 21:13:24,887 [INFO] [adapters.data_source_manager] 从 baostock 获取 600000 日线数据成功 (197 条)
+2026-05-20 21:15:09,816 [INFO] [api.predict] 混合模型预测: 300433, 周期: 2025-05-20 至 2026-05-20
+2026-05-20 21:15:10,362 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [300433]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 21:15:11,429 [INFO] [adapters.data_source_manager] 从 baostock 获取 300433 日线数据成功 (243 条)
+2026-05-20 21:15:11,719 [INFO] [predict.hybrid_model] 模型已加载: models\hybrid\300433_20260520_114241
+2026-05-20 21:15:11,721 [INFO] [api.predict] 已加载保存的模型: models\hybrid\300433_20260520_114241
+2026-05-20 21:34:11,667 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 21:34:11,670 [INFO] [adapters.akshare_adapter] AKShare 数据源连接成功
+2026-05-20 21:34:11,834 [INFO] [adapters.baostock_adapter] Baostock 数据源连接成功
+2026-05-20 21:34:11,834 [INFO] [adapters.tushare_adapter] Tushare 数据源连接成功
+2026-05-20 21:34:38,588 [INFO] [adapters.akshare_adapter] 获取到 5519 只股票
+2026-05-20 21:34:38,589 [INFO] [adapters.data_source_manager] 从 akshare 获取股票列表成功
+2026-05-20 21:35:14,127 [ERROR] [adapters.akshare_adapter] 获取实时行情失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 21:35:14,419 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000001]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 21:35:14,513 [INFO] [adapters.data_source_manager] 从 baostock 获取 000001 日线数据成功 (96 条)
+2026-05-20 21:35:14,841 [ERROR] [adapters.akshare_adapter] 获取日线数据失败 [000001]: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-05-20 21:35:15,388 [INFO] [adapters.data_source_manager] 从 baostock 获取 000001 日线数据成功 (58 条)

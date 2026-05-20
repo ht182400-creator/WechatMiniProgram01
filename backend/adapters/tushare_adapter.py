@@ -83,8 +83,10 @@ class TushareAdapter(BaseDataAdapter):
         """获取日线数据"""
         try:
             code = self.normalize_code(code)
-            # Tushare格式: 600000.SH 或 000001.SZ
-            ts_code = f"{code}.SH" if code.startswith('6') else f"{code}.SZ"
+            # Tushare格式: 600000.SH / 000001.SZ / 920119.BJ
+            market = self.get_market(code)
+            market_suffix = {'sh': '.SH', 'sz': '.SZ', 'bj': '.BJ'}
+            ts_code = f"{code}{market_suffix[market]}"
             
             # adjust: qfq=前复权, hfq=后复权
             df = self.api.pro_bar(
@@ -115,7 +117,7 @@ class TushareAdapter(BaseDataAdapter):
             if not codes:
                 return pd.DataFrame()
             
-            codes_str = ','.join([f"{c}.SH" if c.startswith('6') else f"{c}.SZ" for c in codes])
+            codes_str = ','.join([f"{c}.SH" if c.startswith('6') else f"{c}.SZ" if c.startswith(('0', '3')) else f"{c}.BJ" for c in codes])
             df = ts.realtime_quote(ts_code=codes_str)
             
             if df is not None and not df.empty:

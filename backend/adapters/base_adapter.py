@@ -56,10 +56,27 @@ class BaseDataAdapter(ABC):
     
     def validate_code(self, code: str) -> bool:
         """验证股票代码格式"""
-        # A股格式: 600000, 000001, 300001
+        # A股格式: 600000, 000001, 300001, 920xxx(北交所)
         if len(code) == 6 and code.isdigit():
             return True
         return False
+
+    @staticmethod
+    def get_market(code: str) -> str:
+        """根据股票代码判断所属市场
+
+        Returns:
+            'sh' - 上交所(6开头), 'sz' - 深交所(0/3开头), 'bj' - 北交所(8/920开头)
+        """
+        code = code.strip()
+        if code.startswith('6'):
+            return 'sh'
+        elif code.startswith(('0', '3')):
+            return 'sz'
+        elif code.startswith(('8', '9')):
+            return 'bj'
+        # 兜底：无法识别的归为深交所
+        return 'sz'
     
     def normalize_code(self, code: str) -> str:
         """标准化股票代码"""

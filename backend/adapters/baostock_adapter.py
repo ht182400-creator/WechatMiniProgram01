@@ -79,8 +79,9 @@ class BaostockAdapter(BaseDataAdapter):
         """获取日线数据"""
         try:
             code = self.normalize_code(code)
-            # Baostock格式: sh.600000 或 sz.000001
-            bs_code = f"sh.{code}" if code.startswith('6') else f"sz.{code}"
+            # Baostock格式: sh.600000 / sz.000001 / bj.920119
+            market = self.get_market(code)
+            bs_code = f"{market}.{code}"
             
             # adjust: 2=前复权, 1=后复权, 0=不复权
             adjust_map = {"qfq": "2", "hfq": "1", "none": "0"}
