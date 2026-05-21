@@ -11,6 +11,8 @@ from functools import wraps
 import pandas as pd
 
 from adapters.base_adapter import BaseDataAdapter
+from adapters.tdx_local_adapter import TdxLocalAdapter
+from adapters.tdx_hq_adapter import TdxHQAdapter
 from adapters.akshare_adapter import AKShareAdapter
 from adapters.baostock_adapter import BaostockAdapter
 from adapters.tushare_adapter import TushareAdapter
@@ -30,22 +32,52 @@ class DataSourceManager:
     
     def _init_adapters(self):
         """初始化数据源适配器"""
-        # 按优先级排序
+        # 数据源分类：
+        #   实时行情: tdx_hq > tdx_local > akshare > baostock > tushare
+        #   历史K线:  tdx_local > akshare > baostock > tushare > tdx_hq
+        
+        # 1. 通达信行情服务器（mootdx，盘中实时数据最高优先级，延迟连接）
+        try:
+            self.adapters['tdx_hq'] = TdxHQAdapter()
+            logger.info("已注册通达信行情服务器适配器 (mootdx, 延迟连接)")
+        except Exception as e:
+            logger.warning(f"通达信行情服务器适配器注册失败: {e}")
+        
+        # 2. 通达信本地数据（本地文件，历史K线最高优先级）
+        try:
+            self.adapters['tdx_local'] = TdxLocalAdapter()
+            if self.adapters['tdx_local'].connect():
+                logger.info("已初始化通达信本地数据适配器")
+        except Exception as e:
+            logger.warning(f"通达信本地适配器初始化失败: {e}")
+        
+        # 3. AKShare（免费数据源）
         if settings.AKSHARE_ENABLE:
             self.adapters['akshare'] = AKShareAdapter()
         
+        # 4. Baostock（免费数据源）
         if settings.BAOSTOCK_ENABLE:
             self.adapters['baostock'] = BaostockAdapter()
         
+        # 5. Tushare（需要积分）
         if settings.TUSHARE_ENABLE:
             self.adapters['tushare'] = TushareAdapter()
         
         logger.info(f"已初始化 {len(self.adapters)} 个数据源: {list(self.adapters.keys())}")
     
     def connect_all(self) -> Dict[str, bool]:
-        """连接所有数据源"""
+        """
+        连接所有数据源（tdx_hq 除外，其使用延迟连接）
+
+        Returns:
+            {数据源名: 是否成功}
+        """
         results = {}
         for name, adapter in self.adapters.items():
+            # tdx_hq 使用延迟连接（首次请求行情时才连服务器）
+            if name == 'tdx_hq':
+                results[name] = True  # 标记为已就绪（延迟连接）
+                continue
             try:
                 results[name] = adapter.connect()
             except Exception as e:
@@ -96,8 +128,8 @@ class DataSourceManager:
             if cached_data is not None:
                 return cached_data
         
-        # 按优先级尝试各数据源
-        for name in ['akshare', 'baostock', 'tushare']:
+        # 按优先级尝试各数据源（本地文件优先）
+        for name in ['tdx_local', 'akshare', 'baostock', 'tushare']:
             if name in self.adapters:
                 try:
                     adapter = self.adapters[name]
@@ -106,7 +138,7 @@ class DataSourceManager:
                     
                     df = adapter.get_stock_list()
                     if not df.empty:
-                        logger.info(f"从 {name} 获取股票列表成功")
+                        logger.info(f"从 {name} 获取股票列表成功 ({len(df)} 只)")
                         if self.cache:
                             self.cache.set(cache_key, df)
                         return df
@@ -132,8 +164,8 @@ class DataSourceManager:
                 logger.debug(f"缓存命中: {cache_key}")
                 return cached_data
         
-        # 按优先级尝试各数据源
-        for name in ['akshare', 'baostock', 'tushare']:
+        # 按优先级尝试各数据源（本地文件优先）
+        for name in ['tdx_local', 'akshare', 'baostock', 'tushare']:
             if name in self.adapters:
                 try:
                     adapter = self.adapters[name]
@@ -152,20 +184,34 @@ class DataSourceManager:
         return pd.DataFrame()
     
     def get_realtime_quote(self, codes: List[str]) -> pd.DataFrame:
-        """获取实时行情（优先使用 AKShare）"""
+        """
+        获取实时行情（多数据源兜底）
+
+        优先级: tdx_hq(行情服务器,盘中实时) > tdx_local(本地文件) > akshare > baostock > tushare
+        """
         if not codes:
             return pd.DataFrame()
         
-        # 实时数据不使用缓存
-        if 'akshare' in self.adapters:
-            try:
-                adapter = self.adapters['akshare']
-                if not adapter.connected:
-                    adapter.connect()
-                return adapter.get_realtime_quote(codes)
-            except Exception as e:
-                logger.error(f"获取实时行情失败: {e}")
+        # 实时数据不使用缓存，按优先级尝试各数据源
+        # tdx_hq 优先：直连通达信行情服务器获取盘中实时五档数据
+        # tdx_local 兜底：非交易时间使用本地日K数据
+        for name in ['tdx_hq', 'tdx_local', 'akshare', 'baostock', 'tushare']:
+            if name in self.adapters:
+                try:
+                    adapter = self.adapters[name]
+                    if not adapter.connected:
+                        adapter.connect()
+                    
+                    df = adapter.get_realtime_quote(codes)
+                    if not df.empty:
+                        logger.info(f"从 {name} 获取实时行情成功 ({len(df)} 条)")
+                        return df
+                    else:
+                        logger.debug(f"从 {name} 获取实时行情为空 (codes: {codes[:3]}...)，尝试下一个数据源")
+                except Exception as e:
+                    logger.warning(f"从 {name} 获取实时行情失败，尝试下一个数据源: {e}")
         
+        logger.error(f"所有数据源均无法获取实时行情: {codes}")
         return pd.DataFrame()
     
     def is_healthy(self) -> bool:
