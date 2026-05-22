@@ -196,28 +196,84 @@ async def get_technical_indicators(
 async def get_chart_data(
     code: str = Query(..., description="股票代码"),
     chart_type: str = Query("daily", description="图表类型: daily/weekly/monthly"),
-    days: int = Query(120, description="数据天数")
+    days: int = Query(120, description="数据天数"),
+    adjust: str = Query("qfq", description="复权类型: qfq(前复权)/hfq(后复权)/none(不复权)")
 ) -> Dict[str, Any]:
-    """获取K线图表数据"""
+    """
+    获取K线图表数据
+
+    支持日线(daily)、周线(weekly)、月线(monthly)三种周期。
+    周/月线通过重采样日线数据生成。
+    支持前复权(qfq)、后复权(hfq)、不复权(none)。
+    """
     try:
         end_date = datetime.now().strftime("%Y-%m-%d")
-        start_date = (datetime.now() - timedelta(days=days + 30)).strftime("%Y-%m-%d")
-        
+        # 周/月线需要更多原始数据来重采样
+        multiplier = {'daily': 1, 'weekly': 7, 'monthly': 30}.get(chart_type, 1)
+        start_date = (datetime.now() - timedelta(days=days * multiplier + 60)).strftime("%Y-%m-%d")
+
         data_manager = get_data_source_manager()
-        df = data_manager.get_daily_data(code, start_date, end_date)
-        
+        df = data_manager.get_daily_data(code, start_date, end_date, adjust)
+
         if df.empty:
             return {"code": code, "chart_data": []}
-        
+
+        # ── 周/月线重采样（将日线聚合为周线/月线）──
+        if chart_type in ('weekly', 'monthly'):
+            # 确保 date 列为 datetime 类型
+            if 'date' in df.columns:
+                df['date'] = pd.to_datetime(df['date'])
+                df = df.set_index('date')
+
+            # 设置重采样频率
+            freq = 'W' if chart_type == 'weekly' else 'ME'
+
+            # OHLC 重采样：开盘取第一个，收盘取最后一个，高低取最值，成交量求和
+            ohlc_dict = {
+                'open': 'first',
+                'high': 'max',
+                'low': 'min',
+                'close': 'last',
+                'volume': 'sum'
+            }
+            # 兼容不同列名的情况
+            if 'amount' in df.columns:
+                ohlc_dict['amount'] = 'sum'
+
+            df = df.resample(freq).apply(ohlc_dict)
+
+            # 展平多级列名（resample + apply 多列时会创建 MultiIndex）
+            if isinstance(df.columns, pd.MultiIndex):
+                df.columns = df.columns.get_level_values(0)
+
+            # 移除空行（非交易日产生的 NaN）
+            df = df.dropna(subset=['open', 'close'], how='all')
+            df = df.reset_index()
+            if 'date' in df.columns:
+                df['date'] = pd.to_datetime(df['date'])
+
         # 计算技术指标
         factors = TechnicalFactors(df)
         df_with_indicators = factors.add_all_indicators()
-        
+
+        # 根据请求数量截取（周/月线条数更少）
+        limit = days * (3 if chart_type != 'daily' else 1)
+        chart_df = df_with_indicators.tail(limit)
+
         # 准备ECharts数据格式
         chart_data = []
-        for _, row in df_with_indicators.tail(days).iterrows():
+        for _, row in chart_df.iterrows():
+            date_val = row.get('date', '')
+            # 格式化日期：周线显示周一日期，月线显示当月1号
+            if hasattr(date_val, 'date'):
+                date_str = str(date_val.date())
+            elif hasattr(date_val, 'strftime'):
+                date_str = date_val.strftime('%Y-%m-%d')
+            else:
+                date_str = str(date_val)
+
             chart_data.append({
-                "date": str(row['date'].date()) if hasattr(row['date'], 'date') else str(row['date']),
+                "date": date_str,
                 "open": float(row['open']),
                 "close": float(row['close']),
                 "high": float(row['high']),
@@ -247,7 +303,7 @@ async def get_chart_data(
                 # ATR 指标
                 "atr": float(row['atr_14']) if pd.notna(row.get('atr_14')) else None,
             })
-        
+
         return {
             "code": code,
             "chart_type": chart_type,
@@ -285,15 +341,12 @@ async def get_stock_depth(
         except Exception:
             pass
         
-        # 如果不支持十档，返回模拟的五档数据（生产环境应使用真实数据源）
-        from adapters.realtime_adapter import RealtimeAdapter
-        adapter = RealtimeAdapter()
-        
+        # 十档数据不可用时，通过实时行情获取当前价并生成模拟五档
         try:
-            quote = adapter.get_quote(code)
-            if quote:
-                # 生成五档盘口数据（生产环境应使用真实十档数据）
-                current_price = float(quote.get('close', 0))
+            quote_df = data_manager.get_realtime_quote([code])
+            if not quote_df.empty:
+                row = quote_df.iloc[0]
+                current_price = float(row.get('price', row.get('close', 0)))
                 bid_price = current_price - 0.01
                 ask_price = current_price + 0.01
                 
@@ -307,8 +360,8 @@ async def get_stock_depth(
                     "bids": bids,
                     "asks": asks,
                 }
-        except Exception:
-            pass
+        except Exception as e:
+            logger.warning(f"盘口数据fallback失败: {e}")
         
         return {
             "code": code,
@@ -337,7 +390,9 @@ async def get_minute_data(
         period: K线周期（1/5/15/30/60分钟）
     """
     try:
-        period = int(period)
+        # 兼容前端传入 "1min" / "5min" 等格式
+        period_str = str(period).replace('min', '').replace(' ', '').strip()
+        period = int(period_str)
         if period not in [1, 5, 15, 30, 60]:
             raise HTTPException(status_code=400, detail="周期仅支持 1/5/15/30/60 分钟")
         
@@ -381,6 +436,96 @@ async def get_minute_data(
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"获取分钟数据失败: {str(e)}")
+
+
+@router.get("/intraday", summary="获取分时明细数据（回车查看当日K线）")
+async def get_intraday_data(
+    code: str = Query(..., description="股票代码"),
+    date: str = Query("", description="日期 YYYY-MM-DD，默认当天")
+) -> Dict[str, Any]:
+    """
+    获取股票分时明细数据，用于回车弹窗展示
+    
+    返回：分钟K线列表 + 分笔成交列表 + 当日统计
+    """
+    from datetime import date as _date, datetime as _dt, timedelta as _td
+    try:
+        data_manager = get_data_source_manager()
+        target_date = date or _date.today().strftime('%Y-%m-%d')
+        
+        # ── 获取1分钟K线 ──
+        minute_list = []
+        minute_df = None
+        
+        # 尝试各适配器获取分钟数据
+        try:
+            minute_df = data_manager.get_minute_data(code, period=1)
+            if minute_df is not None and not minute_df.empty:
+                # 如果指定了日期且不是今天，尝试过滤（本地数据源支持历史日期）
+                if target_date != _date.today().strftime('%Y-%m-%d'):
+                    if 'datetime' in minute_df.columns:
+                        minute_df = minute_df[minute_df['datetime'].astype(str).str.startswith(target_date)]
+                    elif 'date' in minute_df.columns:
+                        minute_df = minute_df[minute_df['date'].astype(str).str.startswith(target_date)]
+                
+                for _, row in minute_df.iterrows():
+                    minute_list.append({
+                        "time": str(row.get('time', row.get('datetime', ''))),
+                        "price": float(row.get('close', row.get('price', 0))),
+                        "open": float(row.get('open', 0)),
+                        "high": float(row.get('high', 0)),
+                        "low": float(row.get('low', 0)),
+                        "volume": float(row.get('volume', 0)),
+                        "amount": float(row.get('amount', 0)),
+                    })
+        except Exception as e:
+            logger.debug(f"获取 {code} 分钟数据失败: {e}")
+        
+        # ── 获取分笔成交（最近100条）──
+        transaction_list = []
+        try:
+            tx_df = data_manager.get_transaction_data(code, limit=100)
+            if tx_df is not None and not tx_df.empty:
+                for _, row in tx_df.iterrows():
+                    transaction_list.append({
+                        "time": str(row.get('time', '')),
+                        "price": float(row.get('price', 0)),
+                        "volume": float(row.get('volume', 0)),
+                        "direction": str(row.get('direction', 'N')),
+                    })
+        except Exception as e:
+            logger.debug(f"获取 {code} 分笔数据失败: {e}")
+        
+        # ── 计算分时统计 ──
+        stats = {}
+        if minute_list:
+            prices = [m["price"] for m in minute_list]
+            volumes = [m["volume"] for m in minute_list]
+            open_price = minute_list[0]["open"]
+            
+            stats = {
+                "open": round(open_price, 2),
+                "close": round(prices[-1], 2),
+                "high": round(max(m["high"] for m in minute_list), 2) if minute_list else 0,
+                "low": round(min(m["low"] for m in minute_list), 2) if minute_list else 0,
+                "total_volume": sum(volumes),
+                "change": round(prices[-1] - open_price, 2) if open_price else 0,
+                "pct_change": round((prices[-1] - open_price) / open_price * 100, 2) if open_price and open_price > 0 else 0,
+            }
+        
+        return {
+            "code": code,
+            "date": target_date,
+            "stats": stats,
+            "minutes": minute_list,
+            "transactions": transaction_list,
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"获取分时数据失败: {e}")
+        raise HTTPException(status_code=500, detail=f"获取分时数据失败: {str(e)}")
 
 
 @router.get("/transaction", summary="获取分笔成交数据")

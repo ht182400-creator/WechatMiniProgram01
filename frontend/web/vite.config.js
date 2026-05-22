@@ -9,6 +9,10 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src')
     }
   },
+  // 优化CommonJS依赖预构建（hqchart依赖babel-runtime/jquery）
+  optimizeDeps: {
+    include: ['hqchart', 'jquery']
+  },
   server: {
     port: 5173,
     proxy: {

@@ -1,3 +1,7 @@
+/** ★ Polyfill: Vite 现代浏览器优先策略可能导致 HQChart 依赖的核心 API 缺失 */
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
+
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import ElementPlus from 'element-plus'

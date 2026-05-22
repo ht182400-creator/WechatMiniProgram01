@@ -9,13 +9,17 @@ import logging
 from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.requests import Request
+from starlette.responses import Response
 from fastapi.websockets import WebSocket
 from contextlib import asynccontextmanager
 
 from config import settings, init_directories
 from models import db_manager
 from adapters import get_data_source_manager
-from api import stock, backtest, predict, system
+from api import stock, backtest, predict, system, financial, fundflow
 from api.websocket_manager import websocket_endpoint, get_realtime_service
 
 # 初始化目录
@@ -115,9 +119,27 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+class NoCacheMiddleware(BaseHTTPMiddleware):
+    """禁用 API 响应缓存，确保浏览器始终获取最新数据"""
+
+    async def dispatch(self, request: Request, call_next):
+        response: Response = await call_next(request)
+        # 对所有 API 响应禁用缓存
+        if request.url.path.startswith('/api/'):
+            response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+            response.headers['Pragma'] = 'no-cache'
+            response.headers['Expires'] = '0'
+        return response
+
+
+app.add_middleware(NoCacheMiddleware)
+
 # 注册路由
 app.include_router(system.router, prefix="/api/system", tags=["系统管理"])
 app.include_router(stock.router, prefix="/api/stock", tags=["股票数据"])
+app.include_router(financial.router, prefix="/api/financial", tags=["财务数据"])
+app.include_router(fundflow.router, prefix="/api/fundflow", tags=["资金流向"])
 app.include_router(backtest.router, prefix="/api/backtest", tags=["策略回测"])
 app.include_router(predict.router, prefix="/api/predict", tags=["趋势预测"])
 
@@ -164,7 +186,29 @@ async def health_check():
 
 
 if __name__ == "__main__":
+    import logging as _logging
     import uvicorn
+
+    # ── 静默 Windows IOCP 客户端断连产生的 WinError 64 噪声日志 ──
+    #   ERROR_NETNAME_DELETED (64): "指定的网络名不再可用。"
+    #   浏览器/WebSocket 客户端关闭连接时，Windows ProactorEventLoop 会将其记录为
+    #   "Task exception was never retrieved" 和 "Accept failed on a socket"。
+    #   这些日志对排查问题无帮助，通过 logging 过滤器在全局层面静默。
+    class WinError64Filter(_logging.Filter):
+        def filter(self, record):
+            msg = record.getMessage()
+            # 过滤 WinError 64 相关的噪声日志（asyncio + uvicorn accept）
+            if '指定的网络名不再可用' in msg:
+                return False
+            if 'WinError 64' in msg:
+                return False
+            return True
+
+    # 挂载到 asyncio logger（覆盖子进程 + reload 场景）
+    _logging.getLogger('asyncio').addFilter(WinError64Filter())
+    # uvicorn.error 也可能输出 Accept failed
+    _logging.getLogger('uvicorn.error').addFilter(WinError64Filter())
+
     uvicorn.run(
         "main:app",
         host=settings.API_HOST,

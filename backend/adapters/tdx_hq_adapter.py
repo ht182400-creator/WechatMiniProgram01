@@ -7,6 +7,7 @@
 """
 
 import logging
+import re
 from datetime import datetime
 from typing import Optional, List, Dict, Any
 import pandas as pd
@@ -42,24 +43,25 @@ class TdxHQAdapter(BaseDataAdapter):
 
     name = "tdx_hq"
 
-    # mootdx K线周期映射
-    # frequency参数: 0=1m, 1=5m, 2=15m, 3=30m, 4=60m, 5=日, 6=周, 7=月, 8=季, 9=年
+    # mootdx K线周期映射（基于 FREQUENCY 列表索引）
+    # FREQUENCY = ['5m', '15m', '30m', '1h', 'day', 'week', 'mon', '1m', '1m', 'day', '3mon', 'year']
+    #   index:        0     1      2      3     4      5       6     7     8      9     10     11
     FREQ_MAP = {
-        1: 0,    # 1分钟
-        5: 1,    # 5分钟
-        15: 2,   # 15分钟
-        30: 3,   # 30分钟
-        60: 4,   # 60分钟
-        'D': 5,  # 日线
-        'W': 6,  # 周线
-        'M': 7,  # 月线
+        1: 7,    # 1分钟 → FREQUENCY[7] = '1m'
+        5: 0,    # 5分钟 → FREQUENCY[0] = '5m'
+        15: 1,   # 15分钟 → FREQUENCY[1] = '15m'
+        30: 2,   # 30分钟 → FREQUENCY[2] = '30m'
+        60: 3,   # 60分钟 → FREQUENCY[3] = '1h'
+        'D': 4,  # 日线 → FREQUENCY[4] = 'day'
+        'W': 5,  # 周线 → FREQUENCY[5] = 'week'
+        'M': 6,  # 月线 → FREQUENCY[6] = 'mon'
     }
 
     # mootdx quotes() 返回字段到标准字段的映射
     # 格式: 标准字段名 → [mootdx 可能的列名]
     QUOTE_FIELD_MAP = {
         'code': ['code'],
-        'name': ['name'],
+        'name': ['name'],  # mootdx quotes() 不返回名称，active1 是行业分类码非名称
         'price': ['price', 'close'],
         'last_close': ['last_close', 'pre_close', 'lastclose'],
         'open': ['open'],
@@ -249,9 +251,14 @@ class TdxHQAdapter(BaseDataAdapter):
         if 'vol' in result_df.columns and 'volume' not in result_df.columns:
             result_df['volume'] = result_df['vol']
 
-        # 映射涨跌幅: reversed_bytes9 → pct_change (mootdx 实际字段)
-        if 'reversed_bytes9' in result_df.columns and 'pct_change' not in result_df.columns:
-            result_df['pct_change'] = pd.to_numeric(result_df['reversed_bytes9'], errors='coerce')
+        # ── 计算 pct_change: (price - last_close) / last_close * 100 ──
+        # 废弃 reversed_bytes9（数值与实际涨跌幅不符），改用计算值
+        if 'price' in result_df.columns and 'last_close' in result_df.columns:
+            # 避免除零
+            denominator = result_df['last_close'].replace(0, pd.NA)
+            result_df['pct_change'] = ((result_df['price'] - result_df['last_close']) / denominator) * 100
+            result_df['pct_change'] = result_df['pct_change'].round(2)
+            logger.debug(f"已计算 pct_change (来源: price-last_close 计算值)")
 
         # 计算涨跌额: price - last_close
         if 'price' in result_df.columns and 'last_close' in result_df.columns:
@@ -485,28 +492,117 @@ class TdxHQAdapter(BaseDataAdapter):
             codes: 指数代码，如 ['000001', '399001']  (上证/深成)
 
         Returns:
-            DataFrame 含指数实时数据
+            DataFrame 含指数实时数据，字段与 get_realtime_quote 保持一致
+            （code, name, price, open, high, low, volume, amount, change, pct_change）
         """
         if not codes or not self._ensure_client():
             return pd.DataFrame()
 
         try:
             results = []
-            for code in codes:
+            # 记录输入代码与返回行的对应关系（mootdx index() 不返回 code 字段）
+            code_order = list(codes)
+
+            for idx, code in enumerate(codes):
                 try:
                     market = 1 if code.startswith(('0', '6', '9')) else 0
                     df = self._client.index(symbol=code, market=market)
                     if df is not None and not df.empty:
+                        # 标记每行对应的原始代码
+                        df['_input_code'] = code
                         results.append(df)
                 except Exception as e:
                     logger.debug(f"获取指数 {code} 失败: {e}")
 
-            if results:
-                result_df = pd.concat(results, ignore_index=True)
-                logger.info(f"从 tdx_hq 获取 {len(result_df)} 条指数行情")
-                return result_df
+            if not results:
+                return pd.DataFrame()
 
-            return pd.DataFrame()
+            result_df = pd.concat(results, ignore_index=True)
+
+            # ── 字段标准化 ──
+            # mootdx index() 返回列: [open, close, high, low, vol, amount, year, month, day,
+            #   hour, minute, datetime, up_count, down_count, volume]
+            # 注意：无 price/code/name/last_close/pct_change 字段！
+
+            import numpy as np
+
+            # ── 还原 code：mootdx 不返回，用 _input_code + 市场前缀 ──
+            # 加前缀避免与股票代码碰撞（如 000001=上证指数 vs 000001=平安银行）
+            def _add_market_prefix(c):
+                if c.startswith(('0', '6', '9')):
+                    return f'sh{c}'
+                return f'sz{c}'
+
+            if '_input_code' in result_df.columns:
+                result_df['code'] = result_df['_input_code'].apply(_add_market_prefix)
+                result_df.drop(columns=['_input_code'], inplace=True)
+            elif 'code' not in result_df.columns:
+                # 兜底：按顺序分配
+                result_df['code'] = [_add_market_prefix(c) for c in code_order[:len(result_df)]]
+
+            # 指数名称映射表
+            INDEX_NAMES = {
+                '000001': '上证指数',
+                '399001': '深证成指',
+                '399006': '创业板指',
+                '000300': '沪深300',
+                '000016': '上证50',
+                '000905': '中证500',
+                '000010': '上证180',
+                '000009': '沪深300全收益',
+                '000006': '地产等权',
+                '399005': '中小板指',
+                '399301': '沪深300相对回报',
+                '399306': '创业板综',
+                '000688': '科创50',
+            }
+            # 设置 name（mootdx index() 无 name 字段）
+            if 'name' not in result_df.columns:
+                # 从带前缀的 code 提取纯代码查表
+                result_df['name'] = result_df['code'].apply(
+                    lambda x: INDEX_NAMES.get(re.sub(r'^(sh|sz)', '', x), x)
+                )
+
+            # 列名映射：mootdx index() 实际列名 → 标准字段名
+            col_mapping = {
+                'price': ['close'],          # ★ index() 用 close 表示当前点位
+                'last_close': ['last_close', 'pre_close'],
+                'open': ['open'],
+                'high': ['high'],
+                'low': ['low'],
+                'volume': ['volume', 'vol'],
+                'amount': ['amount'],
+                'change': ['change'],
+                'pct_change': ['pct_chg', 'change_pct', 'pctchange'],
+            }
+
+            for std_name, source_names in col_mapping.items():
+                if std_name not in result_df.columns:
+                    for src in source_names:
+                        if src in result_df.columns:
+                            result_df[std_name] = result_df[src]
+                            break
+
+            # 数值清洗
+            numeric_cols = ['price', 'last_close', 'open', 'high', 'low',
+                            'volume', 'amount', 'change', 'pct_change']
+            for col in numeric_cols:
+                if col in result_df.columns:
+                    result_df[col] = pd.to_numeric(result_df[col], errors='coerce')
+
+            # 兜底计算 change 和 pct_change
+            if 'change' not in result_df.columns and 'price' in result_df.columns and 'last_close' in result_df.columns:
+                result_df['change'] = result_df['price'] - result_df['last_close']
+
+            # 计算 pct_change: (price - last_close) / last_close * 100
+            if ('pct_change' not in result_df.columns or result_df['pct_change'].isna().all()) \
+                    and 'price' in result_df.columns and 'last_close' in result_df.columns:
+                denominator = result_df['last_close'].replace(0, pd.NA)
+                result_df['pct_change'] = ((result_df['price'] - result_df['last_close']) / denominator) * 100
+                result_df['pct_change'] = result_df['pct_change'].round(2)
+
+            logger.info(f"从 tdx_hq 获取 {len(result_df)} 条指数行情 (已标准化)")
+            return result_df
 
         except Exception as e:
             logger.warning(f"从 tdx_hq 获取指数行情失败: {e}")

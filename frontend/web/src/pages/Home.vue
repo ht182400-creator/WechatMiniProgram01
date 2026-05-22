@@ -1,82 +1,23 @@
 <template>
   <div class="terminal-container">
-    <!-- 顶部导航栏 -->
-    <header class="terminal-header">
-      <div class="header-left">
-        <div class="logo">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <rect width="28" height="28" rx="6" fill="url(#logoGrad)"/>
-            <path d="M7 20L10 13L13 17L16 10L21 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <defs>
-              <linearGradient id="logoGrad" x1="0" y1="0" x2="28" y2="28">
-                <stop stop-color="#3B82F6"/>
-                <stop offset="1" stop-color="#1D4ED8"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          <span class="logo-text">QuantTerminal</span>
-        </div>
-        
-        <!-- 搜索框 -->
+    <!-- 顶部导航栏（共享组件） -->
+    <AppHeader>
+      <template #search>
         <div class="search-box">
-          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/>
-            <path d="M21 21l-4.35-4.35"/>
+          <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
           </svg>
-          <input 
-            type="text" 
-            v-model="searchKeyword" 
-            placeholder="输入股票代码或名称搜索..."
-            @keyup.enter="handleSearch"
-          />
+          <input type="text" v-model="searchKeyword" placeholder="输入股票代码或名称搜索..."
+            @keyup.enter="handleSearch" class="search-input" />
         </div>
-      </div>
-
-      <nav class="header-nav">
-        <a href="#" class="nav-item active">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-            <polyline points="9,22 9,12 15,12 15,22"/>
-          </svg>
-          <span>首页</span>
-        </a>
-        <a href="#" class="nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
-          </svg>
-          <span>行情</span>
-        </a>
-        <a href="#" class="nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-            <line x1="3" y1="9" x2="21" y2="9"/>
-            <line x1="9" y1="21" x2="9" y2="9"/>
-          </svg>
-          <span>财务</span>
-        </a>
-        <a href="#" class="nav-item" @click.prevent="goToBacktest">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="20" x2="18" y2="10"/>
-            <line x1="12" y1="20" x2="12" y2="4"/>
-            <line x1="6" y1="20" x2="6" y2="14"/>
-          </svg>
-          <span>回测</span>
-        </a>
-      </nav>
-
-      <div class="header-right">
-        <button class="header-btn" title="刷新数据" @click="refreshData">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="23,4 23,10 17,10"/>
-            <polyline points="1,20 1,14 7,14"/>
-            <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
-          </svg>
+      </template>
+      <template #actions>
+        <button class="btn-icon" title="刷新数据" @click="refreshData">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23,4 23,10 17,10"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10"/></svg>
         </button>
-        <div class="time-display">
-          <span class="time-text font-mono">{{ currentTime }}</span>
-        </div>
-      </div>
-    </header>
+      </template>
+    </AppHeader>
 
     <!-- 主内容区 -->
     <main class="terminal-main">
@@ -115,13 +56,19 @@
             </div>
             <div class="stock-price-info">
               <span class="current-price font-mono" :class="getPriceClass(stock.change)">
-                {{ formatPrice(stock.price) }}
+                {{ stock.price ? formatPrice(stock.price) : '--' }}
               </span>
               <div class="price-change font-mono" :class="getPriceClass(stock.change)">
-                <span class="change-value">{{ stock.change >= 0 ? '+' : '' }}{{ formatPrice(stock.change) }}</span>
-                <span class="change-percent">{{ stock.change >= 0 ? '+' : '' }}{{ formatPercent(stock.pct_change) }}%</span>
+                <span class="change-value">{{ stock.change ? (stock.change >= 0 ? '+' : '') + formatPrice(stock.change) : '--' }}</span>
+                <span class="change-percent">{{ stock.pct_change ? (stock.pct_change >= 0 ? '+' : '') + formatPercent(stock.pct_change) + '%' : '--' }}</span>
               </div>
             </div>
+            <!-- 删除按钮 -->
+            <button class="remove-btn" @click.stop="removeFromWatchlist(stock.code)" title="移除自选">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
             <div class="mini-chart" ref="'chart-' + stock.code">
               <svg viewBox="0 0 60 30" class="sparkline">
                 <polyline 
@@ -252,8 +199,13 @@
                 <span class="hot-name">{{ stock.name }}</span>
                 <span class="hot-code font-mono">{{ stock.code }}</span>
               </div>
-              <div class="hot-price font-mono" :class="getPriceClass(stock.change)">
-                {{ formatPrice(stock.price) }}
+              <div class="hot-right">
+                <div class="hot-price font-mono" :class="getPriceClass(stock.change)">
+                  {{ formatPrice(stock.price) }}
+                </div>
+                <div class="hot-change font-mono" :class="stock.pct_change > 0 ? 'price-up' : stock.pct_change < 0 ? 'price-down' : ''">
+                  {{ stock.pct_change != null ? (stock.pct_change > 0 ? '+' : '') + formatPercent(stock.pct_change) + '%' : '--' }}
+                </div>
               </div>
             </div>
           </div>
@@ -272,7 +224,10 @@
               @click="selectStock(stock)"
             >
               <span class="rank-name">{{ stock.name }}</span>
-              <span class="rank-change font-mono price-up">+{{ formatPercent(stock.pct_change) }}%</span>
+              <span class="rank-price font-mono">{{ stock.price != null ? formatPrice(stock.price) : '--' }}</span>
+              <span class="rank-change font-mono" :class="stock.pct_change > 0 ? 'price-up' : stock.pct_change < 0 ? 'price-down' : ''">
+                {{ stock.pct_change != null ? (stock.pct_change > 0 ? '+' : '') + formatPercent(stock.pct_change) + '%' : '--' }}
+              </span>
             </div>
           </div>
         </div>
@@ -296,7 +251,7 @@
           type="text" 
           v-model="addKeyword" 
           placeholder="输入股票代码或名称..."
-          @input="searchStocks"
+          @input="debouncedSearch"
         />
       </div>
       <div class="search-results" v-if="searchResults.length">
@@ -304,30 +259,25 @@
           v-for="stock in searchResults" 
           :key="stock.code"
           class="search-result-item"
-          @click="addToWatchlist(stock.code)"
+          @click="addToWatchlist(stock)"
         >
           <span class="result-name">{{ stock.name }}</span>
           <span class="result-code font-mono">{{ stock.code }}</span>
         </div>
       </div>
+      <!-- 搜索中或无结果时的提示 -->
+      <div v-else-if="addKeyword.trim().length >= 1" class="search-empty">
+        {{ '未找到相关股票，请尝试其他关键词' }}
+      </div>
     </el-dialog>
 
-    <!-- 底部状态栏 -->
-    <footer class="terminal-footer">
-      <div class="footer-left">
-        <span class="status-item">
-          <span class="status-dot" :class="wsStatusClass"></span>
-          WebSocket: {{ wsStatusText }}
-        </span>
-        <span class="status-item">行情延迟: &lt;1s</span>
-      </div>
-      <div class="footer-center">
-        <span class="disclaimer">本系统仅供学习研究使用，预测结果仅供参考，不构成投资建议</span>
-      </div>
-      <div class="footer-right">
-        <span class="version">v4.0.0</span>
-      </div>
-    </footer>
+
+    <!-- 分时明细弹窗（共享组件，回车键打开） -->
+    <IntradayDialog v-model="showIntradayDialog" :code="currentStock" :name="selectedStock?.name" :date="intradayTargetDate" />
+
+
+    <!-- 底部状态栏（共享组件） -->
+    <AppFooter :wsStatus="wsStatusClass" :wsText="wsStatusText" />
   </div>
 </template>
 
@@ -337,6 +287,10 @@ import { useRouter } from 'vue-router'
 import * as echarts from 'echarts'
 import { ElMessage } from 'element-plus'
 import { useWebSocket } from '@/composables/useWebSocket'
+import AppHeader from '@/components/AppHeader.vue'
+import AppFooter from '@/components/AppFooter.vue'
+import IntradayDialog from '@/components/IntradayDialog.vue'
+import { stockApi } from '@/api/stock.js'
 
 const router = useRouter()
 
@@ -348,13 +302,106 @@ const loading = ref(false)
 const searchKeyword = ref('')
 const addKeyword = ref('')
 const showAddDialog = ref(false)
-const currentTime = ref('')
 const mainChartRef = ref(null)
+
+// ============ 分时明细弹窗（共享组件，回车键打开）============
+const showIntradayDialog = ref(false)
+const intradayTargetDate = ref('')
+
+/** 回车键 → 获取 K 线当前日期 → 打开分时窗口 */
+const openIntradayDialog = () => {
+  if (!currentStock.value || !chartInstance) return
+  try {
+    const option = chartInstance.getOption()
+    const xAxisData = option.xAxis?.[0]?.data || []
+    const dz = option.dataZoom?.[0]
+    if (dz && xAxisData.length > 0) {
+      const endIdx = Math.floor((dz.end / 100) * xAxisData.length) - 1
+      intradayTargetDate.value = xAxisData[Math.min(endIdx, xAxisData.length - 1)] || xAxisData[xAxisData.length - 1] || ''
+    } else if (xAxisData.length > 0) {
+      intradayTargetDate.value = xAxisData[xAxisData.length - 1]
+    }
+  } catch (_) { intradayTargetDate.value = '' }
+  showIntradayDialog.value = true
+}
 let chartInstance = null
-let timeTimer = null
+
+/** localStorage 自选股持久化 key */
+const STORAGE_KEY_WATCHLIST = 'quant_terminal_watchlist'
+
+/**
+ * 从 localStorage 加载自选股列表
+ * @returns {Array} 自选股数组，格式 [{code, name, price, change, pct_change}]
+ */
+const loadWatchlistFromStorage = () => {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY_WATCHLIST)
+    if (saved) {
+      const list = JSON.parse(saved)
+      if (Array.isArray(list) && list.length > 0) {
+        return list
+      }
+    }
+  } catch (e) {
+    console.warn('读取自选股缓存失败:', e)
+  }
+  // 默认自选股（首次使用）
+  return [
+    { name: '浦发银行', code: '600000', price: 0, change: 0, pct_change: 0 },
+    { name: '平安银行', code: '000001', price: 0, change: 0, pct_change: 0 },
+    { name: '万科A', code: '000002', price: 0, change: 0, pct_change: 0 },
+    { name: '贵州茅台', code: '600519', price: 0, change: 0, pct_change: 0 }
+  ]
+}
+
+/**
+ * 校验并修复自选股列表中的异常名称
+ * 若某只股票的 name 不是中文（如显示为代码数字），则通过搜索 API 获取真实中文名
+ */
+const fixStockNames = async () => {
+  /** 判断字符串是否包含中文字符 */
+  const hasChinese = (s) => /[\u4e00-\u9fa5]/.test(s || '')
+
+  const needsFix = watchlist.value.filter(s => !hasChinese(s.name))
+  if (needsFix.length === 0) return
+
+  console.log(`[Home] 发现 ${needsFix.length} 只股票名称需要修复`)
+  for (const stock of needsFix) {
+    try {
+      const results = await stockApi.search(stock.code)
+      if (results && Array.isArray(results)) {
+        // 精确匹配或尾部匹配
+        const match = results.find(r =>
+          r.code === stock.code ||
+          r.code?.endsWith(stock.code) ||
+          stock.code.endsWith(r.code || '')
+        )
+        if (match?.name && hasChinese(match.name)) {
+          stock.name = match.name
+          console.log(`[Home] 名称修复: ${stock.code} → ${match.name}`)
+        }
+      }
+    } catch (e) {
+      console.warn(`[Home] 搜索 ${stock.code} 失败:`, e)
+    }
+  }
+  // 保存修复后的结果
+  saveWatchlistToStorage(watchlist.value)
+}
+
+/** 持久化保存自选股到 localStorage */
+const saveWatchlistToStorage = (list) => {
+  try {
+    // 只保存 code 和 name，价格由实时行情动态填充
+    const toSave = list.map(({ code, name }) => ({ code, name }))
+    localStorage.setItem(STORAGE_KEY_WATCHLIST, JSON.stringify(toSave))
+  } catch (e) {
+    console.warn('保存自选股失败:', e)
+  }
+}
 
 // 自选股列表
-const watchlist = ref([])
+const watchlist = ref(loadWatchlistFromStorage())
 const currentStock = ref('')
 const selectedStock = ref(null)
 
@@ -368,29 +415,29 @@ const currentPeriod = ref('daily')
 const adjustType = ref('qfq')
 const chartData = ref([])
 
-// 市场数据
+// 市场指数（WebSocket 实时更新）
 const marketData = ref([
-  { name: '上证指数', value: 3285.67, change: 15.23, change_pct: 0.47 },
-  { name: '深证成指', value: 10956.32, change: -23.45, change_pct: -0.21 },
-  { name: '创业板指', value: 2156.78, change: 12.34, change_pct: 0.58 },
-  { name: '沪深300', value: 3892.12, change: 8.56, change_pct: 0.22 }
+  { name: '上证指数', code: 'sh000001', value: 0, change: 0, change_pct: 0 },
+  { name: '深证成指', code: 'sz399001', value: 0, change: 0, change_pct: 0 },
+  { name: '创业板指', code: 'sz399006', value: 0, change: 0, change_pct: 0 },
+  { name: '沪深300', code: 'sh000300', value: 0, change: 0, change_pct: 0 }
 ])
 
-// 热门股票
+// 热门股票（默认列表，价格由 WebSocket 动态更新）
 const hotStocks = ref([
-  { name: '贵州茅台', code: '600519', price: 1688.00, change: 25.60, pct_change: 1.54 },
-  { name: '宁德时代', code: '300750', price: 198.50, change: -3.20, pct_change: -1.59 },
-  { name: '比亚迪', code: '002594', price: 267.80, change: 5.40, pct_change: 2.06 },
-  { name: '中国平安', code: '601318', price: 45.23, change: 0.87, pct_change: 1.96 }
+  { name: '贵州茅台', code: '600519', price: null, change: null, pct_change: null },
+  { name: '宁德时代', code: '300750', price: null, change: null, pct_change: null },
+  { name: '比亚迪', code: '002594', price: null, change: null, pct_change: null },
+  { name: '中国平安', code: '601318', price: null, change: null, pct_change: null }
 ])
 
-// 涨幅榜
+// 涨幅榜（默认占位，可后续对接涨跌榜API）
 const gainers = ref([
-  { name: '剑桥科技', code: '603083', pct_change: 10.02 },
-  { name: '中科曙光', code: '603019', pct_change: 9.99 },
-  { name: '浪潮信息', code: '000977', pct_change: 9.97 },
-  { name: '紫光股份', code: '000938', pct_change: 9.95 },
-  { name: '科大讯飞', code: '002230', pct_change: 9.93 }
+  { name: '剑桥科技', code: '603083', price: null, pct_change: null },
+  { name: '中科曙光', code: '603019', price: null, pct_change: null },
+  { name: '浪潮信息', code: '000977', price: null, pct_change: null },
+  { name: '紫光股份', code: '000938', price: null, pct_change: null },
+  { name: '科大讯飞', code: '002230', price: null, pct_change: null }
 ])
 
 // 搜索结果
@@ -416,31 +463,38 @@ watch(() => watchlist.value.map(s => s.code), (newCodes, oldCodes) => {
   if (added.length > 0) subscribe(added)
 }, { deep: true })
 
-/** 实时行情到达时，同步更新自选股列表中的价格 */
+/** 实时行情到达时，同步更新所有面板数据 */
 watch(() => quotes.value, (newQuotes) => {
   let hasChange = false
+
+  /**
+   * 安全合并股票名称
+   * 仅当 WS 推送来的 name 包含中文字符时才使用，否则保留本地已有名称
+   * 防止后端推送数字/代码等异常值覆盖已修复的中文名称
+   */
+  const safeName = (wsName, localName) => {
+    if (wsName && /[\u4e00-\u9fa5]/.test(wsName)) return wsName
+    return localName
+  }
+
+  // ── 更新自选股价格 ──
   const updated = watchlist.value.map(stock => {
     const q = newQuotes[stock.code]
     if (q && q.price !== undefined) {
       hasChange = true
-      return {
-        ...stock,
-        name: q.name || stock.name,
-        price: q.price,
-        change: q.change || 0,
-        pct_change: q.pct_change || 0
-      }
+      return { ...stock, name: safeName(q.name, stock.name), price: q.price, change: q.change || 0, pct_change: q.pct_change || 0 }
     }
     return stock
   })
   if (hasChange) {
     watchlist.value = updated
+    // 同步更新当前选中股票
     if (currentStock.value && newQuotes[currentStock.value]) {
       const q = newQuotes[currentStock.value]
       if (selectedStock.value) {
         selectedStock.value = {
           ...selectedStock.value,
-          name: q.name || selectedStock.value.name,
+          name: safeName(q.name, selectedStock.value.name),
           price: q.price,
           change: q.change || 0,
           pct_change: q.pct_change || 0
@@ -448,19 +502,48 @@ watch(() => quotes.value, (newQuotes) => {
       }
     }
   }
+
+  // ── 更新热门股票价格 ──
   const hotUpdated = hotStocks.value.map(stock => {
     const q = newQuotes[stock.code]
     if (q && q.price !== undefined) {
-      return {
-        ...stock,
-        price: q.price,
-        change: q.change || 0,
-        pct_change: q.pct_change || 0
-      }
+      return { ...stock, price: q.price, change: q.change || 0, pct_change: q.pct_change || 0 }
     }
     return stock
   })
   hotStocks.value = hotUpdated
+
+  // ── 更新涨幅榜价格（与热门股票同理） ──
+  const gainersUpdated = gainers.value.map(stock => {
+    const q = newQuotes[stock.code]
+    if (q && q.price !== undefined) {
+      return { ...stock, price: q.price, change: q.change || 0, pct_change: q.pct_change || 0 }
+    }
+    return stock
+  })
+  gainers.value = gainersUpdated
+
+  // ── 更新市场指数 ──
+  /**
+   * 查找行情数据，兼容带前缀(sh000001)和不带前缀(000001)两种 code 格式
+   * 后端 WS 推送的 code 取决于数据源返回格式，可能与前端存储的 marketData.code 不一致
+   */
+  const findQuote = (code) => {
+    // 精确匹配
+    if (newQuotes[code]) return newQuotes[code]
+    // 去掉 sh/sz 前缀再匹配
+    const stripped = code.replace(/^(sh|sz|SH|SZ)/i, '')
+    if (newQuotes[stripped]) return newQuotes[stripped]
+    return null
+  }
+  const marketUpdated = marketData.value.map(m => {
+    const q = findQuote(m.code)
+    if (q && q.price !== undefined) {
+      return { ...m, value: q.price, change: q.change || 0, change_pct: q.pct_change || 0 }
+    }
+    return m
+  })
+  marketData.value = marketUpdated
 })
 
 // ============ 计算属性 ============
@@ -476,20 +559,22 @@ const wsStatusText = computed(() => {
 /** WebSocket 连接状态 CSS class */
 const wsStatusClass = computed(() => {
   switch (connectionStatus.value) {
-    case 'connected': return 'online'
+    case 'connected': return 'connected'
     case 'connecting': return 'connecting'
-    default: return 'offline'
+    default: return 'disconnected'
   }
 })
 
 const latestMa = computed(() => {
   if (!chartData.value.length) return {}
   const latest = chartData.value[chartData.value.length - 1]
+  /** 格式化 MA 值到2位小数 */
+  const fmt = (v) => (v != null && !isNaN(v)) ? Number(v).toFixed(2) : '--'
   return {
-    ma5: latest.ma5,
-    ma10: latest.ma10,
-    ma20: latest.ma20,
-    ma30: latest.ma30
+    ma5: fmt(latest.ma5),
+    ma10: fmt(latest.ma10),
+    ma20: fmt(latest.ma20),
+    ma30: fmt(latest.ma30)
   }
 })
 
@@ -557,89 +642,116 @@ const changeAdjust = (type) => {
   loadChartData()
 }
 
-const goToBacktest = () => {
-  router.push('/backtest')
-}
-
 /**
  * 添加自选股
- * 使用模拟数据初始化，实际行情由 WebSocket 后续推送更新
+ * 从搜索结果获取真实名称，保存到 localStorage，并订阅 WebSocket 行情
  */
-const addToWatchlist = (code) => {
-  if (!watchlist.value.find(s => s.code === code)) {
-    watchlist.value.push({
-      code,
-      name: `股票${code}`,
-      price: 10.0 + Math.random() * 50,
-      change: (Math.random() - 0.5) * 2,
-      pct_change: (Math.random() - 0.5) * 5
-    })
-    ElMessage.success('已添加到自选')
-    showAddDialog.value = false
-  } else {
+const addToWatchlist = async (codeOrItem) => {
+  // 兼容传入 code 字符串或搜索结果对象
+  const code = typeof codeOrItem === 'string' ? codeOrItem : (codeOrItem.code || '')
+  const name = typeof codeOrItem === 'string' ? '' : (codeOrItem.name || '')
+
+  if (!code) {
+    ElMessage.warning('无效的股票代码')
+    return
+  }
+
+  // 去重检查
+  if (watchlist.value.find(s => s.code === code)) {
     ElMessage.info('已在自选列表中')
+    return
+  }
+
+  const newStock = { code, name: name || `股票${code}`, price: 0, change: 0, pct_change: 0 }
+  watchlist.value.push(newStock)
+  saveWatchlistToStorage(watchlist.value)
+
+  // 订阅 WebSocket 实时行情
+  if (connectionStatus.value === 'connected') subscribe([code])
+
+  ElMessage.success('已添加到自选')
+  showAddDialog.value = false
+  addKeyword.value = ''
+  searchResults.value = []
+}
+
+/** 从搜索列表移除自选股 */
+const removeFromWatchlist = (code) => {
+  const idx = watchlist.value.findIndex(s => s.code === code)
+  if (idx > -1) {
+    watchlist.value.splice(idx, 1)
+    saveWatchlistToStorage(watchlist.value)
+    if (connectionStatus.value === 'connected') unsubscribe([code])
+    ElMessage.success('已从自选移除')
   }
 }
 
-const searchStocks = () => {
-  // 模拟搜索结果
-  if (addKeyword.value.length >= 1) {
-    searchResults.value = [
-      { name: `股票A${addKeyword.value}`, code: '600000' },
-      { name: `股票B${addKeyword.value}`, code: '000001' },
-      { name: `股票C${addKeyword.value}`, code: '300001' }
-    ]
-  } else {
+/**
+ * 搜索股票（调用真实后端 API）
+ */
+/**
+ * 执行股票搜索
+ * 后端返回 { total, stocks: [...] } 格式，需取 stocks 字段
+ */
+const searchStocks = async () => {
+  const keyword = addKeyword.value.trim()
+  if (keyword.length < 1) {
+    searchResults.value = []
+    return
+  }
+  try {
+    const res = await stockApi.search(keyword)
+    // 兼容两种返回格式：数组直接返回 / { total, stocks } 对象格式
+    const list = Array.isArray(res) ? res : (res?.stocks || [])
+    if (list.length > 0) {
+      searchResults.value = list.slice(0, 10)
+    } else {
+      searchResults.value = []
+    }
+  } catch (e) {
+    console.warn('搜索失败:', e)
     searchResults.value = []
   }
 }
 
+// 防抖搜索
+let searchDebounceTimer = null
+const debouncedSearch = () => {
+  if (searchDebounceTimer) clearTimeout(searchDebounceTimer)
+  searchDebounceTimer = setTimeout(() => searchStocks(), 300)
+}
+
 const refreshData = () => {
+  loadChartData()
   ElMessage.success('数据已刷新')
 }
 
 // ============ K线图 ============
-const loadChartData = () => {
-  // 模拟K线数据
-  const mockData = []
-  let basePrice = selectedStock.value?.price || 10.0
-  const now = new Date()
-  
-  for (let i = 100; i >= 0; i--) {
-    const date = new Date(now)
-    date.setDate(date.getDate() - i)
-    
-    const open = basePrice
-    const change = (Math.random() - 0.5) * 1.5
-    const close = basePrice + change
-    const high = Math.max(open, close) + Math.random() * 0.5
-    const low = Math.min(open, close) - Math.random() * 0.5
-    const volume = Math.floor(Math.random() * 10000000) + 1000000
-    
-    // 计算均线
-    const ma5 = basePrice + (Math.random() - 0.5) * 0.5
-    const ma10 = basePrice + (Math.random() - 0.5) * 0.8
-    const ma20 = basePrice + (Math.random() - 0.5) * 1.0
-    const ma30 = basePrice + (Math.random() - 0.5) * 1.2
-    
-    mockData.push({
-      date: date.toISOString().split('T')[0],
-      open,
-      high,
-      low,
-      close,
-      volume,
-      ma5,
-      ma10,
-      ma20,
-      ma30
-    })
-    
-    basePrice = close
+const loadChartData = async () => {
+  if (!selectedStock.value) return
+  const code = selectedStock.value.code
+
+  try {
+    const res = await stockApi.getChartData(code, currentPeriod.value, 120, adjustType.value)
+    const dataList = res.chart_data || []
+    if (dataList.length > 0) {
+      chartData.value = dataList
+      // 用最新K线收盘价初始化当前股票价格（WS推送到达前的兜底）
+      const lastBar = dataList[dataList.length - 1]
+      if (lastBar?.close > 0 && (!selectedStock.value.price || selectedStock.value.price === 0)) {
+        selectedStock.value = { ...selectedStock.value, price: lastBar.close }
+        // 同步更新自选股列表中的价格
+        const wlIdx = watchlist.value.findIndex(s => s.code === code)
+        if (wlIdx >= 0) {
+          watchlist.value[wlIdx] = { ...watchlist.value[wlIdx], price: lastBar.close }
+        }
+      }
+      updateChart()
+    }
+  } catch (e) {
+    console.warn('加载K线数据失败:', e)
+    // API 失败时保持空状态，不显示模拟数据
   }
-  
-  chartData.value = mockData
-  updateChart()
 }
 
 const updateChart = () => {
@@ -659,22 +771,39 @@ const updateChart = () => {
       trigger: 'axis',
       axisPointer: {
         type: 'cross',
-        lineStyle: { color: '#3b82f6', opacity: 0.5 },
-        crossStyle: { color: '#3b82f6', opacity: 0.5 }
+        lineStyle: { color: '#58a6ff', opacity: 0.5 },
+        crossStyle: { color: '#58a6ff', opacity: 0.5 }
       },
-      backgroundColor: 'rgba(21, 28, 44, 0.95)',
-      borderColor: '#1e293b',
-      textStyle: { color: '#e8edf5', fontFamily: 'JetBrains Mono' }
+      backgroundColor: 'rgba(36, 41, 49, 0.95)',
+      borderColor: '#30363d',
+      textStyle: { color: '#c9cdd4', fontFamily: 'JetBrains Mono', fontSize: 12 },
+      /**
+       * 自定义 K 线 tooltip 格式化
+       * OHLC + MA 均线值统一保留2位小数
+       */
+      formatter(params) {
+        if (!params || !params.length) return ''
+        let html = `<div style="margin-bottom:4px;font-weight:bold;color:#f0f6fc">${params[0].axisValue}</div>`
+        for (const p of params) {
+          // 跳过无值的空数据点
+          if (p.value == null || (Array.isArray(p.value) && p.value[1] == null)) continue
+          const v = Array.isArray(p.value) ? p.value[1] : p.value
+          const fmtVal = typeof v === 'number' ? v.toFixed(2) : v
+          const marker = p.marker ? `<span style="display:inline-block;margin-right:4px">${p.marker}</span>` : ''
+          html += `<div style="line-height:1.6">${marker}${p.seriesName}: <b>${fmtVal}</b></div>`
+        }
+        return html
+      }
     },
     legend: {
       data: ['MA5', 'MA10', 'MA20', 'MA30'],
       top: 0,
       right: 10,
-      textStyle: { color: '#8b99ad' }
+      textStyle: { color: '#8b949e' }
     },
     grid: [
-      { left: '10px', right: '10px', top: '40px', height: '55%' },
-      { left: '10px', right: '10px', top: '75%', height: '20%' }
+      { left: '10px', right: '10px', top: '40px', height: '52%' },
+      { left: '10px', right: '10px', top: '73%', height: '18%', bottom: '8%' }
     ],
     xAxis: [
       {
@@ -682,16 +811,16 @@ const updateChart = () => {
         data: dates,
         gridIndex: 0,
         boundaryGap: false,
-        axisLine: { lineStyle: { color: '#1e293b' } },
+        axisLine: { lineStyle: { color: '#30363d' } },
         axisTick: { show: false },
-        axisLabel: { color: '#5c6a7e', fontSize: 10 }
+        axisLabel: { color: '#6e7681', fontSize: 10 }
       },
       {
         type: 'category',
         data: dates,
         gridIndex: 1,
         boundaryGap: false,
-        axisLine: { lineStyle: { color: '#1e293b' } },
+        axisLine: { lineStyle: { color: '#30363d' } },
         axisTick: { show: false },
         axisLabel: { show: false }
       }
@@ -700,10 +829,10 @@ const updateChart = () => {
       {
         scale: true,
         gridIndex: 0,
-        splitLine: { lineStyle: { color: '#1e293b', type: 'dashed' } },
+        splitLine: { lineStyle: { color: '#30363d', type: 'dashed' } },
         axisLine: { show: false },
         axisTick: { show: false },
-        axisLabel: { color: '#5c6a7e', fontSize: 10 }
+        axisLabel: { color: '#6e7681', fontSize: 10 }
       },
       {
         scale: true,
@@ -716,7 +845,7 @@ const updateChart = () => {
     ],
     dataZoom: [
       { type: 'inside', xAxisIndex: [0, 1], start: 60, end: 100 },
-      { type: 'slider', xAxisIndex: [0, 1], bottom: '2%', height: '15px', borderColor: '#1e293b' }
+      { type: 'slider', xAxisIndex: [0, 1], bottom: '2%', height: '15px', borderColor: '#30363d' }
     ],
     series: [
       {
@@ -726,31 +855,31 @@ const updateChart = () => {
         xAxisIndex: 0,
         yAxisIndex: 0,
         itemStyle: {
-          color: '#ef4444',
-          color0: '#22c55e',
-          borderColor: '#dc2626',
-          borderColor0: '#16a34a'
+          color: '#f85149',
+          color0: '#3fb950',
+          borderColor: '#da3633',
+          borderColor0: '#238636'
         }
       },
       {
         name: 'MA5', type: 'line', data: chartData.value.map(d => d.ma5),
         xAxisIndex: 0, yAxisIndex: 0, smooth: true,
-        lineStyle: { color: '#f59e0b', width: 1 }, symbol: 'none'
+        lineStyle: { color: '#e3b341', width: 1 }, symbol: 'none'
       },
       {
         name: 'MA10', type: 'line', data: chartData.value.map(d => d.ma10),
         xAxisIndex: 0, yAxisIndex: 0, smooth: true,
-        lineStyle: { color: '#3b82f6', width: 1 }, symbol: 'none'
+        lineStyle: { color: '#58a6ff', width: 1 }, symbol: 'none'
       },
       {
         name: 'MA20', type: 'line', data: chartData.value.map(d => d.ma20),
         xAxisIndex: 0, yAxisIndex: 0, smooth: true,
-        lineStyle: { color: '#22d3ee', width: 1 }, symbol: 'none'
+        lineStyle: { color: '#56d4dd', width: 1 }, symbol: 'none'
       },
       {
         name: 'MA30', type: 'line', data: chartData.value.map(d => d.ma30),
         xAxisIndex: 0, yAxisIndex: 0, smooth: true,
-        lineStyle: { color: '#a78bfa', width: 1 }, symbol: 'none'
+        lineStyle: { color: '#bc8cff', width: 1 }, symbol: 'none'
       },
       {
         name: '成交量', type: 'bar', data: volumes,
@@ -772,46 +901,101 @@ const initChart = () => {
   }
 }
 
-const updateTime = () => {
-  const now = new Date()
-  currentTime.value = now.toLocaleString('zh-CN', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false
-  }).replace(/\//g, '-')
+// =========================================================================
+//  键盘方向键控制 K 线时间轴（仿通达信）
+// =========================================================================
+
+/**
+ * Home 页面 K 线图键盘事件处理
+ * 与 HQChartKline 组件中的实现逻辑一致
+ */
+const handleChartKeydown = (e) => {
+  if (!chartInstance) return
+  // 仅在无输入框聚焦时生效
+  const tag = document.activeElement?.tagName
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return
+
+  const option = chartInstance.getOption()
+  const dz = option.dataZoom?.[0]
+  if (!dz) return
+
+  const start = dz.start ?? 0
+  const end = dz.end ?? 100
+  const range = end - start
+  const shiftStep = Math.max(range * 0.1, 2)
+  const zoomStep = 5
+
+  switch (e.key) {
+    case 'ArrowLeft':
+      e.preventDefault()
+      chartInstance.dispatchAction({ type: 'dataZoom', start: Math.max(0, start - shiftStep), end: Math.max(0, start - shiftStep) + range })
+      break
+    case 'ArrowRight':
+      e.preventDefault()
+      chartInstance.dispatchAction({ type: 'dataZoom', start: Math.min(100, end + shiftStep) - range, end: Math.min(100, end + shiftStep) })
+      break
+    case 'ArrowUp':
+      e.preventDefault()
+      { const r = Math.min(100, range + zoomStep), c = (start + end) / 2
+        chartInstance.dispatchAction({ type: 'dataZoom', start: Math.max(0, c - r/2), end: Math.min(100, c + r/2) }) }
+      break
+    case 'ArrowDown':
+      e.preventDefault()
+      { const r = Math.max(10, range - zoomStep), c = (start + end) / 2
+        chartInstance.dispatchAction({ type: 'dataZoom', start: Math.max(0, c - r/2), end: Math.min(100, c + r/2) }) }
+      break
+    case 'Home':
+      e.preventDefault()
+      chartInstance.dispatchAction({ type: 'dataZoom', start: 100 - range, end: 100 })
+      break
+    case 'End':
+      e.preventDefault()
+      chartInstance.dispatchAction({ type: 'dataZoom', start: 0, end: range })
+      break
+    case 'Enter':
+      // 回车键 → 打开当日分时明细窗口
+      e.preventDefault()
+      openIntradayDialog()
+      break
+  }
 }
 
+/** 绑定键盘事件 */
+window.addEventListener('keydown', handleChartKeydown)
+
 // ============ 生命周期 ============
-onMounted(() => {
-  // 初始化时间
-  updateTime()
-  timeTimer = setInterval(updateTime, 1000)
-  
-  // 初始化自选股列表（行情由 WebSocket 实时更新）
-  watchlist.value = [
-    { name: '浦发银行', code: '600000', price: 7.85, change: 0.12, pct_change: 1.55 },
-    { name: '平安银行', code: '000001', price: 11.23, change: -0.08, pct_change: -0.71 },
-    { name: '万科A', code: '000002', price: 8.45, change: 0.25, pct_change: 3.05 },
-    { name: '贵州茅台', code: '600519', price: 1688.00, change: 25.60, pct_change: 1.54 }
-  ]
-  
-  selectedStock.value = watchlist.value[0]
-  currentStock.value = selectedStock.value.code
-  
+onMounted(async () => {
+  // 从 localStorage 恢复自选股列表
+  const saved = loadWatchlistFromStorage()
+  watchlist.value = saved
+
+  // 校验并修复异常名称（非中文名称 → 通过搜索 API 获取真实名称）
+  await fixStockNames()
+
+  // 设置默认选中
+  if (watchlist.value.length > 0) {
+    selectedStock.value = { ...watchlist.value[0] }
+    currentStock.value = selectedStock.value.code
+  }
+
   // 初始化图表
   initChart()
   loadChartData()
-  
-  // 启动 WebSocket 连接（自动订阅自选股 + 热门股）
-  subscribe(watchlist.value.map(s => s.code).concat(hotStocks.value.map(s => s.code)))
+
+  // 收集所有需要订阅的代码：自选股 + 热门股 + 市场指数
+  const allCodes = [
+    ...watchlist.value.map(s => s.code),
+    ...hotStocks.value.map(s => s.code),
+    ...marketData.value.map(m => m.code),
+    ...gainers.value.map(g => g.code)
+  ].filter(Boolean)
+
+  // 启动 WebSocket 连接并订阅所有股票
+  if (allCodes.length > 0) subscribe(allCodes)
 })
 
 onUnmounted(() => {
-  if (timeTimer) clearInterval(timeTimer)
+  window.removeEventListener('keydown', handleChartKeydown)
   if (chartInstance) {
     chartInstance.dispose()
     chartInstance = null
@@ -1034,7 +1218,7 @@ onUnmounted(() => {
 
 .stock-item {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto auto auto;
   gap: 12px;
   align-items: center;
   padding: 12px;
@@ -1089,6 +1273,26 @@ onUnmounted(() => {
 .mini-chart {
   width: 60px;
   height: 30px;
+}
+
+.remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  transition: all 0.15s;
+}
+.stock-item:hover .remove-btn { opacity: 1; }
+.remove-btn:hover {
+  background: rgba(239,68,68,0.15);
+  color: #ef4444;
 }
 
 .sparkline {
@@ -1382,9 +1586,28 @@ onUnmounted(() => {
   font-weight: 500;
 }
 
+/** 热门股票右侧：价格 + 涨跌幅容器 */
+.hot-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+}
+
+.hot-change {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
 .rank-name {
   flex: 1;
   font-size: 12px;
+}
+
+.rank-price {
+  font-size: 12px;
+  min-width: 60px;
+  text-align: right;
 }
 
 .rank-change {
@@ -1420,6 +1643,14 @@ onUnmounted(() => {
 .search-results {
   max-height: 300px;
   overflow-y: auto;
+}
+
+/** 搜索结果为空时的提示 */
+.search-empty {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
 }
 
 .search-result-item {
@@ -1496,4 +1727,5 @@ onUnmounted(() => {
 .disclaimer {
   color: var(--text-muted);
 }
+
 </style>

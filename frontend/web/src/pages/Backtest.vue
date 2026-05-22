@@ -1,5 +1,20 @@
 <template>
   <div class="backtest-page">
+    <AppHeader />
+
+    <!-- 页面级导航栏：返回主页 -->
+    <div class="page-header">
+      <div class="header-left">
+        <router-link to="/" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          返回主页
+        </router-link>
+        <span class="page-title">策略回测</span>
+      </div>
+    </div>
+
     <!-- 回测配置 -->
     <el-card class="config-card">
       <el-form :model="config" inline>
@@ -168,6 +183,7 @@ import { ElMessage } from 'element-plus'
 import * as echarts from 'echarts'
 import { backtestApi } from '@/api'
 import dayjs from 'dayjs'
+import AppHeader from '@/components/AppHeader.vue'
 
 const strategies = ref([])
 const config = ref({
@@ -290,10 +306,92 @@ onUnmounted(() => {
 
 <style scoped>
 .backtest-page {
-  max-width: 1400px;
-  margin: 0 auto;
+  min-height: 100vh;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-y: auto;
+  overflow-y: auto;
 }
 
+/* ============ 页面顶部导航 ============ */
+/* ===== 页面顶部导航：简洁文字行 ===== */
+.page-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.back-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: linear-gradient(180deg, #1e2535 0%, #151c2e 100%);
+  border: 1px solid #2a3348;
+  border-radius: 8px;
+  color: #8b949e;
+  text-decoration: none;
+  font-size: 13px;
+  box-shadow:
+    0 2px 0 #0d1117,
+    0 4px 8px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+/* 闪烁光泽 */
+.back-link::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(88,166,255,0.06),
+    rgba(88,166,255,0.12),
+    rgba(88,166,255,0.06),
+    transparent
+  );
+  animation: btnShimmer 3s ease-in-out infinite;
+}
+@keyframes btnShimmer {
+  0%, 100% { left: -100%; }
+  50% { left: 120%; }
+}
+.back-link:hover {
+  background: linear-gradient(180deg, #253050 0%, #1a2540 100%);
+  color: #58a6ff;
+  border-color: #58a6ff;
+  box-shadow:
+    0 2px 0 #0d1829,
+    0 6px 16px rgba(88,166,255,0.15),
+    0 0 20px rgba(88,166,255,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+  transform: translateY(-1px);
+}
+.back-link:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 1px 0 #0d1117,
+    0 2px 4px rgba(0,0,0,0.3);
+}
+
+.page-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary, #c9cdd4);
+}
+
+/* ============ 表格深色主题（已由App.vue全局统一处理） ============ */
 .config-card {
   margin-bottom: 16px;
 }

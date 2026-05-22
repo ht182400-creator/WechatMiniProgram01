@@ -59,8 +59,20 @@ class BaostockAdapter(BaseDataAdapter):
             while rs.error_code == '0' and rs.next():
                 data_list.append(rs.get_row_data())
             
+            # 防御性处理：结果为空或无有效字段直接返回
+            if not data_list or not rs.fields:
+                logger.warning("Baostock 返回空股票列表或无字段信息")
+                return pd.DataFrame()
+            
             df = pd.DataFrame(data_list, columns=rs.fields)
-            df.columns = ['code', 'name', 'ipo_date', 'out_date', 'stock_type']
+            # 仅当实际列数与预期一致时才重命名
+            expected_cols = ['code', 'name', 'ipo_date', 'out_date', 'stock_type']
+            if len(df.columns) == len(expected_cols):
+                df.columns = expected_cols
+            else:
+                logger.warning(f"Baostock 列数不匹配: 期望 {len(expected_cols)} 实际 {len(df.columns)}，列名: {list(df.columns)}")
+                return pd.DataFrame()
+            
             df = df[df['stock_type'].isin(['1', '2'])]  # 1=上交所, 2=深交所
             df['source'] = 'baostock'
             logger.info(f"获取到 {len(df)} 只股票")

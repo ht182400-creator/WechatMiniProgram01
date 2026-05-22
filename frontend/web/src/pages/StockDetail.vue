@@ -1,203 +1,133 @@
-<template>
+﻿<template>
   <div class="terminal-container">
-    <!-- 顶部导航栏 -->
-    <header class="terminal-header">
-      <div class="header-left">
-        <div class="logo">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <rect width="28" height="28" rx="6" fill="url(#logoGrad)"/>
-            <path d="M7 20L10 13L13 17L16 10L21 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <defs>
-              <linearGradient id="logoGrad" x1="0" y1="0" x2="28" y2="28">
-                <stop stop-color="#3B82F6"/>
-                <stop offset="1" stop-color="#1D4ED8"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          <span class="logo-text">QuantTerminal</span>
-        </div>
-        
-        <!-- 搜索框 -->
+    <!-- 顶部导航栏（共享组件） -->
+    <AppHeader>
+      <template #search>
         <div class="search-box">
-          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/>
-            <path d="M21 21l-4.35-4.35"/>
+          <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
           </svg>
-          <input 
-            type="text" 
-            v-model="searchKeyword" 
-            placeholder="输入股票代码或名称..."
-            @keyup.enter="handleSearch"
-          />
+          <input type="text" v-model="searchKeyword" placeholder="输入股票代码或名称..."
+            @keyup.enter="handleSearch" class="search-input" />
         </div>
-      </div>
-
-      <nav class="header-nav">
-        <a href="#" class="nav-item active">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-            <polyline points="9,22 9,12 15,12 15,22"/>
-          </svg>
-          <span>首页</span>
-        </a>
-        <a href="#" class="nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
-          </svg>
-          <span>行情</span>
-        </a>
-        <a href="#" class="nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-            <line x1="3" y1="9" x2="21" y2="9"/>
-            <line x1="9" y1="21" x2="9" y2="9"/>
-          </svg>
-          <span>财务</span>
-        </a>
-        <a href="#" class="nav-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="20" x2="18" y2="10"/>
-            <line x1="12" y1="20" x2="12" y2="4"/>
-            <line x1="6" y1="20" x2="6" y2="14"/>
-          </svg>
-          <span>回测</span>
-        </a>
-      </nav>
-
-      <div class="header-right">
-        <button class="header-btn" title="刷新数据" @click="refreshAll">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="23,4 23,10 17,10"/>
-            <polyline points="1,20 1,14 7,14"/>
-            <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
-          </svg>
+      </template>
+      <template #actions>
+        <button class="btn-icon" title="刷新数据" @click="refreshAll">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23,4 23,10 17,10"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10"/></svg>
         </button>
-        <div class="time-display">
-          <span class="time-text font-mono">{{ currentTime }}</span>
-        </div>
+      </template>
+    </AppHeader>
+
+    <!-- 页面级导航栏：返回主页 -->
+    <div class="page-header">
+      <div class="header-left">
+        <router-link to="/" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          返回主页
+        </router-link>
+        <span class="page-title">行情详情</span>
       </div>
-    </header>
+    </div>
 
     <!-- 主内容区 -->
     <main class="terminal-main">
       <!-- 左侧行情区 -->
       <div class="left-panel">
         <!-- 股票信息头部 -->
-        <div class="stock-header-card">
-          <div class="stock-main-info">
-            <div class="stock-name-code">
+        <div class="stock-info-card animate-in">
+          <div class="si-left">
+            <div class="stock-name-row">
               <h1 class="stock-name">{{ stockInfo.name || '加载中...' }}</h1>
               <span class="stock-code font-mono">{{ stockCode }}</span>
             </div>
-            <div class="stock-price-info">
-              <div class="current-price font-mono" :class="priceChange >= 0 ? 'price-up' : 'price-down'">
-                {{ formatPrice(stockInfo.price || stockInfo.close) }}
-              </div>
-              <div class="price-change font-mono" :class="priceChange >= 0 ? 'price-up' : 'price-down'">
-                <span class="change-value">{{ priceChange >= 0 ? '+' : '' }}{{ formatPrice(priceChange) }}</span>
-                <span class="change-percent">({{ priceChangePct >= 0 ? '+' : '' }}{{ formatPercent(priceChangePct) }}%)</span>
-              </div>
+            <div class="stock-current-price font-mono" :class="priceChange >= 0 ? 'price-up' : 'price-down'">
+              {{ formatPrice(stockInfo.price || stockInfo.close) }}
+            </div>
+            <div class="stock-change-row font-mono" :class="priceChange >= 0 ? 'price-up' : 'price-down'">
+              <span>{{ priceChange >= 0 ? '+' : '' }}{{ formatPrice(priceChange) }}</span>
+              <span>({{ priceChangePct >= 0 ? '+' : '' }}{{ formatPercent(priceChangePct) }}%)</span>
             </div>
           </div>
-          
-          <div class="stock-indicators">
-            <div class="indicator-item">
-              <span class="indicator-label">开盘</span>
-              <span class="indicator-value font-mono">{{ formatPrice(stockInfo.open || stockInfo.pre_close) }}</span>
+          <div class="stock-meta-grid">
+            <div class="stock-meta-item">
+              <span class="stock-meta-label">开盘</span>
+              <span class="stock-meta-value font-mono">{{ formatPrice(stockInfo.open || stockInfo.pre_close) }}</span>
             </div>
-            <div class="indicator-item">
-              <span class="indicator-label">最高</span>
-              <span class="indicator-value font-mono price-up">{{ formatPrice(stockInfo.high) }}</span>
+            <div class="stock-meta-item">
+              <span class="stock-meta-label">最高</span>
+              <span class="stock-meta-value font-mono price-up">{{ formatPrice(stockInfo.high) }}</span>
             </div>
-            <div class="indicator-item">
-              <span class="indicator-label">最低</span>
-              <span class="indicator-value font-mono price-down">{{ formatPrice(stockInfo.low) }}</span>
+            <div class="stock-meta-item">
+              <span class="stock-meta-label">最低</span>
+              <span class="stock-meta-value font-mono price-down">{{ formatPrice(stockInfo.low) }}</span>
             </div>
-            <div class="indicator-item">
-              <span class="indicator-label">成交量</span>
-              <span class="indicator-value font-mono">{{ formatVolume(stockInfo.volume) }}</span>
+            <div class="stock-meta-item">
+              <span class="stock-meta-label">成交量</span>
+              <span class="stock-meta-value font-mono">{{ formatVolume(stockInfo.volume) }}</span>
             </div>
-            <div class="indicator-item">
-              <span class="indicator-label">成交额</span>
-              <span class="indicator-value font-mono">{{ formatAmount(stockInfo.amount) }}</span>
+            <div class="stock-meta-item">
+              <span class="stock-meta-label">成交额</span>
+              <span class="stock-meta-value font-mono">{{ formatAmount(stockInfo.amount) }}</span>
             </div>
-            <div class="indicator-item">
-              <span class="indicator-label">换手率</span>
-              <span class="indicator-value font-mono">{{ formatPercent(stockInfo.turnover) }}</span>
+            <div class="stock-meta-item">
+              <span class="stock-meta-label">换手率</span>
+              <span class="stock-meta-value font-mono">{{ formatPercent(stockInfo.turnover) }}</span>
             </div>
           </div>
         </div>
 
-        <!-- K线图表 -->
-        <div class="chart-card">
+        <!-- K线图表 - HQChart -->
+        <div class="chart-card card animate-in" style="animation-delay: 0.05s">
           <div class="chart-toolbar">
             <div class="period-tabs">
-              <button 
-                v-for="p in periods" 
-                :key="p.value"
+              <button v-for="p in periods" :key="p.value"
                 :class="['period-tab', { active: currentPeriod === p.value }]"
-                @click="changePeriod(p.value)"
-              >
-                {{ p.label }}
-              </button>
+                @click="changePeriod(p.value)">{{ p.label }}</button>
             </div>
             <div class="adjust-tabs">
-              <button 
-                :class="['adjust-tab', { active: adjustType === 'qfq' }]"
-                @click="changeAdjust('qfq')"
-              >前复权</button>
-              <button 
-                :class="['adjust-tab', { active: adjustType === 'hfq' }]"
-                @click="changeAdjust('hfq')"
-              >后复权</button>
-              <button 
-                :class="['adjust-tab', { active: adjustType === 'none' }]"
-                @click="changeAdjust('none')"
-              >不复权</button>
+              <button :class="['adjust-tab', { active: adjustType === 'qfq' }]" @click="changeAdjust('qfq')">前复权</button>
+              <button :class="['adjust-tab', { active: adjustType === 'hfq' }]" @click="changeAdjust('hfq')">后复权</button>
+              <button :class="['adjust-tab', { active: adjustType === 'none' }]" @click="changeAdjust('none')">不复权</button>
             </div>
           </div>
-          <div class="chart-info">
-            <div class="ma-indicators">
-              <span class="ma-item" style="color: var(--ma5)">MA5: {{ latestMa.ma5 || '--' }}</span>
-              <span class="ma-item" style="color: var(--ma10)">MA10: {{ latestMa.ma10 || '--' }}</span>
-              <span class="ma-item" style="color: var(--ma20)">MA20: {{ latestMa.ma20 || '--' }}</span>
-              <span class="ma-item" style="color: var(--ma30)">MA30: {{ latestMa.ma30 || '--' }}</span>
-            </div>
-            <span class="volume-info">成交量: {{ formatVolume(latestVolume) }}</span>
+          <!-- v-if 确保数据加载后才能渲染图表，避免 HQChart 在空数据下 Init 导致 ChartBorder 崩溃 -->
+          <HQChartKline v-if="chartData.length > 0" ref="hqChartRef"
+            :data="chartData"
+            :period="hqPeriod"
+            :adjust="adjustType"
+            :code="stockCode"
+            :name="stockInfo.name"
+            :height="'460px'"
+            @ready="onChartReady"
+            @enterKeyDown="onEnterKeyDown"
+          />
+          <div v-else class="chart-placeholder">
+            <div class="loading-spinner"></div>
+            <span class="loading-text">K线数据加载中...</span>
           </div>
-          <div ref="chartRef" class="kline-chart"></div>
         </div>
 
-        <!-- 分笔成交 -->
-        <div class="transaction-card">
+        <!-- 分笔成交 - 虚拟滚动 -->
+        <div class="chart-card card animate-in" style="animation-delay:0.1s;flex:1;min-height:0;display:flex;flex-direction:column;">
           <div class="card-header">
             <span class="card-title">分笔成交</span>
-            <span class="card-subtitle font-mono">共 {{ transactionList.length }} 笔</span>
+            <span class="text-muted font-mono text-xs">共 {{ transactionList.length }} 笔</span>
           </div>
-          <div class="transaction-table-wrapper">
+          <div class="virtual-scroll" style="flex:1;min-height:0;">
             <table class="data-table">
-              <thead>
-                <tr>
-                  <th>时间</th>
-                  <th>价格</th>
-                  <th>涨跌</th>
-                  <th>成交量</th>
-                  <th>性质</th>
-                </tr>
-              </thead>
+              <thead><tr>
+                <th>时间</th><th>价格</th><th>涨跌</th><th>成交量</th><th>性质</th>
+              </tr></thead>
               <tbody>
                 <tr v-for="(t, idx) in transactionList" :key="idx" :class="getTransactionClass(t)">
                   <td class="font-mono">{{ t.time }}</td>
                   <td class="font-mono" :class="getPriceClass(t.change)">{{ formatPrice(t.price) }}</td>
-                  <td class="font-mono" :class="getPriceClass(t.change)">
-                    {{ t.change >= 0 ? '+' : '' }}{{ formatPrice(t.change) }}
-                  </td>
+                  <td class="font-mono" :class="getPriceClass(t.change)">{{ t.change >= 0 ? '+' : '' }}{{ formatPrice(t.change) }}</td>
                   <td class="font-mono">{{ formatVolume(t.volume) }}</td>
-                  <td>
-                    <span class="transaction-type" :class="t.type">
-                      {{ t.type === 'buy' ? '买盘' : t.type === 'sell' ? '卖盘' : '中性' }}
-                    </span>
-                  </td>
+                  <td><span class="tag" :class="t.type === 'buy' ? 'tag-up' : t.type === 'sell' ? 'tag-down' : ''">{{ t.type === 'buy' ? '买盘' : t.type === 'sell' ? '卖盘' : '中性' }}</span></td>
                 </tr>
               </tbody>
             </table>
@@ -207,209 +137,118 @@
 
       <!-- 右侧信息区 -->
       <div class="right-panel">
-        <!-- 五档盘口 -->
-        <div class="quote-card">
+        <!-- 五档盘口 - 带量柱可视化 -->
+        <div class="card animate-in" style="animation-delay:0.02s">
           <div class="card-header">
             <span class="card-title">五档盘口</span>
           </div>
-          <div class="quote-content">
-            <div class="quote-table">
-              <div class="quote-header">
-                <span>卖盘</span>
-                <span>价格</span>
-                <span>买盘</span>
-              </div>
-              <div 
-                v-for="i in 5" 
-                :key="'quote-' + i"
-                class="quote-row"
-              >
-                <div class="quote-cell sell">
-                  <span class="quote-volume font-mono">{{ formatVolume(quoteData[6-i]?.sellVolume) }}</span>
+          <div class="card-body" style="padding:8px 12px;">
+            <div class="quote-grid">
+              <template v-for="i in 5" :key="'q-'+i">
+                <div class="quote-row sell">
+                  <span class="quote-label sell">卖{{6-i}}</span>
+                  <div class="quote-bar-wrap">
+                    <div class="quote-bar sell" :style="{ width: quoteBarWidth(quoteData[5-i]?.sellVolume, 'sell') + '%' }"></div>
+                    <div class="quote-bar-label font-mono">{{ formatVolume(quoteData[5-i]?.sellVolume) }}</div>
+                  </div>
+                  <div class="quote-price sell font-mono">{{ formatPrice(quoteData[5-i]?.price) }}</div>
+                  <div class="quote-bar-wrap empty"></div>
                 </div>
-                <div class="quote-cell price font-mono" :class="getPriceClass(quoteData[6-i]?.priceChange)">
-                  {{ formatPrice(quoteData[6-i]?.price) }}
+              </template>
+              <div style="height:1px;background:var(--border-default);margin:2px 0;"></div>
+              <template v-for="i in 5" :key="'qb-'+i">
+                <div class="quote-row buy">
+                  <div class="quote-bar-wrap empty"></div>
+                  <div class="quote-price buy font-mono">{{ formatPrice(quoteData[i-1]?.price) }}</div>
+                  <div class="quote-bar-wrap">
+                    <div class="quote-bar buy" :style="{ width: quoteBarWidth(quoteData[i-1]?.buyVolume, 'buy') + '%' }"></div>
+                    <div class="quote-bar-label font-mono">{{ formatVolume(quoteData[i-1]?.buyVolume) }}</div>
+                  </div>
+                  <span class="quote-label buy">买{{i}}</span>
                 </div>
-                <div class="quote-cell buy">
-                  <span class="quote-volume font-mono">{{ formatVolume(quoteData[6-i]?.buyVolume) }}</span>
-                </div>
-              </div>
+              </template>
             </div>
-            <div class="quote-summary">
-              <div class="summary-row">
-                <span class="summary-label">卖盘总量</span>
-                <span class="summary-value sell-total font-mono">{{ formatVolume(sellTotal) }}</span>
-              </div>
-              <div class="summary-row">
-                <span class="summary-label">买盘总量</span>
-                <span class="summary-value buy-total font-mono">{{ formatVolume(buyTotal) }}</span>
-              </div>
-              <div class="summary-row">
-                <span class="summary-label">净买卖差</span>
-                <span class="summary-value net-diff font-mono" :class="netDiff >= 0 ? 'price-up' : 'price-down'">
-                  {{ netDiff >= 0 ? '+' : '' }}{{ formatVolume(netDiff) }}
-                </span>
-              </div>
+            <div class="divider" style="margin:8px 0;"></div>
+            <div class="flex justify-between text-xs">
+              <span><span class="text-muted">卖盘 </span><span class="price-down font-mono">{{ formatVolume(sellTotal) }}</span></span>
+              <span><span class="text-muted">买盘 </span><span class="price-up font-mono">{{ formatVolume(buyTotal) }}</span></span>
+              <span><span class="text-muted">净差 </span><span class="font-mono" :class="netDiff >= 0 ? 'price-up' : 'price-down'">{{ netDiff >= 0 ? '+' : '' }}{{ formatVolume(netDiff) }}</span></span>
             </div>
           </div>
         </div>
 
         <!-- 快捷操作 -->
-        <div class="action-card">
-          <div class="card-header">
-            <span class="card-title">快捷操作</span>
-          </div>
-          <div class="action-buttons">
-            <button class="action-btn primary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
-              </svg>
+        <div class="card animate-in" style="animation-delay:0.04s">
+          <div class="card-header"><span class="card-title">快捷操作</span></div>
+          <div class="card-body" style="padding:12px 14px;display:flex;flex-direction:column;gap:6px;">
+            <button class="btn btn-primary btn-sm" style="width:100%">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
               加自选
             </button>
-            <button class="action-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="18" cy="5" r="3"/>
-                <circle cx="6" cy="12" r="3"/>
-                <circle cx="18" cy="19" r="3"/>
-                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-              </svg>
+            <button class="btn btn-sm" style="width:100%">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
               分享
             </button>
-            <button class="action-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-              </svg>
+            <button class="btn btn-sm" style="width:100%">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
               价格预警
             </button>
           </div>
         </div>
 
         <!-- 技术指标 -->
-        <div class="indicators-card">
+        <div class="card animate-in" style="animation-delay:0.06s;flex:1;min-height:0;overflow-y:auto;">
           <div class="card-header">
             <span class="card-title">技术指标</span>
-            <button class="refresh-btn" @click="loadIndicators">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="23,4 23,10 17,10"/>
-                <path d="M3.51 9a9 9 0 0114.85-3.36L23 10"/>
-              </svg>
+            <button class="btn-icon" @click="loadIndicators" title="刷新">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23,4 23,10 17,10"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10"/></svg>
             </button>
           </div>
-          <div class="indicators-grid" v-if="indicators">
-            <div class="indicator-group">
-              <div class="group-title">趋势指标</div>
-              <div class="indicator-row">
-                <span class="ind-label">MA5</span>
-                <span class="ind-value font-mono">{{ formatPrice(indicators.sma_5) }}</span>
-              </div>
-              <div class="indicator-row">
-                <span class="ind-label">MA10</span>
-                <span class="ind-value font-mono">{{ formatPrice(indicators.sma_10) }}</span>
-              </div>
-              <div class="indicator-row">
-                <span class="ind-label">MA20</span>
-                <span class="ind-value font-mono">{{ formatPrice(indicators.sma_20) }}</span>
-              </div>
-              <div class="indicator-row">
-                <span class="ind-label">MA60</span>
-                <span class="ind-value font-mono">{{ formatPrice(indicators.sma_60) }}</span>
-              </div>
+          <div v-if="indicators" class="card-body stagger-in" style="padding:8px 14px;">
+            <div style="margin-bottom:10px;">
+              <div class="text-xs text-muted" style="margin-bottom:4px;">趋势指标</div>
+              <div class="flex justify-between text-xs" style="margin-bottom:2px;"><span>MA5</span><span class="font-mono">{{ formatPrice(indicators.sma_5) }}</span></div>
+              <div class="flex justify-between text-xs" style="margin-bottom:2px;"><span>MA10</span><span class="font-mono">{{ formatPrice(indicators.sma_10) }}</span></div>
+              <div class="flex justify-between text-xs" style="margin-bottom:2px;"><span>MA20</span><span class="font-mono">{{ formatPrice(indicators.sma_20) }}</span></div>
+              <div class="flex justify-between text-xs"><span>MA60</span><span class="font-mono">{{ formatPrice(indicators.sma_60) }}</span></div>
             </div>
-            <div class="indicator-group">
-              <div class="group-title">超买超卖</div>
-              <div class="indicator-row">
-                <span class="ind-label">RSI(14)</span>
-                <span class="ind-value font-mono" :class="getRsiClass(indicators.rsi_14)">
-                  {{ formatNumber(indicators.rsi_14, 2) }}
-                </span>
-              </div>
-              <div class="indicator-row">
-                <span class="ind-label">KDJ-K</span>
-                <span class="ind-value font-mono">{{ formatNumber(indicators.kdj_k, 2) }}</span>
-              </div>
-              <div class="indicator-row">
-                <span class="ind-label">KDJ-D</span>
-                <span class="ind-value font-mono">{{ formatNumber(indicators.kdj_d, 2) }}</span>
-              </div>
-              <div class="indicator-row">
-                <span class="ind-label">KDJ-J</span>
-                <span class="ind-value font-mono" :class="getKdjClass(indicators.kdj_j)">
-                  {{ formatNumber(indicators.kdj_j, 2) }}
-                </span>
-              </div>
+            <div style="margin-bottom:10px;">
+              <div class="text-xs text-muted" style="margin-bottom:4px;">超买超卖</div>
+              <div class="flex justify-between text-xs" style="margin-bottom:2px;"><span>RSI(14)</span><span class="font-mono" :class="getRsiClass(indicators.rsi_14)">{{ formatNumber(indicators.rsi_14) }}</span></div>
+              <div class="flex justify-between text-xs" style="margin-bottom:2px;"><span>KDJ-K</span><span class="font-mono">{{ formatNumber(indicators.kdj_k) }}</span></div>
+              <div class="flex justify-between text-xs" style="margin-bottom:2px;"><span>KDJ-D</span><span class="font-mono">{{ formatNumber(indicators.kdj_d) }}</span></div>
+              <div class="flex justify-between text-xs"><span>KDJ-J</span><span class="font-mono" :class="getKdjClass(indicators.kdj_j)">{{ formatNumber(indicators.kdj_j) }}</span></div>
             </div>
-            <div class="indicator-group">
-              <div class="group-title">MACD</div>
-              <div class="indicator-row">
-                <span class="ind-label">DIF</span>
-                <span class="ind-value font-mono" :class="getPriceClass(indicators.macd)">
-                  {{ formatNumber(indicators.macd, 4) }}
-                </span>
-              </div>
-              <div class="indicator-row">
-                <span class="ind-label">DEA</span>
-                <span class="ind-value font-mono" :class="getPriceClass(indicators.macd_signal)">
-                  {{ formatNumber(indicators.macd_signal, 4) }}
-                </span>
-              </div>
-              <div class="indicator-row">
-                <span class="ind-label">MACD</span>
-                <span class="ind-value font-mono" :class="getPriceClass(indicators.macd_hist)">
-                  {{ formatNumber(indicators.macd_hist, 4) }}
-                </span>
-              </div>
+            <div style="margin-bottom:10px;">
+              <div class="text-xs text-muted" style="margin-bottom:4px;">MACD</div>
+              <div class="flex justify-between text-xs" style="margin-bottom:2px;"><span>DIF</span><span class="font-mono" :class="getPriceClass(indicators.macd)">{{ formatNumber(indicators.macd, 4) }}</span></div>
+              <div class="flex justify-between text-xs" style="margin-bottom:2px;"><span>DEA</span><span class="font-mono" :class="getPriceClass(indicators.macd_signal)">{{ formatNumber(indicators.macd_signal, 4) }}</span></div>
+              <div class="flex justify-between text-xs"><span>MACD</span><span class="font-mono" :class="getPriceClass(indicators.macd_hist)">{{ formatNumber(indicators.macd_hist, 4) }}</span></div>
             </div>
-            <div class="indicator-group">
-              <div class="group-title">波动率</div>
-              <div class="indicator-row">
-                <span class="ind-label">布林上轨</span>
-                <span class="ind-value font-mono">{{ formatPrice(indicators.bb_upper_20) }}</span>
-              </div>
-              <div class="indicator-row">
-                <span class="ind-label">布林中轨</span>
-                <span class="ind-value font-mono">{{ formatPrice(indicators.bb_middle_20) }}</span>
-              </div>
-              <div class="indicator-row">
-                <span class="ind-label">布林下轨</span>
-                <span class="ind-value font-mono">{{ formatPrice(indicators.bb_lower_20) }}</span>
-              </div>
-              <div class="indicator-row">
-                <span class="ind-label">ATR(14)</span>
-                <span class="ind-value font-mono">{{ formatNumber(indicators.atr_14, 2) }}</span>
-              </div>
+            <div>
+              <div class="text-xs text-muted" style="margin-bottom:4px;">波动率</div>
+              <div class="flex justify-between text-xs" style="margin-bottom:2px;"><span>布林上轨</span><span class="font-mono">{{ formatPrice(indicators.bb_upper_20) }}</span></div>
+              <div class="flex justify-between text-xs" style="margin-bottom:2px;"><span>布林中轨</span><span class="font-mono">{{ formatPrice(indicators.bb_middle_20) }}</span></div>
+              <div class="flex justify-between text-xs" style="margin-bottom:2px;"><span>布林下轨</span><span class="font-mono">{{ formatPrice(indicators.bb_lower_20) }}</span></div>
+              <div class="flex justify-between text-xs"><span>ATR(14)</span><span class="font-mono">{{ formatNumber(indicators.atr_14, 2) }}</span></div>
             </div>
           </div>
-          <div v-else class="indicators-loading">
-            <span class="loading-text">加载技术指标...</span>
-          </div>
+          <div v-else class="empty-state"><span class="text-muted text-xs">加载技术指标...</span></div>
         </div>
       </div>
     </main>
 
-    <!-- 底部状态栏 -->
-    <footer class="terminal-footer">
-      <div class="footer-left">
-        <span class="status-item">
-          <span class="status-dot" :class="wsStatusClass"></span>
-          WebSocket: {{ wsStatusText }}
-        </span>
-        <span class="status-item">行情延迟: &lt;1s</span>
-      </div>
-      <div class="footer-center">
-        <span class="disclaimer">本系统仅供学习研究使用，预测结果仅供参考，不构成投资建议</span>
-      </div>
-      <div class="footer-right">
-        <span class="version">v4.0.0</span>
-      </div>
-    </footer>
+    <!-- 底部状态栏（共享组件） -->
+    <AppFooter :wsStatus="wsStatusClass" :wsText="wsStatusText" />
 
-    <!-- 加载状态 -->
+    <!-- 分时明细弹窗（共享组件，回车键打开） -->
+    <IntradayDialog v-model="showIntradayDialog" :code="stockCode" :name="stockInfo.name" :date="intradayTargetDate" />
+
+    <!-- 加载遮罩 -->
     <div v-if="loading" class="loading-overlay">
-      <div class="loading-spinner">
+      <div style="text-align:center;">
         <div class="spinner"></div>
-        <span>加载数据中...</span>
+        <div class="loading-text">加载数据中...</div>
       </div>
     </div>
   </div>
@@ -418,9 +257,12 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import * as echarts from 'echarts'
 import { stockApi } from '@/api'
 import { useWebSocket } from '@/composables/useWebSocket'
+import AppHeader from '@/components/AppHeader.vue'
+import AppFooter from '@/components/AppFooter.vue'
+import HQChartKline from '@/components/HQChartKline.vue'
+import IntradayDialog from '@/components/IntradayDialog.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -440,9 +282,9 @@ const wsStatusText = computed(() => {
 /** WebSocket 连接状态 CSS class */
 const wsStatusClass = computed(() => {
   switch (connectionStatus.value) {
-    case 'connected': return 'online'
+    case 'connected': return 'connected'
     case 'connecting': return 'connecting'
-    default: return 'offline'
+    default: return 'disconnected'
   }
 })
 
@@ -450,8 +292,7 @@ const wsStatusClass = computed(() => {
 const stockCode = computed(() => route.params.code || '600000')
 const searchKeyword = ref('')
 const loading = ref(false)
-const chartRef = ref(null)
-let chartInstance = null
+const hqChartRef = ref(null)
 let updateTimer = null
 
 // 股票信息
@@ -471,6 +312,10 @@ const stockInfo = ref({
 const chartData = ref([])
 const indicators = ref(null)
 const transactionList = ref([])
+
+// ============ 分时明细弹窗（共享组件，回车键打开）============
+const showIntradayDialog = ref(false)
+const intradayTargetDate = ref('')
 const quoteData = ref([
   { price: 0, sellVolume: 0, sellCount: 0, buyVolume: 0, buyCount: 0 },
   { price: 0, sellVolume: 0, sellCount: 0, buyVolume: 0, buyCount: 0 },
@@ -493,27 +338,24 @@ const periods = [
 const currentPeriod = ref('daily')
 const adjustType = ref('qfq')
 
-// 时间显示
-const currentTime = ref('')
-const updateTime = () => {
-  const now = new Date()
-  currentTime.value = now.toLocaleString('zh-CN', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false
-  }).replace(/\//g, '-')
-}
+/** 前端周期值 -> HQChart 周期值 */
+const hqPeriod = computed(() => {
+  const map = { '1min': '1min', '5min': '5min', '15min': '15min', '30min': '30min', '60min': '60min', 'daily': 'day', 'weekly': 'week', 'monthly': 'month' }
+  return map[currentPeriod.value] || 'day'
+})
 
 /** 实时行情到达时，同步更新股票信息 */
 watch(() => quotes.value[stockCode.value], (quote) => {
   if (quote && quote.price !== undefined) {
+    // ★ 保护中文名不被 WebSocket 的空值/数字覆盖
+    const currentName = stockInfo.value.name || ''
+    const isNameChinese = /[\u4e00-\u9fa5]/.test(currentName)
+    const quoteName = quote.name
+
     stockInfo.value = {
       ...stockInfo.value,
-      name: quote.name || stockInfo.value.name,
+      // 仅在当前名称非中文时才接受 WebSocket 推送的名称
+      name: (isNameChinese ? currentName : (quoteName || currentName)),
       price: quote.price,
       open: quote.open || stockInfo.value.open,
       high: quote.high || stockInfo.value.high,
@@ -629,22 +471,140 @@ const getTransactionClass = (t) => {
 }
 
 // ============ 数据加载 ============
+/**
+ * 加载股票基本信息（含中文名）
+ *
+ * 名称获取优先级：
+ * 1. /stock/realtime 返回的 name
+ * 2. /stock/search 搜索结果匹配
+ * 3. /stock/list 股票列表匹配
+ */
 const loadStockInfo = async () => {
   try {
-    const res = await stockApi.getRealtime(stockCode.value)
+    const code = stockCode.value
+    const res = await stockApi.getRealtime(code)
     if (res.data && res.data.length > 0) {
-      stockInfo.value = res.data[0]
+      const info = res.data[0]
+
+      // 如果 realtime 未返回有效中文名，尝试从搜索接口获取
+      if (!info.name || /^\d+$/.test(info.name) || !/[\u4e00-\u9fa5]/.test(info.name)) {
+        let foundName = null
+
+        // 方案1: 搜索接口
+        try {
+          const searchRes = await stockApi.search(code)
+          if (searchRes.stocks && searchRes.stocks.length > 0) {
+            // 宽松匹配：code 包含或被包含
+            const found = searchRes.stocks.find(s =>
+              s.code === code ||
+              s.code === String(code) ||
+              s.code.endsWith(code) ||
+              code.endsWith(s.code)
+            )
+            if (found?.name && /[\u4e00-\u9fa5]/.test(found.name)) {
+              foundName = found.name
+            }
+          }
+        } catch (_) {}
+
+        // 方案2: 股票列表接口（如果搜索没找到）
+        if (!foundName) {
+          try {
+            const listRes = await stockApi.getList()
+            if (listRes.stocks && listRes.stocks.length > 0) {
+              const found = listRes.stocks.find(s =>
+                s.code === code ||
+                s.code === String(code) ||
+                s.code.endsWith(code)
+              )
+              if (found?.name && /[\u4e00-\u9fa5]/.test(found.name)) {
+                foundName = found.name
+              }
+            }
+          } catch (_) {}
+        }
+
+        if (foundName) {
+          info.name = foundName
+        } else {
+          console.warn(`[股票名称] 无法获取 ${code} 的中文名`)
+        }
+      }
+
+      stockInfo.value = { ...info }
+    } else {
+      // realtime 无数据时，尝试搜索接口兜底
+      let foundStock = null
+
+      try {
+        const searchRes = await stockApi.search(code)
+        if (searchRes.stocks && searchRes.stocks.length > 0) {
+          foundStock = searchRes.stocks.find(s =>
+            s.code === code || s.code === String(code) || s.code.endsWith(code)
+          )
+        }
+      } catch (_) {}
+
+      if (foundStock) {
+        stockInfo.value = { ...foundStock }
+      } else {
+        console.warn(`[股票信息] realtime 和搜索均无数据: ${code}`)
+      }
     }
   } catch (e) {
     console.error('加载股票信息失败:', e)
   }
 }
 
+/**
+ * 根据当前周期加载K线数据
+ *
+ * - 分钟线 (1min/5min/15min/30min/60min) → 调用 /stock/minute 端点
+ *   返回格式: { data: [{ time, open, close, high, low, volume }] }
+ * - 日线/周线/月线 → 调用 /stock/chart 端点
+ *   返回格式: { chart_data: [{ date, open, close, high, low, volume }] }
+ */
 const loadChartData = async () => {
+  // 先清空旧数据（避免切换周期时显示错误数据）
+  chartData.value = []
+
   try {
-    const res = await stockApi.getChartData(stockCode.value, currentPeriod.value, 120, adjustType.value)
-    chartData.value = res.chart_data || []
-    updateChart()
+    const code = stockCode.value
+    const period = currentPeriod.value
+
+    // 判断是否为分钟线周期
+    const minutePeriods = ['1min', '5min', '15min', '30min', '60min']
+    const isMinute = minutePeriods.includes(period)
+
+    if (isMinute) {
+      // ★ 分钟线：调用独立分钟数据接口
+      const res = await stockApi.getMinuteData(code, period)
+      const rawList = res.data || []
+      if (rawList.length === 0) {
+        console.warn(`[K线] 分钟数据为空: ${code} ${period}，可能当前非交易时间或数据源不支持`)
+        // 不设置 chartData，保持空数组 → 显示 "K线数据加载中..." 占位
+        return
+      }
+      // 统一为前端期望的 date 字段格式（分钟数据用 time 字段）
+      chartData.value = rawList.map(d => ({
+        date: d.time || d.date || '',
+        open: d.open,
+        high: d.high,
+        low: d.low,
+        close: d.close,
+        volume: d.volume,
+        amount: d.amount || 0
+      }))
+    } else {
+      // ★ 日/周/月：调用图表数据接口
+      const res = await stockApi.getChartData(code, period, 120, adjustType.value)
+      const dataList = res.chart_data || []
+      if (dataList.length === 0) {
+        console.warn(`[K线] 图表数据为空: ${code} ${period}`)
+        return
+      }
+      chartData.value = dataList
+    }
   } catch (e) {
     console.error('加载图表数据失败:', e)
   }
@@ -659,197 +619,143 @@ const loadIndicators = async () => {
   }
 }
 
+/**
+ * 加载分笔成交数据（真实 API）
+ */
 const loadTransaction = async () => {
-  const mockTransactions = []
-  const basePrice = stockInfo.value.price || 10.0
-  for (let i = 0; i < 20; i++) {
-    const change = (Math.random() - 0.5) * 0.1
-    const price = basePrice + change
-    mockTransactions.push({
-      time: `14:${String(30 - i).padStart(2, '0')}`,
-      price: price,
-      change: change,
-      volume: Math.floor(Math.random() * 10000) + 1000,
-      type: Math.random() > 0.5 ? 'buy' : Math.random() > 0.5 ? 'sell' : 'neutral'
-    })
+  try {
+    const code = stockCode.value
+    const res = await stockApi.getTransaction(code, 100)
+    const txList = res.data || []
+
+    if (txList.length > 0) {
+      // 真实数据：转换字段名适配前端模板
+      transactionList.value = txList.map(t => ({
+        time: t.time || '',
+        price: t.price || 0,
+        change: (t.price || 0) - (stockInfo.value.open || stockInfo.value.pre_close || t.price || 0),
+        volume: t.volume || 0,
+        type: (t.direction === 'B') ? 'buy' : (t.direction === 'S') ? 'sell' : 'neutral'
+      }))
+    } else {
+      // 无真实数据时显示空提示（不再使用随机模拟）
+      transactionList.value = []
+    }
+  } catch (e) {
+    console.warn('加载分笔成交失败:', e)
+    transactionList.value = []
   }
-  transactionList.value = mockTransactions
 }
 
+/** HQChartKline 回车键回调 → 获取当前 K 线日期 → 打开分时弹窗 */
+const onEnterKeyDown = () => {
+  if (!stockCode.value) return
+  let targetDate = ''
+  try {
+    if (hqChartRef.value?.chartInstance) {
+      const option = hqChartRef.value.chartInstance.getOption()
+      const xAxisData = option.xAxis?.[0]?.data || []
+      const dz = option.dataZoom?.[0]
+      if (dz && xAxisData.length > 0) {
+        const endIdx = Math.floor((dz.end / 100) * xAxisData.length) - 1
+        targetDate = xAxisData[Math.min(endIdx, xAxisData.length - 1)] || xAxisData[xAxisData.length - 1] || ''
+      } else if (xAxisData.length > 0) {
+        targetDate = xAxisData[xAxisData.length - 1]
+      }
+    }
+    if (!targetDate && chartData.value.length > 0) {
+      targetDate = chartData.value[chartData.value.length - 1].date || ''
+    }
+  } catch (_) {
+    if (chartData.value.length > 0) {
+      targetDate = chartData.value[chartData.value.length - 1].date || ''
+    }
+  }
+  intradayTargetDate.value = targetDate
+  showIntradayDialog.value = true
+}
+
+/**
+ * 加载五档盘口数据（使用真实 API）
+ *
+ * 后端 /stock/depth 返回 bids/asks 数组：
+ * bids = [[价格, 成交量], ...]  买一到买十
+ * asks = [[价格, 成交量], ...]  卖一卖到卖十
+ */
 const loadQuoteData = async () => {
-  const basePrice = stockInfo.value.price || 10.0
-  const mockQuote = []
-  for (let i = 5; i >= 1; i--) {
-    mockQuote.push({
-      price: basePrice - i * 0.01,
-      sellVolume: Math.floor(Math.random() * 50000) + 10000,
-      sellCount: Math.floor(Math.random() * 20) + 5,
-      buyVolume: Math.floor(Math.random() * 50000) + 10000,
-      buyCount: Math.floor(Math.random() * 20) + 5
-    })
+  try {
+    const res = await stockApi.getDepth(stockCode.value)
+
+    // 后端返回格式: { code, bids: [[price, vol], ...], asks: [[price, vol], ...] }
+    const bids = res.bids || []
+    const asks = res.asks || []
+
+    if (bids.length === 0 && asks.length === 0) {
+      // 真实数据不可用时 fallback 到基于当前价的模拟盘口
+      const basePrice = stockInfo.value.price || stockInfo.value.close || 10.0
+      const mockQuote = []
+      for (let i = 5; i >= 1; i--) {
+        mockQuote.push({
+          price: basePrice - i * 0.01,
+          sellVolume: Math.floor(Math.random() * 50000) + 10000,
+          sellCount: Math.floor(Math.random() * 20) + 5,
+          buyVolume: Math.floor(Math.random() * 50000) + 10000,
+          buyCount: Math.floor(Math.random() * 20) + 5
+        })
+      }
+      quoteData.value = mockQuote
+      return
+    }
+
+    // 将 bids/asks 合并为前端期望的 5 档格式
+    // bids[0]=买一, bids[4]=买五; asks[0]=卖一, asks[4]=卖五
+    const merged = []
+    for (let i = 0; i < 5; i++) {
+      const askPrice = (i < asks.length) ? asks[i][0] : null
+      const askVol = (i < asks.length) ? asks[i][1] : 0
+      const bidPrice = (i < bids.length) ? bids[i][0] : null
+      const bidVol = (i < bids.length) ? bids[i][1] : 0
+
+      merged.push({
+        price: bidPrice || askPrice || 0,
+        sellVolume: askVol,
+        sellCount: 0,
+        buyVolume: bidVol,
+        buyCount: 0
+      })
+    }
+    quoteData.value = merged
+  } catch (e) {
+    console.warn('加载盘口数据失败，使用模拟数据:', e)
+    // fallback: 保持原有 mock 逻辑
+    const basePrice = stockInfo.value.price || 10.0
+    const mockQuote = []
+    for (let i = 5; i >= 1; i--) {
+      mockQuote.push({
+        price: basePrice - i * 0.01,
+        sellVolume: Math.floor(Math.random() * 50000) + 10000,
+        sellCount: Math.floor(Math.random() * 20) + 5,
+        buyVolume: Math.floor(Math.random() * 50000) + 10000,
+        buyCount: Math.floor(Math.random() * 20) + 5
+      })
+    }
+    quoteData.value = mockQuote
   }
-  quoteData.value = mockQuote
 }
 
-// ============ 图表渲染 ============
-const updateChart = () => {
-  if (!chartInstance || !chartData.value.length) return
+// ============ HQChart 回调 ============
+const onChartReady = (instance) => {
+  // HQChart 实例就绪，可在此执行后续操作
+}
 
-  const dates = chartData.value.map(d => d.date)
-  const ohlc = chartData.value.map(d => [d.open, d.close, d.low, d.high])
-  const volumes = chartData.value.map(d => d.volume)
-  const volumesColor = chartData.value.map(d => 
-    d.close >= d.open ? 'rgba(239, 68, 68, 0.5)' : 'rgba(34, 197, 94, 0.5)'
+/** 五档盘口量柱宽度百分比 */
+const quoteBarWidth = (vol, side) => {
+  if (!vol) return 0
+  const maxVol = Math.max(
+    ...quoteData.value.map(q => Math.max(q.sellVolume || 0, q.buyVolume || 0)),
+    1
   )
-
-  const option = {
-    backgroundColor: 'transparent',
-    animation: true,
-    animationDuration: 300,
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: {
-        type: 'cross',
-        lineStyle: { color: '#3b82f6', opacity: 0.5 },
-        crossStyle: { color: '#3b82f6', opacity: 0.5 }
-      },
-      backgroundColor: 'rgba(21, 28, 44, 0.95)',
-      borderColor: '#1e293b',
-      textStyle: { color: '#e8edf5', fontFamily: 'JetBrains Mono' }
-    },
-    legend: {
-      data: ['MA5', 'MA10', 'MA20', 'MA30'],
-      top: 0,
-      right: 10,
-      textStyle: { color: '#8b99ad' }
-    },
-    grid: [
-      { left: '10px', right: '10px', top: '40px', height: '55%' },
-      { left: '10px', right: '10px', top: '75%', height: '20%' }
-    ],
-    xAxis: [
-      {
-        type: 'category',
-        data: dates,
-        gridIndex: 0,
-        boundaryGap: false,
-        axisLine: { lineStyle: { color: '#1e293b' } },
-        axisTick: { show: false },
-        axisLabel: { color: '#5c6a7e', fontSize: 10 }
-      },
-      {
-        type: 'category',
-        data: dates,
-        gridIndex: 1,
-        boundaryGap: false,
-        axisLine: { lineStyle: { color: '#1e293b' } },
-        axisTick: { show: false },
-        axisLabel: { show: false },
-        splitLine: { show: false }
-      }
-    ],
-    yAxis: [
-      {
-        scale: true,
-        gridIndex: 0,
-        splitLine: { lineStyle: { color: '#1e293b', type: 'dashed' } },
-        axisLine: { show: false },
-        axisTick: { show: false },
-        axisLabel: { color: '#5c6a7e', fontSize: 10 }
-      },
-      {
-        scale: true,
-        gridIndex: 1,
-        splitLine: { show: false },
-        axisLine: { show: false },
-        axisTick: { show: false },
-        axisLabel: { show: false }
-      }
-    ],
-    dataZoom: [
-      {
-        type: 'inside',
-        xAxisIndex: [0, 1],
-        start: 70,
-        end: 100
-      },
-      {
-        type: 'slider',
-        xAxisIndex: [0, 1],
-        bottom: '2%',
-        height: '15px',
-        borderColor: '#1e293b',
-        fillerColor: 'rgba(59, 130, 246, 0.1)',
-        handleStyle: { color: '#3b82f6' },
-        textStyle: { color: '#5c6a7e' }
-      }
-    ],
-    series: [
-      {
-        name: 'K线',
-        type: 'candlestick',
-        data: ohlc,
-        xAxisIndex: 0,
-        yAxisIndex: 0,
-        itemStyle: {
-          color: '#ef4444',
-          color0: '#22c55e',
-          borderColor: '#dc2626',
-          borderColor0: '#16a34a'
-        }
-      },
-      {
-        name: 'MA5',
-        type: 'line',
-        data: chartData.value.map(d => d.ma5),
-        xAxisIndex: 0,
-        yAxisIndex: 0,
-        smooth: true,
-        lineStyle: { color: '#f59e0b', width: 1 },
-        symbol: 'none'
-      },
-      {
-        name: 'MA10',
-        type: 'line',
-        data: chartData.value.map(d => d.ma10),
-        xAxisIndex: 0,
-        yAxisIndex: 0,
-        smooth: true,
-        lineStyle: { color: '#3b82f6', width: 1 },
-        symbol: 'none'
-      },
-      {
-        name: 'MA20',
-        type: 'line',
-        data: chartData.value.map(d => d.ma20),
-        xAxisIndex: 0,
-        yAxisIndex: 0,
-        smooth: true,
-        lineStyle: { color: '#22d3ee', width: 1 },
-        symbol: 'none'
-      },
-      {
-        name: 'MA30',
-        type: 'line',
-        data: chartData.value.map(d => d.ma30),
-        xAxisIndex: 0,
-        yAxisIndex: 0,
-        smooth: true,
-        lineStyle: { color: '#a78bfa', width: 1 },
-        symbol: 'none'
-      },
-      {
-        name: '成交量',
-        type: 'bar',
-        data: volumes,
-        xAxisIndex: 1,
-        yAxisIndex: 1,
-        itemStyle: { color: (params) => volumesColor[params.dataIndex] }
-      }
-    ]
-  }
-
-  chartInstance.setOption(option, true)
+  return Math.min((vol / maxVol) * 100, 100)
 }
 
 // ============ 事件处理 ============
@@ -881,23 +787,10 @@ const refreshAll = async () => {
   loading.value = false
 }
 
-const initChart = () => {
-  if (chartRef.value && !chartInstance) {
-    chartInstance = echarts.init(chartRef.value)
-    window.addEventListener('resize', () => {
-      chartInstance && chartInstance.resize()
-    })
-  }
-}
-
 // ============ 生命周期 ============
 onMounted(async () => {
   loading.value = true
-  updateTime()
-  setInterval(updateTime, 1000)
-  
-  initChart()
-  
+
   await Promise.all([
     loadStockInfo(),
     loadChartData(),
@@ -905,21 +798,17 @@ onMounted(async () => {
     loadTransaction(),
     loadQuoteData()
   ])
-  
+
   loading.value = false
-  
+
   // 订阅当前股票的 WebSocket 实时行情
   subscribe([stockCode.value])
-  
+
   // 保留定时轮询作为兜底（WebSocket 断线时使用）
   updateTimer = setInterval(refreshAll, 30000)
 })
 
 onUnmounted(() => {
-  if (chartInstance) {
-    chartInstance.dispose()
-    chartInstance = null
-  }
   if (updateTimer) {
     clearInterval(updateTimer)
   }
@@ -938,256 +827,139 @@ watch(stockCode, (newCode, oldCode) => {
 </script>
 
 <style scoped>
-/* ============ 容器 ============ */
-.terminal-container {
+/* ============ 页面顶部导航：简洁文字行 ============ */
+.page-header {
   display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.header-left { display: flex; align-items: center; gap: 12px; }
+
+.back-link {
+  position: relative;
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 14px;
+  background: linear-gradient(180deg, #1e2535 0%, #151c2e 100%);
+  border: 1px solid #2a3348;
+  border-radius: 8px;
+  color: #8b949e; text-decoration: none;
+  font-size: 13px;
+  box-shadow:
+    0 2px 0 #0d1117,
+    0 4px 8px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: all 0.25s ease;
   overflow: hidden;
 }
-
-/* ============ 顶部导航 ============ */
-.terminal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 56px;
-  padding: 0 20px;
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-default);
-  flex-shrink: 0;
+/* 闪烁光泽 */
+.back-link::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(88,166,255,0.06),
+    rgba(88,166,255,0.12),
+    rgba(88,166,255,0.06),
+    transparent
+  );
+  animation: btnShimmer 3s ease-in-out infinite;
 }
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 24px;
+@keyframes btnShimmer {
+  0%, 100% { left: -100%; }
+  50% { left: 120%; }
 }
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.back-link:hover {
+  background: linear-gradient(180deg, #253050 0%, #1a2540 100%);
+  color: #58a6ff;
+  border-color: #58a6ff;
+  box-shadow:
+    0 2px 0 #0d1829,
+    0 6px 16px rgba(88,166,255,0.15),
+    0 0 20px rgba(88,166,255,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+  transform: translateY(-1px);
 }
-
-.logo-text {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
+.back-link:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 1px 0 #0d1117,
+    0 2px 4px rgba(0,0,0,0.3);
 }
+.page-title { font-size: 16px; font-weight: 600; color: var(--text-primary, #c9cdd4); }
 
+.header-nav { display: flex; gap: 4px; }
+.nav-item {
+  display: flex; align-items: center; padding: 8px 14px;
+  color: var(--text-secondary, #8b949e); text-decoration: none;
+  border-radius: 8px; font-size: 13px; transition: all 0.2s;
+}
+.nav-item:hover { background: rgba(88,166,255,0.08); color: #c9cdd4; }
+.nav-item.active { background: #58a6ff; color: white; }
+
+/* ============ 搜索框 ============ */
 .search-box {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.search-box input {
-  width: 240px;
-  height: 34px;
-  padding: 0 12px 0 36px;
+.search-input {
+  width: 220px;
+  height: 32px;
+  padding: 0 10px 0 32px;
   background: var(--bg-tertiary);
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   color: var(--text-primary);
-  font-size: 13px;
+  font-size: 12.5px;
+  font-family: var(--font-mono);
   outline: none;
-  transition: border-color var(--transition-fast);
+  transition: border-color var(--duration-fast) var(--ease-out);
 }
-
-.search-box input:focus {
-  border-color: var(--accent-blue);
-}
-
-.search-box input::placeholder {
-  color: var(--text-muted);
-}
+.search-input:focus { border-color: var(--border-focus); }
+.search-input::placeholder { color: var(--text-muted); }
 
 .search-icon {
   position: absolute;
-  left: 10px;
+  left: 8px;
   color: var(--text-muted);
+  pointer-events: none;
 }
 
-.header-nav {
-  display: flex;
-  gap: 4px;
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  color: var(--text-secondary);
-  text-decoration: none;
-  border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
-  font-size: 13px;
-}
-
-.nav-item:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
-}
-
-.nav-item.active {
-  background: var(--bg-active);
-  color: var(--accent-blue);
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.header-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-md);
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.header-btn:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
-  border-color: var(--border-accent);
-}
-
-.time-display {
-  padding: 6px 12px;
-  background: var(--bg-tertiary);
-  border-radius: var(--radius-md);
-}
-
-.time-text {
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-
-/* ============ 主内容区 ============ */
+/* ============ 布局 ============ */
 .terminal-main {
   display: flex;
   flex: 1;
   overflow: hidden;
-  padding: 12px;
-  gap: 12px;
+  padding: 10px;
+  gap: 10px;
 }
 
 .left-panel {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   overflow-y: auto;
+  min-width: 0;
 }
 
 .right-panel {
-  width: 320px;
+  width: 300px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   overflow-y: auto;
   flex-shrink: 0;
 }
 
-/* ============ 股票信息头部 ============ */
-.stock-header-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-  padding: 16px 20px;
-}
-
-.stock-main-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 16px;
-}
-
-.stock-name-code {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.stock-name {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0;
-}
-
-.stock-code {
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
-.stock-price-info {
-  text-align: right;
-}
-
-.current-price {
-  font-size: 36px;
-  font-weight: 600;
-  line-height: 1;
-}
-
-.price-change {
-  display: flex;
-  gap: 8px;
-  margin-top: 6px;
-  font-size: 14px;
-}
-
-.stock-indicators {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 12px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border-muted);
-}
-
-.indicator-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.indicator-label {
-  font-size: 11px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.indicator-value {
-  font-size: 13px;
-  color: var(--text-primary);
-}
-
-/* ============ K线图表 ============ */
+/* ============ 图表卡片 ============ */
 .chart-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-  padding: 12px;
-  flex: 1;
-  min-height: 400px;
+  min-height: 350px;
   display: flex;
   flex-direction: column;
 }
@@ -1196,461 +968,85 @@ watch(stockCode, (newCode, oldCode) => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border-muted);
+  flex-shrink: 0;
 }
 
-.period-tabs, .adjust-tabs {
+.period-tabs,
+.adjust-tabs {
   display: flex;
-  gap: 4px;
+  gap: 3px;
 }
 
-.period-tab, .adjust-tab {
-  padding: 6px 12px;
+.period-tab,
+.adjust-tab {
+  padding: 4px 10px;
   background: transparent;
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
-  color: var(--text-secondary);
-  font-size: 12px;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.period-tab:hover, .adjust-tab:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
-}
-
-.period-tab.active, .adjust-tab.active {
-  background: var(--accent-blue);
-  color: white;
-  border-color: var(--accent-blue);
-}
-
-.chart-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 0;
-  margin-bottom: 8px;
-  border-bottom: 1px solid var(--border-muted);
-}
-
-.ma-indicators {
-  display: flex;
-  gap: 16px;
-}
-
-.ma-item {
+  color: var(--text-muted);
+  font-size: 11.5px;
   font-family: var(--font-mono);
-  font-size: 12px;
-}
-
-.volume-info {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-
-.kline-chart {
-  flex: 1;
-  min-height: 300px;
-}
-
-/* ============ 分笔成交 ============ */
-.transaction-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-  max-height: 280px;
-  display: flex;
-  flex-direction: column;
-}
-
-.transaction-table-wrapper {
-  flex: 1;
-  overflow-y: auto;
-}
-
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 12px;
-}
-
-.data-table th {
-  position: sticky;
-  top: 0;
-  padding: 8px 12px;
-  text-align: left;
-  background: var(--bg-tertiary);
-  color: var(--text-muted);
-  font-weight: 500;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.data-table td {
-  padding: 6px 12px;
-  border-bottom: 1px solid var(--border-muted);
-}
-
-.data-table tr:hover td {
-  background: var(--bg-hover);
-}
-
-.row-up td {
-  background: rgba(239, 68, 68, 0.05);
-}
-
-.row-down td {
-  background: rgba(34, 197, 94, 0.05);
-}
-
-.transaction-type {
-  display: inline-block;
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-size: 10px;
-  font-weight: 500;
-}
-
-.transaction-type.buy {
-  background: var(--color-up-light);
-  color: var(--color-up);
-}
-
-.transaction-type.sell {
-  background: var(--color-down-light);
-  color: var(--color-down);
-}
-
-.transaction-type.neutral {
-  background: var(--bg-tertiary);
-  color: var(--text-muted);
-}
-
-/* ============ 右侧面板 ============ */
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border-muted);
-}
-
-.card-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.card-subtitle {
-  font-size: 11px;
-  color: var(--text-muted);
-}
-
-.refresh-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
   cursor: pointer;
-  border-radius: var(--radius-sm);
-  transition: all var(--transition-fast);
+  transition: all var(--duration-fast) var(--ease-out);
 }
 
-.refresh-btn:hover {
+.period-tab:hover,
+.adjust-tab:hover {
   background: var(--bg-hover);
-  color: var(--text-primary);
-}
-
-/* ============ 五档盘口 ============ */
-.quote-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-}
-
-.quote-content {
-  padding: 12px;
-}
-
-.quote-table {
-  margin-bottom: 12px;
-}
-
-.quote-header {
-  display: grid;
-  grid-template-columns: 1fr 80px 1fr;
-  padding: 6px 8px;
-  font-size: 11px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.quote-header span:first-child,
-.quote-header span:last-child {
-  text-align: center;
-}
-
-.quote-row {
-  display: grid;
-  grid-template-columns: 1fr 80px 1fr;
-  padding: 6px 8px;
-  align-items: center;
-  border-radius: var(--radius-sm);
-  transition: background var(--transition-fast);
-}
-
-.quote-row:hover {
-  background: var(--bg-hover);
-}
-
-.quote-cell {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.quote-cell.sell {
-  align-items: flex-start;
-}
-
-.quote-cell.buy {
-  align-items: flex-end;
-}
-
-.quote-cell.price {
-  font-weight: 600;
-  font-size: 13px;
-}
-
-.quote-volume {
-  font-size: 12px;
-}
-
-.quote-summary {
-  padding-top: 12px;
-  border-top: 1px solid var(--border-muted);
-}
-
-.summary-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 0;
-}
-
-.summary-label {
-  font-size: 12px;
-  color: var(--text-muted);
-}
-
-.summary-value {
-  font-size: 12px;
-  font-weight: 500;
-}
-
-/* ============ 快捷操作 ============ */
-.action-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-}
-
-.action-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 12px;
-}
-
-.action-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 16px;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-md);
   color: var(--text-secondary);
-  font-size: 13px;
-  cursor: pointer;
-  transition: all var(--transition-fast);
 }
 
-.action-btn:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
+.period-tab.active,
+.adjust-tab.active {
+  background: var(--accent-gold-light);
+  color: var(--accent-gold);
   border-color: var(--border-accent);
 }
 
-.action-btn.primary {
-  background: var(--accent-blue);
-  border-color: var(--accent-blue);
-  color: white;
-}
-
-.action-btn.primary:hover {
-  background: #2563eb;
-  border-color: #2563eb;
-}
-
-/* ============ 技术指标 ============ */
-.indicators-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
-  flex: 1;
+/* ============ 图表加载占位 ============ */
+.chart-placeholder {
   display: flex;
   flex-direction: column;
-}
-
-.indicators-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  padding: 12px;
-  overflow-y: auto;
-}
-
-.indicator-group {
-  background: var(--bg-tertiary);
-  border-radius: var(--radius-md);
-  padding: 10px;
-}
-
-.group-title {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 8px;
-}
-
-.indicator-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 4px 0;
-}
-
-.ind-label {
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-
-.ind-value {
-  font-size: 12px;
-  color: var(--text-primary);
-}
-
-.indicators-loading {
-  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  height: 460px;
+  gap: 16px;
+  background: var(--bg-primary);
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border-muted);
+  border-top-color: var(--accent-gold-light);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .loading-text {
   color: var(--text-muted);
   font-size: 13px;
+  font-family: var(--font-mono);
 }
 
-/* ============ 底部状态栏 ============ */
-.terminal-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 28px;
-  padding: 0 16px;
-  background: var(--bg-secondary);
-  border-top: 1px solid var(--border-default);
-  font-size: 11px;
-  color: var(--text-muted);
-  flex-shrink: 0;
+/* ============ 分笔成交行样式 ============ */
+.row-up td { background: var(--color-up-bg) !important; }
+.row-down td { background: var(--color-down-bg) !important; }
+
+/* ============ 响应式 ============ */
+@media (max-width: 1200px) {
+  .right-panel { width: 260px; }
 }
 
-.footer-left, .footer-right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.status-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  transition: all var(--transition-normal);
-}
-
-.status-dot.online {
-  background: #22c55e;
-  box-shadow: 0 0 6px #22c55e;
-}
-
-.status-dot.connecting {
-  background: #f59e0b;
-  box-shadow: 0 0 6px #f59e0b;
-  animation: pulse 0.8s ease-in-out infinite;
-}
-
-.status-dot.offline {
-  background: #ef4444;
-  box-shadow: 0 0 6px #ef4444;
-}
-
-.disclaimer {
-  color: var(--text-muted);
-}
-
-/* ============ 加载状态 ============ */
-.loading-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(10, 14, 23, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.loading-spinner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  color: var(--text-secondary);
-}
-
-.spinner {
-  width: 32px;
-  height: 32px;
-  border: 3px solid var(--border-default);
-  border-top-color: var(--accent-blue);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
+@media (max-width: 900px) {
+  .terminal-main { flex-direction: column; }
+  .left-panel { flex: none; height: 60%; }
+  .right-panel { width: 100%; flex: 1; }
 }
 </style>

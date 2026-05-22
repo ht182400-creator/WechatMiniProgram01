@@ -11,8 +11,9 @@ export const stockApi = {
   // 实时行情
   getRealtime: (code) => apiClient.get('/stock/realtime', { params: { codes: code } }),
   
-  // K线与图表数据
-  getChartData: (code, chartType, days) => apiClient.get('/stock/chart', { params: { code, chart_type: chartType, days } }),
+  // K线与图表数据（支持复权类型：qfq/hfq/none）
+  getChartData: (code, chartType, days, adjustType = 'qfq') =>
+    apiClient.get('/stock/chart', { params: { code, chart_type: chartType, days, adjust: adjustType } }),
   getMinuteData: (code, period) => apiClient.get('/stock/minute', { params: { code, period } }),
   
   // 技术指标
@@ -22,7 +23,10 @@ export const stockApi = {
   getDepth: (code) => apiClient.get('/stock/depth', { params: { code } }),
   
   // 分笔成交
-  getTransaction: (code, limit) => apiClient.get('/stock/transaction', { params: { code, limit } })
+  getTransaction: (code, limit) => apiClient.get('/stock/transaction', { params: { code, limit } }),
+  
+  // 分时明细（回车弹窗用）
+  getIntraday: (code, date) => apiClient.get('/stock/intraday', { params: { code, date: date || '' } })
 }
 
 export default stockApi

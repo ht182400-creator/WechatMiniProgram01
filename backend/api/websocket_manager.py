@@ -214,14 +214,14 @@ class RealtimeQuoteService:
             for _, row in df.iterrows():
                 code = str(row.get('code', ''))
                 
-                # 构造推送数据
+                # 构造推送数据（price 优先，mootdx quotes() 不返回 close 字段）
                 quote = {
                     'type': 'quote',
                     'code': code,
                     'timestamp': datetime.now().isoformat(),
                     'data': {
                         'name': row.get('name', code),
-                        'price': float(row.get('close', row.get('price', 0))),
+                        'price': float(row.get('price', row.get('close', 0))),
                         'open': float(row.get('open', 0)),
                         'high': float(row.get('high', 0)),
                         'low': float(row.get('low', 0)),
@@ -240,11 +240,29 @@ class RealtimeQuoteService:
                 
                 self._last_quotes[code] = quote['data']
                 
+                # JSON安全清洗：NaN/Infinity → 0，确保 json.dumps 可序列化
+                quote = self._sanitize_for_json(quote)
+                
                 # 广播给订阅者
                 await self.manager.broadcast(quote, [code])
-                
+            
         except Exception as e:
             logger.error(f"获取实时行情失败: {e}")
+    
+    @staticmethod
+    def _sanitize_for_json(obj):
+        """递归替换 NaN/Infinity 为 0，确保 JSON 序列化不报错"""
+        import math
+        
+        if isinstance(obj, dict):
+            return {k: RealtimeQuoteService._sanitize_for_json(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [RealtimeQuoteService._sanitize_for_json(v) for v in obj]
+        elif isinstance(obj, float):
+            if math.isnan(obj) or math.isinf(obj):
+                return 0.0
+            return obj
+        return obj
     
     async def push_heartbeat(self):
         """推送心跳消息"""

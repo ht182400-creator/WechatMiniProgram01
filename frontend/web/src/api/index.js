@@ -2,7 +2,8 @@ import axios from 'axios'
 
 const apiClient = axios.create({
   baseURL: '/api',
-  timeout: 30000,
+  /** 增加到60s：akshare/baostock外部数据源首次抓取可能较慢 */
+  timeout: 60000,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -21,6 +22,19 @@ apiClient.interceptors.response.use(
     console.error('API Error:', error)
     return Promise.reject(error)
   }
+)
+
+/** 请求拦截器：添加防缓存时间戳 */
+apiClient.interceptors.request.use(
+  config => {
+    // 对 GET 请求添加 _t 时间戳防止缓存
+    if (config.method === 'get') {
+      config.params = config.params || {}
+      config.params._t = Date.now()
+    }
+    return config
+  },
+  error => Promise.reject(error)
 )
 
 // API 模块
